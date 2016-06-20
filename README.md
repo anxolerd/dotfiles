@@ -43,7 +43,7 @@ Editor
 
 Vim with X11 support. The binary for it is called `vimx` and distributed as a part of `vim-X11` package in Fedora.
 
-[_] Copy files from `editor` folder to `~/.config/vim`
+[_] Copy files from `editor/vim` folder to `~/.config/vim`
 [_] Install [vim-plug](https://github.com/junegunn/vim-plug) to `~/.config/vim/autoload`
 [_] Create symbolic links:
   - [ ] `ln -s ~/.config/vim ~/.vim`
