@@ -8,6 +8,9 @@ call plug#begin('~/.local/share/vim/site/plugged')
 " On-demand loading
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 
+" Ukrainian and russian spellfiles
+Plug 'me-vlad/spellfiles.vim'
+
 " Add plugins to &runtimepath
 call plug#end()
 
@@ -243,3 +246,11 @@ noremap <leader>n <ESC>:NERDTreeToggle<CR>
 " ------------------------------------------------------------------------------
 " ==============================================================================
 colorscheme koehler
+
+
+" ==============================================================================
+" => Spelling
+" ------------------------------------------------------------------------------
+" ==============================================================================
+
+autocmd BufRead,BufNewFile *.md,*markdown,*rst,*txt,*.tex setlocal spell complete+=kspell
