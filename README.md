@@ -34,7 +34,7 @@ Terminator
 Window manager
 --------------
 
-I use [awesomewm](https://awesome.naquadah.org/) with the config from `awesome` folder
+I use [awesomewm](https://awesome.naquadah.org/) with the configuration from `awesome` folder
 
 - [ ] Copy WM configuration from `awesome` folder to `~/.config/awesome`
 
