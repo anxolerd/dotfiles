@@ -60,6 +60,10 @@
     # Use NVM
     export NVM_DIR="$HOME/.nvm"
     [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+    # Fedora's Vagrant uses libvirt as default provider. Use virtualbox instead
+    export VAGRANT_DEFAULT_PROVIDER=virtualbox
+
 # }
 
 #  vim: set ts=8 sw=4 tw=0 et :
