@@ -40,30 +40,34 @@
 # User configuration {
 
     # export PATH="/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
+    # Add ~/.local/bin to PATH as Stack suggests
+    export PATH=$HOME/.local/bin:$PATH
     # export MANPATH="/usr/local/man:$MANPATH"
 
     source $ZSH/oh-my-zsh.sh
 
     # Manually set your language environment
     export LANG=en_US.UTF-8
-    export EDITOR='nvim'
+    export EDITOR='vimx'
 
     # Compilation flags
     export ARCHFLAGS="-arch x86_64"
 
     # ssh
     # export SSH_KEY_PATH="~/.ssh/dsa_id"
-    
+
     # Source aliases
     source $ZSH/custom/aliases.zsh
+    # Source functions
+    source $ZSH/custom/functions.zsh
 
     # Use NVM
     export NVM_DIR="$HOME/.nvm"
     [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
-    # Fedora's Vagrant uses libvirt as default provider. Use virtualbox instead
+    # Fedora distribution uses libvirt as default provider.
+    # I want to use virtualbox instead
     export VAGRANT_DEFAULT_PROVIDER=virtualbox
-
 # }
 
 #  vim: set ts=8 sw=4 tw=0 et :
