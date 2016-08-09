@@ -11,6 +11,7 @@ ZSH Config
 - [ ] Install [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh).
 - [ ] Copy geometry theme from `zsh/themes` to `~/.oh-my-zsh/custom/themes`
 - [ ] Copy aliases from `zsh/aliases.zsh` to `~/.oh-my-zsh/custom/aliases.zsh`
+- [ ] Copy functions from `zsh/functions.zsh` to `~/.oh-my-zsh/custom/functions.zsh`
 - [ ] Use `.zshrc` from `zsh` folder
 
 Nodejs
