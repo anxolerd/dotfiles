@@ -51,3 +51,10 @@ Vim with X11 support. The binary for it is called `vimx` and distributed as a pa
   - [ ] `ln -s ~/.config/vim/init.vim ~/.vimrc`
 
 Probably I'll want to use `neovim`. In this case I should copy files to `~/.config/nvim` folder instead of `~/.config/vim`. Symbolic links creation is not needed.
+
+Tmux
+----
+Tmux is really neat terminal multiplexer. This is extemely convenient to use.
+
+- [ ] Copy configuration from `tmux` to home directory.
+- [ ] Adjust configuration
