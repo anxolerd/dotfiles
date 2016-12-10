@@ -29,3 +29,6 @@ update_volume(volume_widget)
 volume_timer = timer({ timeout = 0.2 })
 volume_timer:connect_signal("timeout", function () update_volume(volume_widget) end)
 volume_timer:start()
+
+
+return volume_widget
