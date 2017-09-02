@@ -1,0 +1,10 @@
+#!/bin/bash
+set -e  # Exit on error
+
+image_file="/tmp/i3lock.png"
+blur='0x4'
+import -window root "${image_file}"
+convert "${image_file}" -blur "${blur}" "${image_file}"
+
+i3lock -t -f -i "${image_file}"
+rm -- "${image_file}"
