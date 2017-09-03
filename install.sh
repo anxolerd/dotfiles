@@ -141,6 +141,25 @@ function install_nodenv() {
 }
 
 
+function install_sdkman() {
+    echo "Install sdkman (java toolbelt) ..."
+    local sdkman_url="https://get.sdkman.io"
+    local sdkman_dir="$HOME/.sdkman"
+
+    if [ -e "${sdkman_dir}" -o -h "${sdkman_dir}" ]; then
+        rm -rf "${sdkman_dir}"
+    fi
+
+    curl -s "${sdkman_url}" | bash
+}
+
+
+function install_rustup() {
+    echo "Install rustup ..."
+    curl https://sh.rustup.rs -sSf | sh
+}
+
+
 function install_nvim() {
     echo "Install neovim configuration ..."
     local nvim_config_dir="$HOME/.config/nvim"
@@ -268,6 +287,8 @@ function main() {
 
     install_pyenv
     install_nodenv
+    install_rustup
+    install_sdkman
 
     install_nvim
     install_tmux
