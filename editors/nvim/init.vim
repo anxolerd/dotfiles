@@ -19,6 +19,7 @@ Plug 'cespare/vim-toml'
 Plug 'rust-lang/rust.vim'
 Plug 'glench/vim-jinja2-syntax'
 Plug 'mxw/vim-jsx'
+Plug 'posva/vim-vue'
 
 " Completion
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -26,6 +27,7 @@ Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 Plug 'zchee/deoplete-jedi'
 Plug 'sebastianmarkow/deoplete-rust'
 Plug 'artur-shaik/vim-javacomplete2'
+Plug 'eagletmt/neco-ghc'
 
 " Lints via neomake
 Plug 'neomake/neomake'
@@ -58,6 +60,9 @@ nmap <C-p> :Denite buffer file_rec<CR>
 
 
 autocmd FileType java setlocal omnifunc=javacomplete#Complete
+
+let g:haskellmode_completion_ghc = 0
+autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 
 " ======================
 " Deoplete related stuff
