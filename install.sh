@@ -160,6 +160,14 @@ function install_rustup() {
 }
 
 
+function install_stack() {
+    echo "Install haskell stack ..."
+    curl -sSL https://get.haskellstack.org/ | sh
+    stack setup
+    stack install ghc-mod
+}
+
+
 function install_nvim() {
     echo "Install neovim configuration ..."
     local nvim_config_dir="$HOME/.config/nvim"
@@ -289,6 +297,7 @@ function main() {
     install_nodenv
     install_rustup
     install_sdkman
+    install_stack
 
     install_nvim
     install_tmux
