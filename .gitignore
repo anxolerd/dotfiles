@@ -1,2 +1,5 @@
 # Ignore vagrant
 /.vagrant/
+
+# Ignore vim temp files
+editors/nvim/.netrwhist
