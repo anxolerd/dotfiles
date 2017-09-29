@@ -164,6 +164,7 @@ exec --no-startup-id lxpolkit
 exec --no-startup-id albert
 exec --no-startup-id redshift-gtk
 exec --no-startup-id shutter --min_at_startup
+exec --no-startup-id xss-lock -- i3lock -f -i ~/.local/share/wallpapers/hacktoberfest/deepsea.png
 
 # Keyboard layout
 exec --no-startup-id setxkbmap -layout us,ua -option grp:win_space_toggle,caps:ctrl_modifier

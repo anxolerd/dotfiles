@@ -48,7 +48,8 @@ function install_packages() {
         i3lock \
         i3status \
         lxpolkit \
-        xcompmgr
+        xcompmgr \
+        xss-lock
 
     # Code editing packages
     echo "Install software for development ..."
