@@ -3,8 +3,11 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'scrooloose/nerdcommenter'
-Plug 'bling/vim-airline'
 Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
+
+" Colorscheme and UI
+Plug 'altercation/vim-colors-solarized'
+Plug 'bling/vim-airline'
 
 " Tags management
 Plug 'majutsushi/tagbar'
@@ -13,6 +16,7 @@ Plug 'craigemery/vim-autotag'
 " Integrations
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
+Plug 'editorconfig/editorconfig-vim'
 
 " Languages support
 Plug 'cespare/vim-toml'
@@ -20,6 +24,7 @@ Plug 'rust-lang/rust.vim'
 Plug 'glench/vim-jinja2-syntax'
 Plug 'mxw/vim-jsx'
 Plug 'posva/vim-vue'
+Plug 'leafgarland/typescript-vim'
 
 " Completion
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -43,6 +48,15 @@ set showcmd
 set laststatus=2
 set mouse=a
 filetype plugin on
+
+" Colorscheme
+syntax enable
+if has('gui_running')
+    set background=light
+else
+    set background=dark
+endif
+colorscheme solarized
 
 " Filetypes
 augroup filetypedetect
