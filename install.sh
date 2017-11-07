@@ -4,8 +4,8 @@
 # Installs all required software and symlinks config files from
 # repository to the system
 
-# Exit on error
-set -e
+# Exit on error and print all commands
+set -ex
 
 # Get this script's directory
 readonly DOT_SRC=$(cd "$(dirname "$0")"; pwd)
@@ -28,9 +28,12 @@ function install_packages() {
     sudo dnf install -y \
         bzip2-devel \
         curl \
+        cmake \
+        doxygen \
         gcc \
         gcc-c++ \
         openssl-devel \
+        pcre-devel \
         readline-devel \
         sqlite-devel \
         util-linux-user \
@@ -59,6 +62,16 @@ function install_packages() {
         make \
         neovim \
         the_silver_searcher
+
+    # Editorconfig core
+    cwd=$(pwd)
+    cd /tmp
+    git clone https://github.com/editorconfig/editorconfig-core-c.git
+    cd editorconfig-core-c
+    cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr . && make && sudo make install
+    cd /tmp && rm editorconfig-core-c
+    cd "$cwd"
+    unset cwd
 
     # Shell
     echo "Install shell tools ..."
