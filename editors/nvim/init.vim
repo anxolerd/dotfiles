@@ -19,20 +19,21 @@ Plug 'tpope/vim-fugitive'
 Plug 'editorconfig/editorconfig-vim'
 
 " Languages support
-Plug 'cespare/vim-toml'
-Plug 'rust-lang/rust.vim'
-Plug 'glench/vim-jinja2-syntax'
-Plug 'mxw/vim-jsx'
-Plug 'posva/vim-vue'
-Plug 'leafgarland/typescript-vim'
+Plug 'cespare/vim-toml', { 'for': 'toml' }
+Plug 'rust-lang/rust.vim', { 'for': 'rust' }
+Plug 'glench/vim-jinja2-syntax', { 'for': ['jinja2', 'html'] }
+Plug 'mxw/vim-jsx', { 'for': 'jsx' }
+Plug 'posva/vim-vue', { 'for': 'vue' }
+Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
 
 " Completion
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
-Plug 'zchee/deoplete-jedi'
-Plug 'sebastianmarkow/deoplete-rust'
-Plug 'artur-shaik/vim-javacomplete2'
-Plug 'eagletmt/neco-ghc'
+Plug 'carlitux/deoplete-ternjs', { 'for': 'javascript', 'do': 'npm i -g tern' }
+Plug 'zchee/deoplete-jedi', { 'for': 'python' }
+Plug 'sebastianmarkow/deoplete-rust', { 'for': 'rust' }
+Plug 'artur-shaik/vim-javacomplete2', { 'for': 'java' }
+Plug 'eagletmt/neco-ghc', { 'for': 'haskell' }
+Plug 'mhartington/nvim-typescript', { 'for': 'typescript', 'do': 'npm i -g typescript' }
 
 " Lints via neomake
 Plug 'neomake/neomake'
@@ -57,6 +58,7 @@ else
     set background=dark
 endif
 colorscheme solarized
+highlight ColorColumn ctermbg=160 guibg=#D80000
 
 " Filetypes
 augroup filetypedetect
@@ -70,6 +72,7 @@ noremap <F2> :NERDTreeToggle<CR>
 noremap <F3> :NERDTreeFind<CR>
 nmap <F8> :TagbarToggle<CR>
 nmap <C-n> :DeniteCursorWord grep<CR>
+nmap <A-n> :Denite grep<CR>
 nmap <C-p> :Denite buffer file_rec<CR>
 
 
