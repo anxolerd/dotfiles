@@ -161,7 +161,8 @@ exec --no-startup-id feh --bg-scale ~/.local/share/wallpapers/hacktoberfest/peng
 exec --no-startup-id nm-applet
 # exec --no-startup-id xcompmgr -n
 exec --no-startup-id lxpolkit
-exec --no-startup-id albert
+# exec --no-startup-id albert
+exec --no-startup-id ~/.local/bin/cerebro
 exec --no-startup-id redshift-gtk
 exec --no-startup-id shutter --min_at_startup
 exec --no-startup-id xss-lock -- i3lock -f -i ~/.local/share/wallpapers/hacktoberfest/deepsea.png
@@ -200,4 +201,5 @@ for_window [class="VirtualBox"] floating enable
 bar {
         status_command i3status
         position top
+        tray_output primary
 }
