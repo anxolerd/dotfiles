@@ -6,7 +6,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
 
 " Colorscheme and UI
-Plug 'altercation/vim-colors-solarized'
+Plug 'joshdick/onedark.vim'
 Plug 'bling/vim-airline'
 
 " Tags management
@@ -24,7 +24,9 @@ Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 Plug 'glench/vim-jinja2-syntax', { 'for': ['jinja2', 'html'] }
 Plug 'mxw/vim-jsx', { 'for': 'jsx' }
 Plug 'posva/vim-vue', { 'for': 'vue' }
-Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
+"Plug 'HerringtonDarkholme/yats.vim', { 'for': 'typescript' }
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
 
 " Completion
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -52,13 +54,11 @@ filetype plugin on
 
 " Colorscheme
 syntax enable
-if has('gui_running')
-    set background=light
-else
-    set background=dark
-endif
-colorscheme solarized
+colorscheme onedark
 highlight ColorColumn ctermbg=160 guibg=#D80000
+
+" NerdTREE ignore python compiled files
+let NERDTreeIgnore = ['\.pyc$', '\.mako\.py$', '^__pycache__$']
 
 " Filetypes
 augroup filetypedetect
@@ -107,7 +107,7 @@ autocmd! BufWritePost *.rs Neomake! clippy
 " ======
 call denite#custom#filter('matcher_ignore_globs', 'ignore_globs',
             \ [ '.git/', '__pycache__/', 'venv/'])
-call denite#custom#var('file_rec', 'command', 
+call denite#custom#var('file_rec', 'command',
             \ ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
 call denite#custom#var('grep', 'command', ['ag'])
 call denite#custom#var('grep', 'default_opts', ['-i', '--vimgrep'])
