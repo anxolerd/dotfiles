@@ -69,7 +69,7 @@ function install_packages() {
     git clone https://github.com/editorconfig/editorconfig-core-c.git
     cd editorconfig-core-c
     cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr . && make && sudo make install
-    cd /tmp && rm editorconfig-core-c
+    cd /tmp && rm -rf editorconfig-core-c
     cd "$cwd"
     unset cwd
 
@@ -110,18 +110,18 @@ function install_pyenv() {
 
     # Install python interpreters
     echo "Install python interpreters ..."
-    pyenv install 2.7.13
-    pyenv install 3.6.2
+    pyenv install 2.7.14
+    pyenv install 3.6.4
 
     # Create utilitary virtualenvs
     echo "Create utilitary interpreters ..."
-    pyenv virtualenv 2.7.13 neovim-2
-    pyenv virtualenv 3.6.2 neovim-3
+    pyenv virtualenv 2.7.14 neovim-2
+    pyenv virtualenv 3.6.4 neovim-3
 
     for py_env in 'neovim-2' 'neovim-3'; do
         pyenv activate "${py_env}"
         pip install -U neovim
-        source deactivate || pyenv deactivate
+        source deactivate || pyenv deactivate || deactivate
     done
 }
 
@@ -150,8 +150,8 @@ function install_nodenv() {
 
     # Install
     echo "Install stable node.js ..."
-    nodenv install 6.11.2
-    nodenv global 6.11.2
+    nodenv install 8.9.13
+    nodenv global 8.9.13
 }
 
 
@@ -176,7 +176,7 @@ function install_rustup() {
 
 function install_stack() {
     echo "Install haskell stack ..."
-    curl -sSL https://get.haskellstack.org/ | sh
+    curl -sSL https://get.haskellstack.org/ | sh || stack upgrade
     stack setup
     stack install ghc-mod
 }
@@ -297,7 +297,7 @@ function install_zsh() {
     ln -s "${DOT_SRC}/zsh/.zshrc" "${zshrc}"
 
     echo "Change user shell ..."
-    chsh -s /bin/zsh
+    chsh -s /bin/zsh || echo 'Shell was not changed'
 }
 
 
