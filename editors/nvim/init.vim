@@ -17,6 +17,9 @@ Plug 'craigemery/vim-autotag'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'editorconfig/editorconfig-vim'
+Plug 'prettier/vim-prettier', {
+    \ 'do': 'npm install',
+    \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss'] }
 
 " Languages support
 Plug 'cespare/vim-toml', { 'for': 'toml' }
@@ -108,11 +111,12 @@ autocmd! BufWritePost *.rs Neomake! clippy
 call denite#custom#filter('matcher_ignore_globs', 'ignore_globs',
             \ [ '.git/', '__pycache__/', 'venv/'])
 call denite#custom#var('file_rec', 'command',
-            \ ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
-call denite#custom#var('grep', 'command', ['ag'])
-call denite#custom#var('grep', 'default_opts', ['-i', '--vimgrep'])
+                      \ ['rg', '--files', '--glob', '!.git'])
+call denite#custom#var('grep', 'command', ['rg'])
+call denite#custom#var('grep', 'default_opts', ['--vimgrep', '--no-heading'])
 call denite#custom#var('grep', 'recursive_opts', [])
-call denite#custom#var('grep', 'pattern_opt', [])
+call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
 call denite#custom#var('grep', 'separator', ['--'])
 call denite#custom#var('grep', 'final_opts', [])
+
 call denite#custom#option('default', 'prompt', '>')

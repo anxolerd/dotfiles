@@ -61,7 +61,7 @@ function install_packages() {
         git \
         make \
         neovim \
-        the_silver_searcher
+        ripgrep
 
     # Editorconfig core
     cwd=$(pwd)
