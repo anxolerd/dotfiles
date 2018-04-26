@@ -157,15 +157,13 @@ for_window [class="^.*"] border pixel 1
 client.focused #000000 #FF0000 #FFFFFF
 
 # Startup applications
-exec --no-startup-id feh --bg-scale ~/.local/share/wallpapers/hacktoberfest/penguins.jpg
+exec --no-startup-id feh --bg-scale ~/.local/share/wallpapers/kyiv/lavra.png
 exec --no-startup-id dbus-launch nm-applet
-# exec --no-startup-id xcompmgr -n
 exec --no-startup-id lxpolkit
-# exec --no-startup-id albert
 exec --no-startup-id ~/.local/bin/cerebro
 exec --no-startup-id dbus-launch redshift-gtk
 exec --no-startup-id shutter --min_at_startup
-exec --no-startup-id xss-lock -- i3lock -f -i ~/.local/share/wallpapers/hacktoberfest/deepsea.png
+exec --no-startup-id xss-lock -- i3lock -f -i ~/.local/share/wallpapers/kyiv/metro-bridge.png
 
 # Keyboard layout
 exec --no-startup-id setxkbmap -layout us,ua -option grp:win_space_toggle,caps:ctrl_modifier
@@ -177,7 +175,7 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86Display exec arandr --force-version
-bindsym $mod+Control+l exec --no-startup-id lock & systemctl suspend
+bindsym $mod+Control+l exec i3lock -f -i ~/.local/share/wallpapers/kyiv/metro-bridge.png
 
 # Hotkeys to launch apps
 bindsym $mod+b exec google-chrome-unstable
