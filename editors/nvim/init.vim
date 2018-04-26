@@ -24,12 +24,13 @@ Plug 'prettier/vim-prettier', {
 " Languages support
 Plug 'cespare/vim-toml', { 'for': 'toml' }
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
-Plug 'glench/vim-jinja2-syntax', { 'for': ['jinja2', 'html'] }
+Plug 'glench/vim-jinja2-syntax'
 Plug 'mxw/vim-jsx', { 'for': 'jsx' }
 Plug 'posva/vim-vue', { 'for': 'vue' }
 "Plug 'HerringtonDarkholme/yats.vim', { 'for': 'typescript' }
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
+Plug 'dart-lang/dart-vim-plugin'
 
 " Completion
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
