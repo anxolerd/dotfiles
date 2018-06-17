@@ -11,7 +11,6 @@ Plug 'bling/vim-airline'
 
 " Tags management
 Plug 'majutsushi/tagbar'
-Plug 'craigemery/vim-autotag'
 
 " Integrations
 Plug 'airblade/vim-gitgutter'
@@ -22,24 +21,14 @@ Plug 'prettier/vim-prettier', {
     \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss'] }
 
 " Languages support
-Plug 'cespare/vim-toml', { 'for': 'toml' }
-Plug 'rust-lang/rust.vim', { 'for': 'rust' }
-Plug 'glench/vim-jinja2-syntax'
+Plug 'glench/vim-jinja2-syntax', { 'for': 'jinja' }
 Plug 'mxw/vim-jsx', { 'for': 'jsx' }
-Plug 'posva/vim-vue', { 'for': 'vue' }
-"Plug 'HerringtonDarkholme/yats.vim', { 'for': 'typescript' }
-Plug 'leafgarland/typescript-vim'
-Plug 'peitalin/vim-jsx-typescript'
-Plug 'dart-lang/dart-vim-plugin'
+Plug 'HerringtonDarkholme/yats.vim'
 
 " Completion
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'carlitux/deoplete-ternjs', { 'for': 'javascript', 'do': 'npm i -g tern' }
 Plug 'zchee/deoplete-jedi', { 'for': 'python' }
-Plug 'sebastianmarkow/deoplete-rust', { 'for': 'rust' }
-Plug 'artur-shaik/vim-javacomplete2', { 'for': 'java' }
-Plug 'eagletmt/neco-ghc', { 'for': 'haskell' }
-Plug 'mhartington/nvim-typescript', { 'for': 'typescript', 'do': 'npm i -g typescript' }
+Plug 'mhartington/nvim-typescript', { 'do': './install.sh' }
 
 " Lints via neomake
 Plug 'neomake/neomake'
@@ -80,31 +69,18 @@ nmap <A-n> :Denite grep<CR>
 nmap <C-p> :Denite buffer file_rec<CR>
 
 
-autocmd FileType java setlocal omnifunc=javacomplete#Complete
-
-let g:haskellmode_completion_ghc = 0
-autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
-
 " ======================
 " Deoplete related stuff
 " ======================
-let g:deoplete#sources#rust#racer_binary=$HOME .'/.cargo/bin/racer'
-let g:deoplete#sources#rust#rust_source_path=$HOME .'/workspace/rust/rust/src'
 let g:python_host_prog = $HOME .'/.pyenv/versions/neovim-2/bin/python'
 let g:python3_host_prog = $HOME .'/.pyenv/versions/neovim-3/bin/python'
 let g:tern_request_timeout = 1
-let g:tern#filetypes = ['jsx', 'javascript.jsx', 'vue']
 let g:deoplete#enable_at_startup = 1
 
 " ======================
 " Neomake linters config
 " ======================
-let g:neomake_rust_enabled_makers = ['cargo']
-let g:neomake_javascript_enabled_makers = ['eslint']
-let g:neomake_javascript_eslint_exe = $PWD .'/node_modules/.bin/eslint'
-let g:neomake_python_enabled_makers = ['flake8']
 autocmd! BufWritePost * Neomake
-autocmd! BufWritePost *.rs Neomake! clippy
 
 " ======
 " Denite
