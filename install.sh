@@ -121,32 +121,35 @@ function install_pyenv() {
 }
 
 
-function install_nodenv() {
-    echo "Install nodenv ..."
-    local nodenv_dir="$HOME/.nodenv"
-    local plugin_dir="${nodenv_dir}/plugins"
-    local nodenv_repo='git://github.com/nodenv/nodenv.git'
-    local node_build_repo='git://github.com/nodenv/node-build.git'
-    local nodenv_update_repo='git://github.com/nodenv/nodenv-update.git'
+function install_nvm() {
+    echo "Install nvm ..."
+    local nvm_dir="$HOME/.nvm"
+    local nvm_version="v0.33.11"
+    local nvm_install_url="https://raw.githubusercontent.com"
+    nvm_install_url+="/creationix/nvm/${nvm_version}/install.sh"
 
-    if [ -d "${nodenv_dir}" ]; then
-        rm -rf "${nodenv_dir}"
+    if [ -d "${nvm_dir}" ]; then
+        rm -rf "${nvm_dir}"
     fi
 
-    # Clone everything
-    git clone "${nodenv_repo}" "${nodenv_dir}"
-    git clone "${node_build_repo}" "${plugin_dir}/node-build"
-    git clone "${nodenv_update_repo}" "${plugin_dir}/nodenv-update"
+    curl -o- "${nvm_install_url}" | bash
 
-    # Initialize nodenv
-    export NODENV_ROOT="${nodenv_dir}"
-    export PATH="${nodenv_dir}/bin:$PATH"
-    eval "$(nodenv init -)"
+    # activate nvm
+    export NVM_DIR="$nvm_dir"
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
-    # Install
-    echo "Install stable node.js ..."
-    nodenv install 8.9.13
-    nodenv global 8.9.13
+    echo "Install latest stable node ..."
+    nvm install --lts
+
+    echo "Install development packages ..."
+    nvm use default
+    npm install -g \
+        gitmoji-cli \
+        neovim \
+        prettier \
+        yarn
+
+    unset NVM_DIR
 }
 
 
@@ -303,7 +306,7 @@ function main() {
     install_i3
 
     install_pyenv
-    install_nodenv
+    install_nvm
     install_rustup
     install_sdkman
     install_stack
