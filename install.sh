@@ -78,11 +78,6 @@ function install_packages() {
     sudo dnf install -y \
         tmux \
         zsh
-
-    # User scripts
-    echo "Install user scripts ..."
-    rm -f "$HOME/.local/bin/lock"
-    ln -s "${DOT_SRC}/bin/lock" "$HOME/.local/bin/lock" 
 }
 
 
