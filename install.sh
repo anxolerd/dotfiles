@@ -97,7 +97,7 @@ function install_pyenv() {
     git clone "${pyenv_repo}" "${pyenv_dir}"
     git clone "${pyenv_virtualenv_repo}" "${plugin_dir}/pyenv-virtualenv"
     git clone "${pyenv_update_repo}" "${plugin_dir}/pyenv-update"
-    
+
     # Initialize pyenv
     export PYENV_ROOT="${pyenv_dir}"
     export PATH="${pyenv_dir}/bin:$PATH"
@@ -106,16 +106,16 @@ function install_pyenv() {
     # Install python interpreters
     echo "Install python interpreters ..."
     pyenv install 2.7.14
-    pyenv install 3.6.4
+    pyenv install 3.6.5
 
     # Create utilitary virtualenvs
     echo "Create utilitary interpreters ..."
     pyenv virtualenv 2.7.14 neovim-2
-    pyenv virtualenv 3.6.4 neovim-3
+    pyenv virtualenv 3.6.5 neovim-3
 
     for py_env in 'neovim-2' 'neovim-3'; do
         pyenv activate "${py_env}"
-        pip install -U neovim
+        pip install -U neovim jedi
         source deactivate || pyenv deactivate || deactivate
     done
 }
@@ -203,10 +203,8 @@ function install_tmux() {
     local tpm_repo='git://github.com/tmux-plugins/tpm.git'
     local tpm_dir="$HOME/.tmux/plugins/tpm"
 
-    pip install --user -U 'tmuxp' || echo "Cannot install tmuxp"
-
     if [ -e "$HOME/.tmux.conf" -o -h "$HOME/.tmux.conf" ]; then
-        rm "$HOME/.tmux.conf" 
+        rm "$HOME/.tmux.conf"
     fi
     if [ -e "${tpm_dir}" -o -h "${tpm_dir}" ]; then
         rm -rf "${tpm_dir}"
@@ -237,7 +235,7 @@ function install_i3() {
             rm -r "${dir}"
         fi
     done
-    
+
     ln -s "${DOT_SRC}/wm/wallpapers" "${wallpapers_dir}"
     ln -s "${DOT_SRC}/wm/i3" "${i3_conf_dir}"
     ln -s "${DOT_SRC}/wm/i3status" "${i3status_conf_dir}"
@@ -251,8 +249,7 @@ function install_zsh() {
     local zshrc="$HOME/.zshrc"
     local ohmyzsh_custom="${ohmyzsh_dir}/custom"
     local ohmyzsh_repo="git://github.com/robbyrussell/oh-my-zsh.git"
-    local spaceship_repo="https://raw.githubusercontent.com"
-    spaceship_repo+="/denysdovhan/spaceship-zsh-theme/master/spaceship.zsh"
+    local spaceship_repo="git://github.com/denysdovhan/spaceship-prompt.git"
 
     for file in "${ohmyzsh_dir}" "${zshrc}"; do
         if [ -e "${file}" -o -h "${file}" ]; then
@@ -267,20 +264,10 @@ function install_zsh() {
     # Spaceship theme
     echo "Install spaceship theme ..."
     mkdir -p "${ohmyzsh_custom}/themes"
-    wget -O "${ohmyzsh_custom}/themes/spaceship.zsh-theme" "${spaceship_repo}"
-
-    # Symlink plugins
-    echo "Install plugins ..."
-    for plugin in "${DOT_SRC}/zsh/plugins/"* ; do
-        plugin=$(basename "$plugin")
-        if [ -e "${ohmyzsh_custom}/plugins/${plugin}" ]; then
-            rm -rf "${ohmyzsh_custom}/plugins/${plugin}"
-        fi
-
-        ln -s \
-            "${DOT_SRC}/zsh/plugins/${plugin}" \
-            "${ohmyzsh_custom}/plugins/${plugin}"
-    done
+    git clone "${spaceship_repo}" "${ohmyzsh_custom}/themes/spaceship-prompt"
+    ln -s \
+        "${ohmyzsh_custom}/themes/spaceship-prompt/spaceship.zsh-theme" \
+        "${ohmyzsh_custom}/themes/spaceship.zsh-theme"
 
     # Symlink aliases
     echo "Install aliases ..."
