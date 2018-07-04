@@ -106,12 +106,12 @@ function install_pyenv() {
     # Install python interpreters
     echo "Install python interpreters ..."
     pyenv install 2.7.14
-    pyenv install 3.6.5
+    pyenv install 3.6.6
 
     # Create utilitary virtualenvs
     echo "Create utilitary interpreters ..."
     pyenv virtualenv 2.7.14 neovim-2
-    pyenv virtualenv 3.6.5 neovim-3
+    pyenv virtualenv 3.6.6 neovim-3
 
     for py_env in 'neovim-2' 'neovim-3'; do
         pyenv activate "${py_env}"
