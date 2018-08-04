@@ -43,6 +43,8 @@ function install_packages() {
     # WM packages
     echo "Install window manager ..."
     sudo dnf install -y \
+        alsa-utils \
+        awesome \
         arandr \
         brightnessctl \
         dunst \
@@ -51,6 +53,7 @@ function install_packages() {
         i3lock \
         i3status \
         lxpolkit \
+        vicious \
         xcompmgr \
         xss-lock
 
@@ -219,7 +222,7 @@ function install_tmux() {
 
 
 function install_i3() {
-    echo "Install window manager configuration ..."
+    echo "Install i3 window manager configuration ..."
     local i3_conf_dir="$HOME/.config/i3"
     local i3status_conf_dir="$HOME/.config/i3status"
     local dunst_conf_dir="$HOME/.config/dunst"
@@ -240,6 +243,18 @@ function install_i3() {
     ln -s "${DOT_SRC}/wm/i3" "${i3_conf_dir}"
     ln -s "${DOT_SRC}/wm/i3status" "${i3status_conf_dir}"
     ln -s "${DOT_SRC}/wm/dunst" "${dunst_conf_dir}"
+}
+
+
+function install_awesome() {
+    echo "Install awesome window manager configuration ..."
+    local awesome_conf_dir="$HOME/.config/awesome"
+
+    if [ -e "${awesome_conf_dir}" -o -h "${awesome_conf_dir}" ]; then
+        rm -r "${awesome_conf_dir}"
+    fi
+
+    ln -s "${DOT_SRC}/wm/awesome" "${awesome_conf_dir}"
 }
 
 
@@ -291,6 +306,7 @@ function main() {
     install_packages
 
     install_i3
+    install_awesome
 
     install_pyenv
     install_nvm

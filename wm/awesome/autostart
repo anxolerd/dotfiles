@@ -1,0 +1,12 @@
+function run() {
+  $@ &
+}
+
+function run_once() {
+  pgrep $@ > /dev/null || ($@ &)
+}
+
+run_once  nm-applet
+run_once  xcompmgr
+run_once  redshift-gtk
+run_once  shutter --min_at_startup
