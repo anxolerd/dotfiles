@@ -17,13 +17,14 @@ Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'prettier/vim-prettier', {
-    \ 'do': 'npm install',
-    \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss'] }
+    \ 'do': 'yarn install',
+    \ 'for': ['javascript', 'typescript', 'typescriptreact', 'css', 'less', 'scss'] }
 
 " Languages support
 Plug 'glench/vim-jinja2-syntax', { 'for': 'jinja' }
 Plug 'mxw/vim-jsx', { 'for': 'jsx' }
 Plug 'HerringtonDarkholme/yats.vim'
+Plug 'dart-lang/dart-vim-plugin'
 
 " Completion
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -68,6 +69,12 @@ nmap <C-n> :DeniteCursorWord grep<CR>
 nmap <A-n> :Denite grep<CR>
 nmap <C-p> :Denite buffer file_rec<CR>
 
+" ==========================
+" Dart support configuration
+" ==========================
+let dart_html_in_string=v:true
+let dart_style_guide = 2
+let dart_format_on_save = 1
 
 " ======================
 " Deoplete related stuff
