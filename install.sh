@@ -32,6 +32,7 @@ function install_packages() {
         doxygen \
         gcc \
         gcc-c++ \
+        libffi-devel \
         openssl-devel \
         pcre-devel \
         readline-devel \
