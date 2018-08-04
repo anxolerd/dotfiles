@@ -6,6 +6,7 @@ function run_once() {
   pgrep $@ > /dev/null || ($@ &)
 }
 
+run setxkbmap -layout us,ua -option grp:win_space_toggle,caps:ctrl_modifier
 run_once  nm-applet
 run_once  xcompmgr
 run_once  redshift-gtk
