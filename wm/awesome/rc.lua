@@ -55,7 +55,7 @@ awful.spawn("eval $(gnome-keyring-daemon)")
 beautiful.init(os.getenv('HOME') .. "/.config/awesome/theme/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
-terminal = "xfce4-terminal"
+terminal = "tilix"
 editor = os.getenv("EDITOR") or "nvim"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -117,7 +117,7 @@ mykeyboardlayout = awful.widget.keyboardlayout()
 
 -- {{{ Wibar
 -- Create a textclock widget
-mytextclock = wibox.widget.textclock()
+mytextclock = wibox.widget.textclock(' %Y-%m-%d %H:%M ')
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
@@ -293,15 +293,17 @@ globalkeys = gears.table.join(
               {description = "open a terminal", group = "launcher"}),
 
     awful.key({        },           "XF86MonBrightnessUp", function () awful.spawn("brightnessctl s 5%+", false) end,
-              {description = "Increase brightness", group = "fn"}),
+              {description = "increase screen brightness", group = "fn"}),
     awful.key({        },           "XF86MonBrightnessDown", function () awful.spawn("brightnessctl s 5%-", false) end,
-              {description = "Decrease brightness", group = "fn"}),
+              {description = "decrease screen brightness", group = "fn"}),
     awful.key({        },           "XF86AudioRaiseVolume", function () awful.spawn("amixer -D pulse sset Master 5%+", false) end,
-              {description = "Increase volume", group = "fn"}),
+              {description = "increase volume", group = "fn"}),
     awful.key({        },           "XF86AudioLowerVolume", function () awful.spawn("amixer -D pulse sset Master 5%-", false) end,
-              {description = "Decrease volume", group = "fn"}),
+              {description = "decrease volume", group = "fn"}),
     awful.key({        },           "XF86AudioMute", function () awful.spawn("amixer -D pulse sset Master toggle", false) end,
-              {description = "Mute volume", group = "fn"}),
+              {description = "mute audio volume", group = "fn"}),
+    awful.key({        },           "XF86Display", function () awful.spawn("arandr --force-version", false) end,
+              {description = "run screen layout editor", group = "fn"}),
 
     awful.key({ modkey, "Control" }, "r", awesome.restart,
               {description = "reload awesome", group = "awesome"}),

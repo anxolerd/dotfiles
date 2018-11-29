@@ -9,5 +9,7 @@ function run_once() {
 run setxkbmap -layout us,ua -option grp:win_space_toggle,caps:ctrl_modifier
 run_once  nm-applet
 run_once  xcompmgr
+run_once  /usr/libexec/geoclue-2.0/demos/agent
 run_once  redshift-gtk
 run_once  shutter --min_at_startup
+run_once  xss-lock -- i3lock -f -i ~/.local/share/wallpapers/kyiv/metro-bridge.png

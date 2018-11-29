@@ -49,11 +49,14 @@ function install_packages() {
         arandr \
         brightnessctl \
         dunst \
+        geoclue2 \
         ImageMagick \
         i3 \
         i3lock \
         i3status \
         lxpolkit \
+        redshift-gtk \
+        tilix \
         vicious \
         xcompmgr \
         xss-lock
