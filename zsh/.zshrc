@@ -10,6 +10,26 @@
     # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
     SPACESHIP_PROMPT_ADD_NEWLINE=false
     SPACESHIP_TIME_SHOW=true
+    SPACESHIP_PROMPT_ORDER=(
+      time          # Time stamps section
+      user          # Username section
+      dir           # Current directory section
+      host          # Hostname section
+      git           # Git section (git_branch + git_status)
+      hg            # Mercurial section (hg_branch  + hg_status)
+      node          # Node.js section
+      golang        # Go section
+      rust          # Rust section
+      haskell       # Haskell Stack section
+      docker        # Docker section
+      pyenv         # Pyenv section
+      kubecontext   # Kubectl context section
+      exec_time     # Execution time
+      line_sep      # Line break
+      jobs          # Background jobs indicator
+      exit_code     # Exit code section
+      char          # Prompt character
+    )
     ZSH_THEME="spaceship"
 
     # Change update interval
