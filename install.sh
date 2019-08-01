@@ -305,6 +305,12 @@ function install_zsh() {
 }
 
 
+function install_profile() {
+    echo 'Symlink ~/.profile ...'
+    ln -s "${DOT_SRC}/.profile" "${HOME}/.profile"
+}
+
+
 function main() {
     create_dirs
     install_packages
@@ -321,6 +327,8 @@ function main() {
     install_nvim
     install_tmux
     install_zsh
+
+    install_profile
 }
 
 # Run everything
