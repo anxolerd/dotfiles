@@ -190,16 +190,11 @@ function install_stack() {
 function install_nvim() {
     echo "Install neovim configuration ..."
     local nvim_config_dir="$HOME/.config/nvim"
-    local vim_plug_file="$HOME/.local/share/nvim/site/autoload/plug.vim"
 
     if [ -e "${nvim_config_dir}" -o -h "${nvim_config_dir}" ]; then
         rm -r "${nvim_config_dir}"
     fi
 
-    if [ ! -e "${vim_plug_file}" -a ! -h "${vim_plug_file}" ]; then
-        curl -fLo "${vim_plug_file}" --create-dirs \
-            https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    fi
     ln -s "${DOT_SRC}/editors/nvim" "${nvim_config_dir}"
     nvim -c 'PlugInstall' -c 'PlugUpgrade' -c 'PlugUpdate' -c 'qa'
 }

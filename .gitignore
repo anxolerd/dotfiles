@@ -3,3 +3,4 @@
 
 # Ignore vim temp files
 editors/nvim/.netrwhist
+editors/nvim/autoload/
