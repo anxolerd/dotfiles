@@ -65,6 +65,7 @@ function install_packages() {
     echo "Install software for development ..."
     sudo dnf install -y \
         ctags \
+        fzf \
         git \
         make \
         neovim \
@@ -259,37 +260,15 @@ function install_awesome() {
 
 function install_zsh() {
     echo "Install zsh configuration ..."
-    local ohmyzsh_dir="$HOME/.oh-my-zsh"
     local zshrc="$HOME/.zshrc"
-    local ohmyzsh_custom="${ohmyzsh_dir}/custom"
-    local ohmyzsh_repo="git://github.com/robbyrussell/oh-my-zsh.git"
-    local spaceship_repo="git://github.com/denysdovhan/spaceship-prompt.git"
-
-    for file in "${ohmyzsh_dir}" "${zshrc}"; do
-        if [ -e "${file}" -o -h "${file}" ]; then
-            rm -rf "${file}"
-        fi
-    done
-
-    # Oh My Zsh
-    echo "Install Oh My Zsh ..."
-    git clone --depth=1 "${ohmyzsh_repo}" "${ohmyzsh_dir}"
-
-    # Spaceship theme
-    echo "Install spaceship theme ..."
-    mkdir -p "${ohmyzsh_custom}/themes"
-    git clone "${spaceship_repo}" "${ohmyzsh_custom}/themes/spaceship-prompt"
-    ln -s \
-        "${ohmyzsh_custom}/themes/spaceship-prompt/spaceship.zsh-theme" \
-        "${ohmyzsh_custom}/themes/spaceship.zsh-theme"
 
     # Symlink aliases
-    echo "Install aliases ..."
-    local readonly ohmyzsh_aliases="${ohmyzsh_custom}/aliases.zsh"
-    if [ -e "${ohmyzsh_aliases}" -o -h "${ohmyzsh_aliases}" ]; then
-        rm -r "${ohmyzsh_custom}/aliases.zsh"
-    fi
-    ln -s "${DOT_SRC}/zsh/aliases.zsh" "${ohmyzsh_aliases}"
+    # echo "Install aliases ..."
+    # local readonly ohmyzsh_aliases="${ohmyzsh_custom}/aliases.zsh"
+    # if [ -e "${ohmyzsh_aliases}" -o -h "${ohmyzsh_aliases}" ]; then
+    #     rm -r "${ohmyzsh_custom}/aliases.zsh"
+    # fi
+    # ln -s "${DOT_SRC}/zsh/aliases.zsh" "${ohmyzsh_aliases}"
 
     # ~/.zshrc
     echo "Symlink .zshrc ..."

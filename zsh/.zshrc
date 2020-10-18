@@ -1,70 +1,61 @@
-# ZSH && OH-MY-ZSH SETTINGS {
-    # If you come from bash you might have to change your $PATH.
-    export PATH="$HOME/Android/Sdk/platform-tools:$HOME/.local/bin:/usr/local/bin:$PATH"
+# ========== Plugin management ========== # {{{
+_ANTIGEN_DIR=~/.antigen
+if [ ! -f "${_ANTIGEN_DIR}/antigen.zsh" ]; then
+    mkdir -p "${_ANTIGEN_DIR}"
+    curl -sSL https://git.io/antigen > "${_ANTIGEN_DIR}/antigen.zsh"
+fi
+source "${_ANTIGEN_DIR}/antigen.zsh"
 
-    # Path to your oh-my-zsh installation.
-    export ZSH="$HOME/.oh-my-zsh"
+antigen use oh-my-zsh
 
-    # Set name of the theme to load. Optionally, if you set this to "random"
-    # it'll load a random theme each time that oh-my-zsh is loaded.
-    # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-    SPACESHIP_PROMPT_ADD_NEWLINE=false
-    SPACESHIP_TIME_SHOW=true
-    SPACESHIP_PROMPT_ORDER=(
-      time          # Time stamps section
-      user          # Username section
-      dir           # Current directory section
-      host          # Hostname section
-      git           # Git section (git_branch + git_status)
-      hg            # Mercurial section (hg_branch  + hg_status)
-      node          # Node.js section
-      golang        # Go section
-      rust          # Rust section
-      haskell       # Haskell Stack section
-      docker        # Docker section
-      pyenv         # Pyenv section
-      kubecontext   # Kubectl context section
-      exec_time     # Execution time
-      line_sep      # Line break
-      jobs          # Background jobs indicator
-      exit_code     # Exit code section
-      char          # Prompt character
-    )
-    ZSH_THEME="spaceship"
+antigen bundle git
+antigen bundle kubectl
+antigen bundle pyenv
+antigen bundle zdharma/fast-syntax-highlighting
+antigen bundle joshskidmore/zsh-fzf-history-search
 
-    # Change update interval
-    export UPDATE_ZSH_DAYS=26
+antigen theme denysdovhan/spaceship-prompt
 
-    # Change the command execution time stamp shown in the history command output.
-    HIST_STAMPS="yyyy-mm-dd"
+antigen apply
 
-    # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-    # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-    plugins=(git pyenv nvm kubectl helm)
+#}}}
 
-    source "$ZSH/oh-my-zsh.sh"
-# }
+# ========== Theme and UI ========== # {{{
+# Configure theme
+SPACESHIP_PROMPT_ADD_NEWLINE=false
+SPACESHIP_KUBECTL_SHOW=true
+SPACESHIP_KUBECTL_VERSION_SHOW=false
+SPACESHIP_PROMPT_ORDER=(
+  user          # Username section
+  dir           # Current directory section
+  host          # Hostname section
+  git           # Git section (git_branch + git_status)
+  pyenv         # Pyenv section
+  kubectl       # Kubectl context section
+  exec_time     # Execution time
+  vi_mode       # Vi-mode indicator
+  jobs          # Background jobs indicator
+  exit_code     # Exit code section
+  char          # Prompt character
+)
 
-# User configuration {
-    # Preferred editor
-    export EDITOR='nvim'
+# Disable pyenv prompt (already included in spaceship zsh)
+PYENV_VIRTUALENV_DISABLE_PROMPT=1
+#}}}
 
-    # Compilation flags
-    export ARCHFLAGS="-arch x86_64"
 
-    # ssh
-    export SSH_KEY_PATH="~/.ssh/rsa_id"
+# ========== User configuration ========== # {{{
+# Preferred editor
+export EDITOR='nvim'
 
-    # Set personal aliases, overriding those provided by oh-my-zsh libs,
-    [[ -s "$ZSH/custom/aliases.zsh" ]] && source "$ZSH/custom/aliases.zsh"
+# Aliases for convenient editor invocation
+alias vi="nvim"
+alias vim="nvim"
 
-    # disable prompt for pyenv virtualenv
-    export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+# sdkman for java-based tools
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]] && source "$SDKMAN_DIR/bin/sdkman-init.sh"
 
-    # sdkman for java-based tools
-    export SDKMAN_DIR="$HOME/.sdkman"
-    [[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]] && source "$SDKMAN_DIR/bin/sdkman-init.sh"
-
-    # rustup for Rust development
-    export PATH="$HOME/.cargo/bin:$PATH"
-# }
+# rustup for Rust development
+export PATH="$HOME/.cargo/bin:$PATH"
+#}}}
