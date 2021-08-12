@@ -1,0 +1,14 @@
+git_options:
+  fetch.parallel: 0  # auto, fetch from different remotes simultaneously
+  gpg.program: gpg2
+  pull.ff: only
+  push.gpgsign: if-asked
+  user.email: anxolerd@outlook.com
+  user.name: Oleksandr Kovalchuk
+ssh_host_configs:
+  - '*':
+      SetEnv: TERM=xterm-256color
+      User: akovalchuk
+vimplug:
+  bundle_path: ~/.vim/autoload/plug.vim
+  self_plugin: junegunn/vim-plug

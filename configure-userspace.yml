@@ -1,0 +1,6 @@
+---
+- name: Configure userspace
+  hosts: laptop
+  tasks:
+    - import_role:
+        name: userspace

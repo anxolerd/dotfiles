@@ -1,0 +1,20 @@
+--- # vim:se ft=ansible:
+- name: Ensure vim autoload directory exists
+  file:
+    path: ~/.vim/autoload
+    state: directory
+    owner: anxolerd
+    group: anxolerd
+    mode: "0755"
+- name: Get VimPlug into userspace  # noqa 401
+  get_url:
+    dest: "{{ vimplug.bundle_path }}"
+    url: https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+- name: Generate a Vim config from the template
+  template:
+    src: vimrc.j2
+    dest: ~/.vimrc
+- name: Wipe all unused plugins from NeoVim  # noqa 301  # FIXME
+  command: vim +PlugClean! +qall
+- name: Install and upgrade plugins in NeoVim  # noqa 301  # FIXME
+  command: vim +PlugInstall! +qall

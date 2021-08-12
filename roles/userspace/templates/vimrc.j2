@@ -1,0 +1,51 @@
+" ========== Vim-Plug ========== "
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync| source $MYVIMRC
+endif
+
+
+call plug#begin('~/.vim/plugged')
+Plug 'chriskempson/base16-vim'
+Plug 'dawikur/base16-vim-airline-themes'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'preservim/nerdtree'
+Plug 'ryanoasis/vim-devicons'
+Plug 'tpope/vim-fugitive'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+call plug#end()
+
+"
+
+
+" ========== General config ========== "
+set termguicolors                                               " Opaque Background
+set mouse=a                                                     " enable mouse integration
+set clipboard+=unnamedplus                                      " use system clipboard by default
+set tabstop=4 softtabstop=4 shiftwidth=4 autoindent             " tab width
+set expandtab smarttab                                          " tab key actions
+set incsearch ignorecase smartcase hlsearch                     " highlight text while searching
+set list listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·  " highlight ivisible chars
+set encoding=utf-8                                              " encoding
+set number                                                      " display line numbers
+set relativenumber                                              " line numbers relative to current line
+set title                                                       " tab title as file name
+set emoji                                                       " better display for unicode characters
+set splitright                                                  " open vertical split to the right
+set splitbelow                                                  " open horizontal split to the bottom
+set foldlevel=0                                                 " open all folds by default
+set showtabline=2                                               " always show tabline
+set grepprg=rg\ --vimgrep                                       " use rg as default grepper
+
+" performance tweaks
+set nocursorline                                                " disable cursor row highlighting
+set nocursorcolumn                                              " disable cursor column highlighting
+set scrolljump=5                                                " scroll 5 lines at once
+set lazyredraw
+set synmaxcol=180                                               " check and highlight syntax max to 180 column
+set re=1                                                        " use old but fast regex engine
+
+"
