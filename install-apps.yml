@@ -1,0 +1,10 @@
+--- # vim: se ft=ansible :
+- name: Set up gentoo laptop
+  hosts: laptop
+  gather_facts: true
+  become: true
+  tasks:
+    - import_role:
+        name: services-ctl
+    - import_role:
+        name: apps

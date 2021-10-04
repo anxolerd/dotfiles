@@ -1,0 +1,131 @@
+--- # vim: se ft=ansible:
+- name: Ensure portage dirs structure exists
+  file:
+    dest: /etc/portage/package.{{ setting_type }}
+    mode: u=rwx,g=rx,o=rx
+    owner: root
+    group: root
+    state: directory
+    recurse: yes
+  loop:
+  - accept_keywords
+  - license
+  - mask
+  - unmask
+  - use
+  loop_control:
+    loop_var: setting_type
+
+- name: Accept package licenses
+  lineinfile:
+    create: true
+    line: >-
+      {{ license_entry.package }}
+      {{ license_entry.licenses }}
+    path: >-
+      /etc/portage/package.license/{{
+          license_entry.package | replace('/', '--')
+      }}
+    state: present
+  loop: >-
+    {{
+        accept_licenses |
+        dict2items(key_name='package', value_name='licenses')
+    }}
+  loop_control:
+    label: >-
+      Accepting {{ license_entry.licenses }} terms
+      for {{ license_entry.package }}
+    loop_var: license_entry
+
+- name: Set up ABI_X86 targets
+  lineinfile:
+    create: no
+    line: >-
+      ABI_X86="{{ abi_x86_targets | join(' ') }}"
+    path: /etc/portage/make.conf
+    regexp: ^ABI_X86="[^"]*"$
+    state: present
+  when: abi_x86_targets | length > 0
+
+- name: Merge essential ebuilds
+  portage:
+    package: >-
+      {{ essential_ebuilds }}
+    state: emerged
+    update: yes
+    verbose: yes
+    newuse: yes
+    loadavg: "{{ emerge_load_average }}"
+    jobs: "{{ emerge_jobs_number }}"
+  notify:
+  - ensure-services-started
+  - ensure-services-reloaded
+
+- name: Set up Python targets
+  lineinfile:
+    create: no
+    line: >-
+      PYTHON_TARGETS="python{{
+          python_targets | map('replace', '.', '_') | join(' python')
+      }}"
+    path: /etc/portage/make.conf
+    regexp: ^PYTHON_TARGETS="[^"]*"$
+    state: present
+  when: python_targets | length > 0
+
+- name: Set up Ruby targets
+  lineinfile:
+    create: no
+    line: >-
+      RUBY_TARGETS="ruby{{ ruby_targets | map('replace', '.', '') | join(' ruby')
+      }}"
+    path: /etc/portage/make.conf
+    regexp: ^RUBY_TARGETS="[^"]*"$
+    state: present
+  when: ruby_targets | length > 0
+
+- name: Set up graphics card targets
+  lineinfile:
+    create: no
+    line: >-
+      VIDEO_CARDS="{{ video_card_targets | join(' ') }}"
+    path: /etc/portage/make.conf
+    regexp: ^VIDEO_CARDS="[^"]*"$
+    state: present
+  when: video_card_targets | length > 0
+
+- name: Merge ebuilds from the default Gentoo tree
+  portage:
+    package: >-
+      {{
+          ebuilds
+          | map('regex_replace', '^(.*)$', '\1::gentoo')
+          | list
+      }}
+    state: emerged
+    update: yes
+    verbose: yes
+    newuse: yes
+    loadavg: "{{ emerge_load_average }}"
+    jobs: "{{ emerge_jobs_number }}"
+  notify:
+  - ensure-services-started
+  - ensure-services-reloaded
+
+- name: Set up udev rules
+  copy:
+    src: etc/udev/rules.d/{{ udev_rule.file }}
+    dest: /etc/udev/rules.d/{{ udev_rule.file }}
+    mode: u+rw,g=r,o=r
+    owner: root
+    group: root
+  loop:
+  - label: make Android devices accessible by plugdev group
+    file: 51-android.rules
+  loop_control:
+    label: >-
+      {{ udev_rule.label }}
+    loop_var: udev_rule
+  notify:
+  - update-udev-rules
