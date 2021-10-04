@@ -1,3 +1,4 @@
+{# vim: set ft=vim :#}
 " ========== Vim-Plug ========== "
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -7,8 +8,6 @@ endif
 
 
 call plug#begin('~/.vim/plugged')
-Plug 'chriskempson/base16-vim'
-Plug 'dawikur/base16-vim-airline-themes'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'preservim/nerdtree'
@@ -22,9 +21,7 @@ call plug#end()
 
 
 " ========== General config ========== "
-set termguicolors                                               " Opaque Background
 set mouse=a                                                     " enable mouse integration
-set clipboard+=unnamedplus                                      " use system clipboard by default
 set tabstop=4 softtabstop=4 shiftwidth=4 autoindent             " tab width
 set expandtab smarttab                                          " tab key actions
 set incsearch ignorecase smartcase hlsearch                     " highlight text while searching

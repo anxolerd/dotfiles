@@ -3,5 +3,9 @@
   import_tasks: ssh.yml
 - name: Ensure that Git is configured
   import_tasks: git.yml
+- name: Ensure that Alacritty is configured
+  import_tasks: alacritty.yml
 - name: Ensure that Vim is configured
   import_tasks: vim.yml
+- name: Ensure that Tmux is configured
+  import_tasks: tmux.yml
