@@ -3,6 +3,7 @@ services_safe_restart:
   - acpid
   - bluetooth
   - bluetooth-mesh
+  - bumblebee
   - irqbalance
   - lm_sensors
   - NetworkManager
