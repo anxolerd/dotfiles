@@ -19,6 +19,7 @@ ebuilds:
   - app-misc/jq
   - dev-lang/go
   - dev-lang/rust
+  - lxde-base/lxmenu-data
   - media-fonts/iosevka
   - media-gfx/darktable
   - media-gfx/gthumb
