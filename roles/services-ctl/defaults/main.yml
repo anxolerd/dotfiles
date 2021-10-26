@@ -6,9 +6,9 @@ services_safe_restart:
   - irqbalance
   - lm_sensors
   - NetworkManager
-  - cups  # CUPS
+  - cupsd  # CUPS
   - cups-browsed  # CUPS network printers
 
 services_unsafe_restart:
   - docker
-  - lightdm  # LightDM
+  - display-manager  # LightDM
