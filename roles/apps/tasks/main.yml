@@ -38,6 +38,16 @@
       for {{ license_entry.package }}
     loop_var: license_entry
 
+- name: Set up global use flags
+  lineinfile:
+    create: no
+    line: >-
+      USE="{{ global_use_flags | sort | join(' ') }}"
+    path: /etc/portage/make.conf
+    regexp: ^USE="[^"]*"$
+    state: present
+  when: global_use_flags | length > 0
+
 - name: Set up ABI_X86 targets
   lineinfile:
     create: no
@@ -129,3 +139,28 @@
     loop_var: udev_rule
   notify:
   - update-udev-rules
+
+- name: Configgure lightdm
+  block:
+    - name: Ensure media path exist
+      file:
+        path: /usr/local/share/lightdm/backgrounds
+        state: directory
+        mode: u+rwx,g=rx,o=rx
+        owner: root
+        group: root
+    - name: Copy media
+      copy:
+        src: "{{ path }}"
+        dest: "/{{ path }}"
+        mode: u+rw,g=r,o=r
+        owner: root
+        group: root
+      loop:
+        - etc/lightdm/lightdm-gtk-greeter.conf
+        - usr/local/share/lightdm/backgrounds/crf1100l.jpg
+      loop_control:
+        loop_var: path
+      notify:
+        - ensure-services-started
+        - ensure-services-reloaded

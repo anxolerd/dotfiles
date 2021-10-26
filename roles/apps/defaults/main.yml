@@ -18,12 +18,23 @@ ebuilds:
   - app-emulation/k3d
   - app-misc/jq
   - dev-lang/go
+  - dev-lang/rust
   - media-fonts/iosevka
   - media-gfx/darktable
+  - media-video/mpv
+  - net-analyzer/mtr
+  - net-analyzer/netcat
+  - net-dns/bind-tools
+  - net-dns/dog
   - net-im/signal-desktop-bin
   - net-im/slack
-  - net-im/telegram-desktop
+  - net-im/telegram-desktop-bin
+  - net-p2p/transmission
   - sys-apps/ripgrep
+  - sys-boot/plymouth
+  - sys-boot/plymouth-openrc-plugin
+  - sys-power/acpid
+  - virtual/rust
   - www-client/firefox-bin
   - x11-base/xorg-x11
   - x11-drivers/nvidia-drivers
@@ -53,6 +64,16 @@ essential_ebuilds:
   - sys-process/htop  # processes overview
   - sys-process/lsof  # htop dep
   - www-client/links  # needed to browse web docs from terminal
+global_use_flags:
+  - X
+  - cups
+  - dbus
+  - elogind
+  - gnome-keyring
+  - networkmanager
+  - pulseaudio
+  - vim-syntax
+  - -wayland
 python_targets:
   - 3.9
 ruby_targets: []
