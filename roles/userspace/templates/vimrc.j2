@@ -8,13 +8,16 @@ endif
 
 
 call plug#begin('~/.vim/plugged')
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-Plug 'preservim/nerdtree'
-Plug 'ryanoasis/vim-devicons'
-Plug 'tpope/vim-fugitive'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'dense-analysis/ale'                                       " completion and lints
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }             " fuzzy search
+Plug 'junegunn/fzf.vim'                                         " fuzzy search
+Plug 'MicahElliott/Rocannon'                                    " ansible
+Plug 'preservim/nerdtree'                                       " cool tree view
+Plug 'rust-lang/rust.vim'                                       " rust syntax support
+Plug 'ryanoasis/vim-devicons'                                   " cool icons
+Plug 'tpope/vim-fugitive'                                       " git operations commands
+Plug 'vim-airline/vim-airline'                                  " status line
+Plug 'vim-airline/vim-airline-themes'                           " themes for status line
 call plug#end()
 
 "
@@ -36,6 +39,8 @@ set splitbelow                                                  " open horizonta
 set foldlevel=0                                                 " open all folds by default
 set showtabline=2                                               " always show tabline
 set grepprg=rg\ --vimgrep                                       " use rg as default grepper
+set modeline                                                    " enable modeline
+set modelines=1                                                 " enable modeline
 
 " performance tweaks
 set nocursorline                                                " disable cursor row highlighting
@@ -45,4 +50,10 @@ set lazyredraw
 set synmaxcol=180                                               " check and highlight syntax max to 180 column
 set re=1                                                        " use old but fast regex engine
 
-"
+" ========== ALE Configuration ========== "
+set omnifunc=ale#completion#OmniFunc
+let g:ale_completion_enabled = 1
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'rust': ['rustfmt'],
+\}
