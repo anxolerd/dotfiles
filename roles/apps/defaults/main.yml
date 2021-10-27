@@ -35,6 +35,7 @@ ebuilds:
   - net-im/telegram-desktop-bin
   - net-misc/putty
   - net-p2p/transmission
+  - net-wireless/blueman
   - sys-apps/ripgrep
   - sys-boot/plymouth
   - sys-boot/plymouth-openrc-plugin
