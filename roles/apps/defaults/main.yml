@@ -17,6 +17,7 @@ ebuilds:
   - app-editors/vim
   - app-emulation/k3d
   - app-misc/jq
+  - app-misc/screen
   - dev-lang/go
   - dev-lang/rust
   - lxde-base/lxmenu-data
@@ -26,11 +27,13 @@ ebuilds:
   - media-video/mpv
   - net-analyzer/mtr
   - net-analyzer/netcat
+  - net-dialup/minicom
   - net-dns/bind-tools
   - net-dns/dog
   - net-im/signal-desktop-bin
   - net-im/slack
   - net-im/telegram-desktop-bin
+  - net-misc/putty
   - net-p2p/transmission
   - sys-apps/ripgrep
   - sys-boot/plymouth
