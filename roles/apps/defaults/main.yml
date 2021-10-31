@@ -61,6 +61,7 @@ ebuilds:
 emerge_load_average: 4
 emerge_jobs_number: 8
 essential_ebuilds:
+  - app-admin/eclean-kernel # clean up outdated kernels
   - app-admin/eselect  # alternatives management
   - app-admin/sudo  # privilege escalation
   - app-admin/sysklogd  # loging daemon
@@ -87,6 +88,10 @@ global_use_flags:
   - pulseaudio
   - vim-syntax
   - -wayland
+look_and_feel:
+  theme: Adapta-Nokto-Eta
+  icon_theme: gnome
+  cursor_theme: Adwaita
 python_targets:
   - 3.9
 ruby_targets: []

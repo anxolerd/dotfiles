@@ -164,3 +164,13 @@
       notify:
         - ensure-services-started
         - ensure-services-reloaded
+
+- name: Configure global look and feel
+  block:
+    - name: Configure GTK3.0
+      template:
+        src: etc/gtk-3.0/settings.ini.j2
+        dest: /etc/gtk-3.0/settings.ini
+        owner: root
+        group: root
+        mode: "0644"
