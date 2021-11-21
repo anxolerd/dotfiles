@@ -1,1 +1,19 @@
 --- # vim: se ft=ansible:
+- name: Download tmux plugin manager
+  ansible.builtin.git:
+    repo: 'https://github.com/tmux-plugins/tpm'
+    dest: "{{ tpm.bundle_path }}"
+
+- name: Put tmux config file into the place
+  ansible.builtin.template:
+    src: tmux.conf.j2
+    dest: ~/.tmux.conf
+    owner: anxolerd
+    group: anxolerd
+    mode: "0640"
+
+- name: Cleanup unused tmux plugins
+  command: ~/.tmux/plugins/tpm/bindings/clean_plugins
+
+- name: Install tmux plugins
+  command: ~/.tmux/plugins/tpm/bindings/install_plugins

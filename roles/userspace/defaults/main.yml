@@ -9,6 +9,8 @@ ssh_host_configs:
   - '*':
       SetEnv: TERM=xterm-256color
       User: akovalchuk
+tpm:
+  bundle_path: ~/.tmux/plugins/tpm
 vimplug:
   bundle_path: ~/.vim/autoload/plug.vim
   self_plugin: junegunn/vim-plug
