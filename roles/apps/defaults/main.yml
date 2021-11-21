@@ -15,6 +15,7 @@ ebuilds:
   - app-admin/terraform
   - app-admin/vault
   - app-editors/vim
+  - app-emulation/docker-compose
   - app-emulation/k3d
   - app-misc/jq
   - app-misc/screen
@@ -38,6 +39,7 @@ ebuilds:
   - net-misc/putty
   - net-p2p/transmission
   - net-wireless/blueman
+  - sys-apps/exa
   - sys-apps/ripgrep
   - sys-boot/plymouth
   - sys-boot/plymouth-openrc-plugin
