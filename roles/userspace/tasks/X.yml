@@ -1,0 +1,29 @@
+---  # vim: set ft=ansible :
+- name: Ensure gnome keyring is running
+  ansible.builtin.lineinfile:
+    path: ~/.xinitrc
+    line: "eval $(gnome-keyring-daemon --start)"
+    owner: anxolerd
+    group: anxolerd
+    mode: "0644"
+    state: present
+  when: "'gnome-base/gnome-keyring' in ansible_facts.packages"
+
+- name: Ensure SSH socket is exposed for SSH Agent
+  ansible.builtin.lineinfile:
+    path: ~/.xinitrc
+    line: "export SSH_AUTH_SOCK"
+    owner anxolerd
+    group: anxolerd
+    mode: "0644"
+    state: present
+
+- name: Run light-locker process
+  ansible.builtin.lineinfile:
+    path: ~/.xinitrc
+    line: "light-locker &"
+    owner: anxolerd
+    group: anxolerd
+    mode: "0644"
+    state: present
+  when: "'x11-misc/light-locker' in ansible_facts.packages"

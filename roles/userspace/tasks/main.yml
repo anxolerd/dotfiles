@@ -1,11 +1,22 @@
 --- # vim:se ft=ansible:
+- name: Gather the package facts
+  ansible.builtin.package_facts:
+      manager: auto
+
 - name: Ensure that SSH is configured
   import_tasks: ssh.yml
+
 - name: Ensure that Git is configured
   import_tasks: git.yml
+
+- name: Ensure X is configured
+  import_tasks: X.yml
+
 - name: Ensure that Alacritty is configured
   import_tasks: alacritty.yml
+
 - name: Ensure that Vim is configured
   import_tasks: vim.yml
+
 - name: Ensure that Tmux is configured
   import_tasks: tmux.yml
