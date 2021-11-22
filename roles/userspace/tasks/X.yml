@@ -7,7 +7,7 @@
     group: anxolerd
     mode: "0644"
     state: present
-  when: "'gnome-base/gnome-keyring' in ansible_facts.packages"
+  when: "'gnome-keyring' in ansible_facts.packages"
 
 - name: Ensure SSH socket is exposed for SSH Agent
   ansible.builtin.lineinfile:
@@ -26,4 +26,4 @@
     group: anxolerd
     mode: "0644"
     state: present
-  when: "'x11-misc/light-locker' in ansible_facts.packages"
+  when: "'light-locker' in ansible_facts.packages"

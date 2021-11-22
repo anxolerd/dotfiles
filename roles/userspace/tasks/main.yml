@@ -1,7 +1,7 @@
 --- # vim:se ft=ansible:
 - name: Gather the package facts
   ansible.builtin.package_facts:
-      manager: auto
+    manager: auto
 
 - name: Ensure that SSH is configured
   import_tasks: ssh.yml
