@@ -6,6 +6,7 @@ accept_licenses:
   dev-util/nvidia-cuda-toolkit: NVIDIA-CUDA
   media-fonts/font-bh-ttf: bh-luxi
   media-fonts/font-bh-type1: bh-luxi
+  media-sound/spotify: Spotify
   net-im/slack: all-rights-reserved
   sys-kernel/linux-firmware: linux-fw-redistributable no-source-code
   x11-drivers/nvidia-drivers: NVIDIA-r2
@@ -27,6 +28,7 @@ ebuilds:
   - media-fonts/powerline-symbols
   - media-gfx/darktable
   - media-gfx/gthumb
+  - media-sound/spotify
   - media-video/mpv
   - net-analyzer/mtr
   - net-analyzer/netcat
