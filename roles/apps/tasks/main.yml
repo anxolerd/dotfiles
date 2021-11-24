@@ -48,6 +48,22 @@
     state: present
   when: global_use_flags | length > 0
 
+- name: Set up per-package use-flags
+  lineinfile:
+    create: true
+    regexp: "^{{ flags_entry.package }} "
+    line: "{{ flags_entry.package }} {{ flags_entry.use_flags | sort | join(' ') }}"
+    state: present
+    path: /etc/portage/package.use/{{ flags_entry.package.split('/', 1)[0] }}
+  loop: >-
+    {{
+      package_use_flags |
+      dict2items(key_name='package', value_name='use_flags')
+    }}
+  loop_control:
+    label: "Setting USE flags for {{ flags_entry.package }}"
+    loop_var: flags_entry
+
 - name: Set up ABI_X86 targets
   lineinfile:
     create: no

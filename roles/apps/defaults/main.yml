@@ -10,6 +10,29 @@ accept_licenses:
   net-im/slack: all-rights-reserved
   sys-kernel/linux-firmware: linux-fw-redistributable no-source-code
   x11-drivers/nvidia-drivers: NVIDIA-r2
+package_use_flags:
+  app-emulation/docker: ["-cli"]
+  dev-lang/rust: ["clippy", "doc", "rls", "rustfmt", "rust-src"]
+  dev-libs/nss: ["cacert", "utils"]
+  gnome-base/gvfs: ["fuse", "mtp"]
+  media-gfx/imagemagick: ["perl"]
+  media-libs/freetype: ["harfbuzz"]
+  media-libs/harfbuzz: ["truetype"]
+  media-libs/libglvnd: ["abi_x86_32"]
+  media-video/ffmpeg: ["opus"]
+  net-misc/networkmanager: ["bluetooth", "connection-sharing", "dhcpd", "iptables", "ncurses", "policykit", "wifi"]
+  "sys-boot/grub:2": ["device-mapper"]
+  sys-devel/gcc: ["graphite"]
+  sys-libs/zlib: ["minizip"]
+  virtual/imagemagick-tools: ["perl"]
+  virtual/rust: ["rustfmt"]
+  x11-libs/libX11: ["abi_x86_32"]
+  x11-libs/libXext: ["abi_x86_32"]
+  x11-libs/libxcb: ["abi_x86_32"]
+  x11-libs/libXau: ["abi_x86_32"]
+  x11-libs/libXdmcp: ["abi_x86_32"]
+  x11-libs/xcb-proto: ["abi_x86_32"]
+  x11-libs/libdrm: ["libkms"]
 ebuilds:
   - app-admin/bitwarden-desktop-bin
   - app-admin/helm
