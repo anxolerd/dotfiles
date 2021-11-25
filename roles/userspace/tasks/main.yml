@@ -3,6 +3,9 @@
   ansible.builtin.package_facts:
     manager: auto
 
+- name: Ensure that Bash is configured
+  import_tasks: bash.yml
+
 - name: Ensure that SSH is configured
   import_tasks: ssh.yml
 
