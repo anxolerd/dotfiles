@@ -1,7 +1,8 @@
 ---  # vim: set ft=ansible :
 - name: Ensure gnome keyring is running
   ansible.builtin.lineinfile:
-    path: ~/.xinitrc
+    create: true
+    path: ~/.xprofile
     line: "eval $(gnome-keyring-daemon --start)"
     owner: anxolerd
     group: anxolerd
@@ -11,7 +12,8 @@
 
 - name: Ensure SSH socket is exposed for SSH Agent
   ansible.builtin.lineinfile:
-    path: ~/.xinitrc
+    create: true
+    path: ~/.xprofile
     line: "export SSH_AUTH_SOCK"
     owner: anxolerd
     group: anxolerd
@@ -20,10 +22,22 @@
 
 - name: Run light-locker process
   ansible.builtin.lineinfile:
-    path: ~/.xinitrc
+    create: true
+    path: ~/.xprofile
     line: "light-locker &"
     owner: anxolerd
     group: anxolerd
     mode: "0644"
     state: present
   when: "'light-locker' in ansible_facts.packages"
+
+- name: Set keyboard layout
+  ansible.builtin.lineinfile:
+    create: true
+    path: ~/.xprofile
+    regex: "^setxkbmap"
+    line: "setxkbmap -layout us,ua -option grp:win_space_toggle"
+    owner: anxolerd
+    group: anxolerd
+    mode: "0644"
+    state: present
