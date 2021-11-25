@@ -8,6 +8,25 @@ inspired by and a lot of solutions were borrowed from
 <https://github.com/webknjaz/ansible-gentoo-laptop>`_
 
 
+How To Run
+----------
+
+.. code-block:: bash
+
+   $ python -m venv .venv
+   $ . ./.venv/bin/activate
+   $ pip install ansible
+
+   $ # Install apps:
+   $ ansible-playbook -DvK install-apps.yml
+
+   $ # Configure userspace:
+   $ ansible-playbook -Dv configure-userspace.yml
+
+   $ # Update all packages
+   $ ansible-playbook -Dv rebuild-world.yml
+
+
 Credits
 -------
 
