@@ -43,6 +43,7 @@ ebuilds:
   - app-emulation/k3d
   - app-misc/jq
   - app-misc/screen
+  - app-shells/fzf
   - dev-lang/go
   - dev-lang/rust
   - lxde-base/lxmenu-data
@@ -86,6 +87,8 @@ ebuilds:
   - x11-terms/alacritty
   - x11-themes/adapta-gtk-theme
   - x11-wm/i3-gaps
+ebuilds_from_overlays:
+  app-shells/zoxide: guru
 emerge_load_average: 4
 emerge_jobs_number: 8
 essential_ebuilds:
@@ -116,6 +119,8 @@ global_use_flags:
   - pulseaudio
   - vim-syntax
   - -wayland
+layman_overlays:
+  - guru
 look_and_feel:
   theme: Adapta-Nokto-Eta
   icon_theme: gnome
@@ -123,6 +128,7 @@ look_and_feel:
 python_targets:
   - 3.9
 ruby_targets: []
+unmask_ebuilds: {}
 video_card_targets:
   - intel
   - nvidia

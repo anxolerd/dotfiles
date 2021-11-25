@@ -38,6 +38,66 @@
       for {{ license_entry.package }}
     loop_var: license_entry
 
+- name: Mask third-party overlays
+  lineinfile:
+    create: yes
+    line: >-
+      */*::{{ overlay }}
+    path: >-
+      /etc/portage/package.mask/third-party-overlay--{{ overlay }}
+    state: present
+  loop: >-
+    {{ layman_overlays }}
+  loop_control:
+    loop_var: overlay
+
+- name: Allow certain packages from third-party overlays
+  lineinfile:
+    create: yes
+    line: >-
+      {{
+        [overlay_package_entry.package, overlay_package_entry.overlay]
+        | join('::')
+      }}
+    path: >-
+      /etc/portage/package.unmask/third-party-overlay--{{
+        overlay_package_entry.overlay
+      }}
+    state: present
+  loop: >-
+    {{
+        ebuilds_from_overlays
+        | combine(unmask_ebuilds)
+        | dict2items(key_name='package', value_name='overlay')
+    }}
+  loop_control:
+    label: >-
+      Allowing {{
+        [overlay_package_entry.package, overlay_package_entry.overlay]
+        | join('::')
+      }}
+    loop_var: overlay_package_entry
+
+- name: Install layman overlays
+  shell: |
+    set -euxo pipefail
+    yes | layman -a {{ overlay }}
+  args:
+    creates: /var/lib/layman/{{ overlay }}
+  loop: >-
+    {{ layman_overlays }}
+  loop_control:
+    loop_var: overlay
+  register: layman_cmd
+  changed_when: layman_cmd.rc == 141
+  failed_when: >-
+    layman_cmd.rc not in [0, 141] and
+    ' was already installed' not in layman_cmd.stdout
+
+- name: Sync layman overlays
+  command: layman -S
+  when: true
+
 - name: Set up global use flags
   lineinfile:
     create: no
@@ -127,6 +187,24 @@
       {{
           ebuilds
           | map('regex_replace', '^(.*)$', '\1::gentoo')
+          | list
+      }}
+    state: emerged
+    update: yes
+    verbose: yes
+    newuse: yes
+    loadavg: "{{ emerge_load_average }}"
+    jobs: "{{ emerge_jobs_number }}"
+  notify:
+  - ensure-services-started
+  - ensure-services-reloaded
+
+- name: Merge ebuilds from third-party overlays
+  portage:
+    package: >-
+      {{
+          ebuilds_from_overlays.items()
+          | map('join', '::')
           | list
       }}
     state: emerged
