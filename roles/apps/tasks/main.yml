@@ -238,7 +238,7 @@
   notify:
   - update-udev-rules
 
-- name: Configgure lightdm
+- name: Configure lightdm
   block:
     - name: Ensure media path exist
       file:
