@@ -217,6 +217,10 @@
   - ensure-services-started
   - ensure-services-reloaded
 
+- name: Gather the package facts
+  ansible.builtin.package_facts:
+    manager: auto
+
 - name: Set up udev rules
   copy:
     src: etc/udev/rules.d/{{ udev_rule.file }}
@@ -268,3 +272,20 @@
         owner: root
         group: root
         mode: "0644"
+
+- name: Configure podman
+  block:
+    - name: Copy recommended example configuration files
+      copy:
+        src: /etc/containers/{{ configuration_file }}.example
+        dest: /etc/containers/{{ configuration_file }}
+        remote_src: true
+        owner: root
+        group: root
+        mode: "0644"
+      loop:
+        - policy.json
+        - registries.conf
+      loop_control:
+        loop_var: "configuration_file"
+  when: "'podman' in ansible_facts.packages"
