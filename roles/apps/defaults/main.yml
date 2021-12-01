@@ -46,6 +46,7 @@ ebuilds:
   - app-shells/fzf
   - dev-lang/go
   - dev-lang/rust
+  - games-strategy/openra
   - lxde-base/lxmenu-data
   - media-fonts/iosevka
   - media-fonts/roboto
