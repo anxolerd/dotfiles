@@ -12,9 +12,11 @@
     remote_src: true
     src: "https://github.com/kubernetes-sigs/krew/releases/download/{{ krew.version }}/krew-{{ ansible_system | lower }}_{{ linux_platform }}.tar.gz"
     dest: /usr/local/bin
+    exclude:
+      - LICENSE
     extra_opts:
-      - --transform='flags=r;s|krew-{{ ansible_system | lower }}_{{ linux_platform }}|kubectl-krew|'
-      - --exclide=LICENSE
+      - --transform
+      - 'flags=r;s/krew-{{ ansible_system | lower }}_{{ linux_platform }}/kubectl-krew/'
     owner: root
     group: root
   become: true
@@ -23,6 +25,12 @@
   command: /usr/bin/kubectl krew update
   args:
     creates: /home/anxolerd/.krew/index/plugins/krew_plugins.yaml
+
+- name: Make sure krew is in PATH
+  lineinfile:
+    line: export PATH="${PATH}:${HOME}/.krew/bin"
+    path: ~/.bashrc
+    state: present
 
 - name: Install krew plugins
   command: kubectl krew install {{ item }}
