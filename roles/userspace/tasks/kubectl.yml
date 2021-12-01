@@ -1,0 +1,30 @@
+---  # vim: set ft=ansible :
+- name: Set fact linux_platform
+  set_fact:
+    linux_platform: >- 
+      {{
+        (ansible_architecture == "x86_64") 
+        | ternary("amd64", ansible_architecture) 
+      }}
+
+- name: Download krew package manager for kubectl
+  unarchive:
+    remote_src: true
+    src: "https://github.com/kubernetes-sigs/krew/releases/download/{{ krew.version }}/krew-{{ ansible_system | lower }}_{{ linux_platform }}.tar.gz"
+    dest: /usr/local/bin
+    extra_opts:
+      - --transform='flags=r;s|krew-{{ ansible_system | lower }}_{{ linux_platform }}|kubectl-krew|'
+      - --exclide=LICENSE
+    owner: root
+    group: root
+  become: true
+
+- name: Update krew plugins list
+  command: /usr/bin/kubectl krew update
+  args:
+    creates: /home/anxolerd/.krew/index/plugins/krew_plugins.yaml
+
+- name: Install krew plugins
+  command: kubectl krew install {{ item }}
+  with_items: "{{ krew.plugins }}"
+  when: krew.plugins is defined

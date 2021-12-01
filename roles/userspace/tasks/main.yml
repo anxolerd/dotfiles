@@ -23,3 +23,6 @@
 
 - name: Ensure that Tmux is configured
   import_tasks: tmux.yml
+
+- name: Ensure that Kubectl is configured
+  import_tasks: kubectl.yml
