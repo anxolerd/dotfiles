@@ -7,24 +7,33 @@
         | ternary("amd64", ansible_architecture) 
       }}
 
+- name: Create krew directory
+  file:
+    path: ~/.krew/bin
+    state: directory
+    owner: anxolerd
+    group: anxolerd
+    mode: "0755"
+
 - name: Download krew package manager for kubectl
   unarchive:
     remote_src: true
     src: "https://github.com/kubernetes-sigs/krew/releases/download/{{ krew.version }}/krew-{{ ansible_system | lower }}_{{ linux_platform }}.tar.gz"
-    dest: /usr/local/bin
+    dest: ~/.krew/bin
     exclude:
       - LICENSE
     extra_opts:
       - --transform
       - 'flags=r;s/krew-{{ ansible_system | lower }}_{{ linux_platform }}/kubectl-krew/'
-    owner: root
-    group: root
-  become: true
+    owner: anxolerd
+    group: anxolerd
 
 - name: Update krew plugins list
   command: /usr/bin/kubectl krew update
   args:
     creates: /home/anxolerd/.krew/index/plugins/krew_plugins.yaml
+  environment:
+    PATH: "{{ ansible_env.PATH }}:{{ ansible_env.HOME }}/.krew/bin"
 
 - name: Make sure krew is in PATH
   lineinfile:
@@ -35,4 +44,6 @@
 - name: Install krew plugins
   command: kubectl krew install {{ item }}
   with_items: "{{ krew.plugins }}"
+  environment:
+    PATH: "{{ ansible_env.PATH }}:{{ ansible_env.HOME }}/.krew/bin"
   when: krew.plugins is defined

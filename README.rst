@@ -21,7 +21,7 @@ How To Run
    $ ansible-playbook -DvK install-apps.yml
 
    $ # Configure userspace:
-   $ ansible-playbook -DvK configure-userspace.yml
+   $ ansible-playbook -Dv configure-userspace.yml
 
    $ # Update all packages
    $ ansible-playbook -DvK rebuild-world.yml
