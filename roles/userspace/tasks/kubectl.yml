@@ -47,3 +47,10 @@
   environment:
     PATH: "{{ ansible_env.PATH }}:{{ ansible_env.HOME }}/.krew/bin"
   when: krew.plugins is defined
+  register: kubectl_krew_install_r
+  changed_when: >-
+    (
+      'Skipping plugin "'
+      + item
+      + '", it is already installed'
+    ) not in kubectl_krew_install_r.stderr
