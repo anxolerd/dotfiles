@@ -8,6 +8,7 @@ git_options:
 krew:
   version: v0.4.2
   plugins:
+    - ctx
     - oidc-login
 ssh_host_configs:
   - '*':
