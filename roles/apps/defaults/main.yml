@@ -12,6 +12,7 @@ accept_licenses:
   x11-drivers/nvidia-drivers: NVIDIA-r2
 package_use_flags:
   app-emulation/docker: ["-cli"]
+  dev-lang/mono: ["minimal"]
   dev-lang/rust: ["clippy", "doc", "rls", "rustfmt", "rust-src"]
   dev-libs/nss: ["cacert", "utils"]
   gnome-base/gvfs: ["fuse", "mtp"]
