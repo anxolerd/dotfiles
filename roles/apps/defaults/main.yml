@@ -21,7 +21,9 @@ package_use_flags:
   media-libs/harfbuzz: ["truetype"]
   media-libs/libglvnd: ["abi_x86_32"]
   media-video/ffmpeg: ["opus"]
+  net-dns/dnsmasq: ["script"]
   net-misc/networkmanager: ["bluetooth", "connection-sharing", "dhcpd", "iptables", "ncurses", "policykit", "wifi"]
+  net-misc/spice-gtk: ["usbredir"]
   "sys-boot/grub:2": ["device-mapper"]
   sys-devel/gcc: ["graphite"]
   sys-libs/zlib: ["minizip"]
@@ -42,6 +44,7 @@ ebuilds:
   - app-editors/vim
   - app-emulation/docker-compose
   - app-emulation/k3d
+  - app-emulation/virt-manager
   - app-misc/jq
   - app-misc/screen
   - app-shells/fzf
@@ -57,7 +60,7 @@ ebuilds:
   - media-sound/spotify
   - media-video/mpv
   - net-analyzer/mtr
-  - net-analyzer/netcat
+  - net-analyzer/openbsd-netcat
   - net-dialup/minicom
   - net-dns/bind-tools
   - net-dns/dog
@@ -67,6 +70,7 @@ ebuilds:
   - net-misc/putty
   - net-p2p/transmission
   - net-wireless/blueman
+  - sys-apps/bat
   - sys-apps/exa
   - sys-apps/ripgrep
   - sys-boot/plymouth
@@ -90,6 +94,7 @@ ebuilds:
   - x11-themes/adapta-gtk-theme
   - x11-wm/i3-gaps
 ebuilds_from_overlays:
+  app-misc/tealdeer: guru
   app-shells/zoxide: guru
 emerge_load_average: 4
 emerge_jobs_number: 8
@@ -103,6 +108,8 @@ essential_ebuilds:
   - app-portage/layman  # needed to manage third-party Git overlays
   - dev-vcs/git  # needed to fetch third-party Git overlays
   - sys-apps/gptfdisk  # gdisk: https://wiki.gentoo.org/wiki/EFI_System_Partition
+  - sys-apps/pciutils  # lspci
+  - sys-apps/usbutils  # lsusb
   - sys-fs/cryptsetup  # LUKS
   - sys-fs/exfat-utils  # exFAT support
   - sys-fs/dosfstools  # mkfs.fat: https://wiki.gentoo.org/wiki/EFI_System_Partition
@@ -121,6 +128,22 @@ global_use_flags:
   - pulseaudio
   - vim-syntax
   - -wayland
+groups_memberships:
+  - user: anxolerd
+    group: docker
+    package: docker
+  - user: anxolerd
+    group: lpadmin
+    package: cups
+  - user: anxolerd
+    group: wheel
+    package: sudo
+  - user: anxolerd
+    group: kvm
+    package: qemu
+  - user: anxolerd
+    group: libvirt
+    package: virt-manager
 layman_overlays:
   - guru
 look_and_feel:
@@ -128,7 +151,8 @@ look_and_feel:
   icon_theme: gnome
   cursor_theme: Adwaita
 python_targets:
-  - 3.9
+  - "3.9"
+  - "3.10"
 ruby_targets: []
 unmask_ebuilds: {}
 video_card_targets:

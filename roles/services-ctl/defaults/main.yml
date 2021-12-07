@@ -1,12 +1,22 @@
 ---
 services_safe_restart:
-  - acpid
-  - bluetooth
-  - bumblebee
-  - NetworkManager
-  - cupsd  # CUPS
-  - cups-browsed  # CUPS network printers
+  - service: acpid
+    provided_by: acpid
+  - service: bluetooth
+    provided_by: bluez
+  - service: bumblebee
+    provided_by: bumblebee
+  - service: NetworkManager
+    provided_by: networkmanager
+  - service: cupsd  # CUPS
+    provided_by: cups
+  - service: cups-browsed  # CUPS network printers
+    provided_by: cups
 
 services_unsafe_restart:
-  - docker
-  - display-manager  # LightDM
+  - service: docker
+    provided_by: docker
+  - service: display-manager  # LightDM
+    provided_by: display-manager-init
+  - service: libvirtd
+    provided_by: libvirt

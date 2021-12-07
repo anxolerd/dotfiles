@@ -50,3 +50,7 @@
       verbose: yes
       loadavg: 4
       jobs: 9
+  - name: Gather the package facts
+    ansible.builtin.package_facts:
+      manager: auto
+

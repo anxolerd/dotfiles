@@ -1,0 +1,9 @@
+---  # vim: set ft=ansible :
+- name: Add users to groups
+  user:
+    name: '{{ membership.user }}'
+    groups: '{{ membership.group }}'
+    append: yes
+  when: membership.package
+  loop:
+

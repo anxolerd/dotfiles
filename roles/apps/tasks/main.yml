@@ -289,3 +289,14 @@
       loop_control:
         loop_var: "configuration_file"
   when: "'podman' in ansible_facts.packages"
+
+- name: Add users to groups
+  user:
+    name: "{{ membership.user }}"
+    groups: ["{{ membership.group }}"]
+    append: true
+  when: "membership.package in ansible_facts.packages"
+  loop: "{{ groups_memberships }}"
+  loop_control:
+    loop_var: membership
+    label: "Add user {{ membership.user }} to group {{ membership.group }}"
