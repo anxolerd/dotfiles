@@ -50,6 +50,7 @@ ebuilds:
   - app-shells/fzf
   - dev-lang/go
   - dev-lang/rust
+  - dev-python/python-openstackclient
   - games-strategy/openra
   - lxde-base/lxmenu-data
   - media-fonts/iosevka
