@@ -290,6 +290,29 @@
         loop_var: "configuration_file"
   when: "'podman' in ansible_facts.packages"
 
+- name: Configure X
+  block:
+
+    - name: Make sure X config dir exists
+      file:
+        path: /etc/X11/xorg.conf.d/
+        state: directory
+        owner: root
+        group: root
+        mode: "0755"
+
+    - name: Copy X configurations
+      copy:
+        src: "etc/X11/xorg.conf.d/{{ configuration_file }}"
+        dest: "/etc/X11/xorg.conf.d/{{ configuration_file }}"
+        owner: root
+        group: root
+        mode: "0644"
+      loop:
+        - 20-intel.conf
+      loop_control:
+        loop_var: 'configuration_file'
+
 - name: Add users to groups
   user:
     name: "{{ membership.user }}"
