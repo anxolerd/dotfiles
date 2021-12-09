@@ -19,3 +19,13 @@ tpm:
 vimplug:
   bundle_path: ~/.vim/autoload/plug.vim
   self_plugin: junegunn/vim-plug
+i3blocks:
+  modules:
+    - 'volume'
+    - 'battery'
+    - 'calendar'
+    - 'time'
+i3gaps:
+  gap: 16
+  modkey: Mod4
+  font: Roboto Condensed Light 10

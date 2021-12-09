@@ -1,0 +1,38 @@
+---  # vim: set ft=ansible :
+- name: Configure i3blocks
+  block:
+
+    - name: Ensure configuration directory exists
+      file:
+        path: ~/.config/i3blocks
+        state: directory
+        owner: anxolerd
+        group: anxolerd
+        mode: "0755"
+
+    - name: Create i3blocks config file
+      template:
+        src: i3blocks.config.j2
+        dest: ~/.config/i3blocks/config
+        owner: anxolerd
+        group: anxolerd
+        mode: "0640"
+
+- name: Configure i3-gaps
+  block:
+
+    - name: Ensure configuration directory exists
+      file:
+        path: ~/.config/i3
+        state: directory
+        owner: anxolerd
+        group: anxolerd
+        mode: "0755"
+
+    - name: Create i3-gaps config file
+      template:
+        src: i3gaps.config.j2
+        dest: ~/.config/i3/config
+        owner: anxolerd
+        group: anxolerd
+        mode: "0640"

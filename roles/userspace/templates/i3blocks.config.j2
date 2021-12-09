@@ -1,0 +1,55 @@
+{# vim: set ft=config : #}
+# i3blocks configuration file
+#
+# The i3blocks man page describes the usage of the binary,
+# and its website describes the configuration:
+#
+#     https://vivien.github.io/i3blocks
+
+
+# Global properties
+separator=true
+separator_block_width=16
+SCRIPT_DIR=/usr/libexec/i3blocks
+
+{% if 'documentation' in i3blocks.modules %}
+[documentation]
+full_text=Documentation
+website=https://vivien.github.io/i3blocks
+command=xdg-open "$website"
+color=#f12711
+{% endif %}
+
+{% if 'battery' in i3blocks.modules %}
+[batterybar]
+command=$SCRIPT_DIR/batterybar
+label=bat:
+interval=5
+markup=pango
+min_width=bat: ■■■■■
+{% endif %}
+
+{% if 'volume' in i3blocks.modules %}
+[volume-pulseaudio]
+command=$SCRIPT_DIR/volume-pulseaudio
+interval=once
+signal=1
+{% endif %}
+
+{% if 'calendar' in i3blocks.modules %}
+[rofi-calendar]
+command=$SCRIPT_DIR/rofi-calendar
+interval=3600
+{% endif %}
+
+{% if 'time' in i3blocks.modules %}
+[time]
+command=date '+%H:%M'
+interval=30
+{% endif %}
+
+{% if 'systemd' in ansible_facts.packages %}
+[shutdown_menu]
+full_text=Quit
+command=$SCRIPT_DIR/shutdown_menu
+{% endif %}

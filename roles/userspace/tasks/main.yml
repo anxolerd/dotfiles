@@ -15,14 +15,22 @@
 - name: Ensure X is configured
   import_tasks: X.yml
 
+- name: Ensure i3-gaps is configured
+  import_tasks: i3-gaps.yml
+  when: "'i3-gaps' in ansible_facts.packages"
+
 - name: Ensure that Alacritty is configured
   import_tasks: alacritty.yml
+  when: "'alacritty' in ansible_facts.packages"
 
 - name: Ensure that Vim is configured
   import_tasks: vim.yml
+  when: "'vim' in ansible_facts.packages"
 
 - name: Ensure that Tmux is configured
   import_tasks: tmux.yml
+  when: "'tmux' in ansible_facts.packages"
 
 - name: Ensure that Kubectl is configured
   import_tasks: kubectl.yml
+  when: "'kubectl' in ansible_facts.packages"
