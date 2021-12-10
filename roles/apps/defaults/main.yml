@@ -54,6 +54,7 @@ ebuilds:
   - dev-python/python-openstackclient
   - games-strategy/openra
   - lxde-base/lxmenu-data
+  - media-fonts/noto-emoji
   - media-fonts/iosevka
   - media-fonts/roboto
   - media-fonts/powerline-symbols
