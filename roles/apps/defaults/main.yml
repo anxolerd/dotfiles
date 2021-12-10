@@ -11,6 +11,7 @@ accept_licenses:
   sys-kernel/linux-firmware: linux-fw-redistributable no-source-code
   x11-drivers/nvidia-drivers: NVIDIA-r2
 package_use_flags:
+  app-editors/vim: ["lua", "python", "terminal"]
   app-emulation/docker: ["-cli"]
   dev-lang/mono: ["minimal"]
   dev-lang/rust: ["clippy", "doc", "rls", "rustfmt", "rust-src"]
