@@ -48,10 +48,12 @@ ebuilds:
   - app-emulation/virt-manager
   - app-misc/jq
   - app-misc/screen
+  - app-portage/repoman
   - app-shells/fzf
   - dev-lang/go
   - dev-lang/rust
   - dev-python/python-openstackclient
+  - dev-util/pkgcheck
   - games-strategy/openra
   - lxde-base/lxmenu-data
   - media-fonts/noto-emoji
@@ -97,6 +99,7 @@ ebuilds:
   - x11-themes/adapta-gtk-theme
   - x11-wm/i3-gaps
 ebuilds_from_overlays:
+  app-admin/kubeseal: anxolerd
   app-misc/tealdeer: guru
   app-shells/zoxide: guru
   sys-apps/dust: guru
@@ -149,7 +152,9 @@ groups_memberships:
     group: libvirt
     package: virt-manager
 layman_overlays:
-  - guru
+  - name: guru
+  - name: anxolerd
+    list: https://raw.githubusercontent.com/anxolerd/gentoo-overlay/main/repositories.xml
 look_and_feel:
   theme: Adapta-Nokto-Eta
   icon_theme: gnome

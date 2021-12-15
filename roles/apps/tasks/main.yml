@@ -42,9 +42,9 @@
   lineinfile:
     create: yes
     line: >-
-      */*::{{ overlay }}
+      */*::{{ overlay.name }}
     path: >-
-      /etc/portage/package.mask/third-party-overlay--{{ overlay }}
+      /etc/portage/package.mask/third-party-overlay--{{ overlay.name }}
     state: present
   loop: >-
     {{ layman_overlays }}
@@ -78,12 +78,23 @@
       }}
     loop_var: overlay_package_entry
 
+- name: Add overlays sources
+  lineinfile:
+    path: /etc/layman/layman.cfg
+    line: '    {{ overlay.list }}'
+    insertafter: '    https://api.gentoo.org/overlays/repositories.xml'
+  when: overlay.list is defined
+  loop: >-
+    {{ layman_overlays }}
+  loop_control:
+    loop_var: overlay
+
 - name: Install layman overlays
   shell: |
     set -euxo pipefail
-    yes | layman -a {{ overlay }}
+    yes | layman -a {{ overlay.name }}
   args:
-    creates: /var/lib/layman/{{ overlay }}
+    creates: /var/lib/layman/{{ overlay.name }}
   loop: >-
     {{ layman_overlays }}
   loop_control:
