@@ -1,6 +1,7 @@
 git_options:
   fetch.parallel: 0  # auto, fetch from different remotes simultaneously
   gpg.program: gpg2
+  init.defaultBranch: main
   pull.ff: only
   push.gpgsign: if-asked
   user.email: anxolerd@outlook.com
