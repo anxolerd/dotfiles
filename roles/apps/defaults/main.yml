@@ -99,6 +99,7 @@ ebuilds:
 ebuilds_from_overlays:
   app-misc/tealdeer: guru
   app-shells/zoxide: guru
+  sys-apps/dust: guru
 emerge_load_average: 4
 emerge_jobs_number: 8
 essential_ebuilds:
