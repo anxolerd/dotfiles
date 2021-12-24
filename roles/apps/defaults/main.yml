@@ -13,6 +13,9 @@ accept_licenses:
 package_use_flags:
   app-editors/vim: ["lua", "python", "terminal"]
   app-emulation/docker: ["-cli"]
+  dev-java/openjdk-bin: ["gentoo-vm"]
+  "dev-java/openjdk-bin:11": ["gentoo-vm"]
+  "dev-java/openjdk-bin:17": ["gentoo-vm"]
   dev-lang/mono: ["minimal"]
   dev-lang/rust: ["clippy", "doc", "rls", "rustfmt", "rust-src"]
   dev-libs/nss: ["cacert", "utils"]
@@ -50,6 +53,9 @@ ebuilds:
   - app-misc/screen
   - app-portage/repoman
   - app-shells/fzf
+  - dev-java/openjdk-bin:8
+  - dev-java/openjdk-bin:11
+  - dev-java/openjdk-bin:17
   - dev-lang/go
   - dev-lang/rust
   - dev-python/python-openstackclient
