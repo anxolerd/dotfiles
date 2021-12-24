@@ -54,6 +54,7 @@ ebuilds:
   - dev-lang/rust
   - dev-python/python-openstackclient
   - dev-util/pkgcheck
+  - dev-vcs/git-crypt
   - games-strategy/openra
   - lxde-base/lxmenu-data
   - media-fonts/noto-emoji
@@ -102,6 +103,7 @@ ebuilds_from_overlays:
   app-admin/kubeseal: anxolerd
   app-misc/tealdeer: guru
   app-shells/zoxide: guru
+  dev-util/lets: anxolerd
   sys-apps/dust: guru
 emerge_load_average: 4
 emerge_jobs_number: 8
