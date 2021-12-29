@@ -17,7 +17,7 @@
   listen: ensure-services-reloaded
   service:
     name: "{{ item.service }}"
-    state: reloaded
+    state: restarted
   register: start_srv_r
   failed_when: "start_srv_r.failed and 'Service is in unknown state' not in start_srv_r.msg"
   when: "{{ item.provided_by in ansible_facts.packages or ansible_facts.packages is not defined }}"

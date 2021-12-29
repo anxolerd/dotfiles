@@ -73,6 +73,7 @@ ebuilds:
   - media-video/mpv
   - net-analyzer/mtr
   - net-analyzer/openbsd-netcat
+  - net-analyzer/wireshark
   - net-dialup/minicom
   - net-dns/bind-tools
   - net-dns/dog
@@ -80,6 +81,7 @@ ebuilds:
   - net-im/slack
   - net-im/telegram-desktop-bin
   - net-misc/putty
+  - net-misc/chrony
   - net-p2p/transmission
   - net-wireless/blueman
   - sys-apps/bat
