@@ -1,3 +1,5 @@
+alacritty:
+  font_family: Overpass Mono
 git_options:
   fetch.parallel: 0  # auto, fetch from different remotes simultaneously
   gpg.program: gpg2
@@ -6,6 +8,16 @@ git_options:
   push.gpgsign: if-asked
   user.email: anxolerd@outlook.com
   user.name: Oleksandr Kovalchuk
+i3blocks:
+  modules:
+    - 'volume'
+    - 'battery'
+    - 'calendar'
+    - 'time'
+i3gaps:
+  gap: 16
+  modkey: Mod4
+  font: Overpass Regular 10
 krew:
   version: v0.4.2
   plugins:
@@ -20,13 +32,3 @@ tpm:
 vimplug:
   bundle_path: ~/.vim/autoload/plug.vim
   self_plugin: junegunn/vim-plug
-i3blocks:
-  modules:
-    - 'volume'
-    - 'battery'
-    - 'calendar'
-    - 'time'
-i3gaps:
-  gap: 16
-  modkey: Mod4
-  font: Roboto Condensed Light 10
