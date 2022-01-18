@@ -58,6 +58,7 @@ ebuilds:
   - dev-java/openjdk-bin:17
   - dev-lang/go
   - dev-lang/rust
+  - dev-python/awxkit
   - dev-python/python-openstackclient
   - dev-util/pkgcheck
   - dev-vcs/git-crypt
@@ -80,8 +81,9 @@ ebuilds:
   - net-im/signal-desktop-bin
   - net-im/slack
   - net-im/telegram-desktop-bin
-  - net-misc/putty
   - net-misc/chrony
+  - net-misc/putty
+  - net-misc/sshpass
   - net-p2p/transmission
   - net-wireless/blueman
   - sys-apps/bat
@@ -94,6 +96,7 @@ ebuilds:
   - virtual/rust
   - www-client/firefox-bin
   - x11-apps/mesa-progs
+  - x11-apps/xbacklight
   - x11-base/xorg-x11
   - x11-drivers/nvidia-drivers
   - x11-misc/bumblebee
@@ -101,7 +104,6 @@ ebuilds:
   - x11-misc/pcmanfm
   - x11-misc/primus
   - x11-misc/rofi
-  - x11-misc/xbacklight
   - x11-misc/xdg-user-dirs
   - x11-misc/xdg-user-dirs-gtk
   - x11-misc/xdg-utils
