@@ -45,8 +45,8 @@ ebuilds:
   - app-admin/helm
   - app-admin/terraform
   - app-admin/vault
+  - app-containers/docker-compose
   - app-editors/vim
-  - app-emulation/docker-compose
   - app-emulation/k3d
   - app-emulation/virt-manager
   - app-misc/jq
