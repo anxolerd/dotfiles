@@ -63,6 +63,7 @@ ebuilds:
   - dev-util/android-studio
   - dev-util/pkgcheck
   - dev-vcs/git-crypt
+  - dev-vcs/subversion
   - games-strategy/openra
   - lxde-base/lxmenu-data
   - media-fonts/noto-emoji
