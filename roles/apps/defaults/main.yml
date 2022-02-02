@@ -60,6 +60,7 @@ ebuilds:
   - dev-lang/rust
   - dev-python/awxkit
   - dev-python/python-openstackclient
+  - dev-util/android-studio
   - dev-util/pkgcheck
   - dev-vcs/git-crypt
   - games-strategy/openra
