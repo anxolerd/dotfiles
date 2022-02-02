@@ -201,3 +201,7 @@ bar {
 # Configure gaps for i3-gaps
 gaps inner {{ i3gaps.gap | default('16') }}
 gaps outer {{ i3gaps.gap | default('16') }}
+
+# Configure app-specific rule
+# Always run Android Emulator in floating mode to prevent flickering
+for_window [title="^Android Emulator.+:[0-9]+$"] floating enable
