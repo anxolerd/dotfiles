@@ -73,6 +73,7 @@ ebuilds:
   - media-gfx/gthumb
   - media-sound/spotify
   - media-video/mpv
+  - media-video/obs-studio
   - net-analyzer/mtr
   - net-analyzer/openbsd-netcat
   - net-analyzer/wireshark
