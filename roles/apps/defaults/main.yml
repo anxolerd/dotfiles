@@ -62,6 +62,7 @@ ebuilds:
   - dev-python/python-openstackclient
   - dev-util/android-studio
   - dev-util/pkgcheck
+  - dev-vcs/bfg
   - dev-vcs/git-crypt
   - dev-vcs/subversion
   - games-strategy/openra
