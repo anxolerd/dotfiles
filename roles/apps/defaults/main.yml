@@ -75,6 +75,7 @@ ebuilds:
   - media-video/mpv
   - media-video/obs-studio
   - net-analyzer/mtr
+  - net-analyzer/nmap
   - net-analyzer/openbsd-netcat
   - net-analyzer/wireshark
   - net-dialup/minicom
