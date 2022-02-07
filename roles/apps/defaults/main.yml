@@ -25,6 +25,7 @@ package_use_flags:
   media-libs/harfbuzz: ["truetype"]
   media-libs/libglvnd: ["abi_x86_32"]
   media-video/ffmpeg: ["opus"]
+  media-video/obs-studio: ["lua", "nvenc", "pulseaudio", "speex", "v4l"]
   net-dns/dnsmasq: ["script"]
   net-misc/networkmanager: ["bluetooth", "connection-sharing", "dhcpd", "iptables", "ncurses", "policykit", "wifi"]
   net-misc/spice-gtk: ["usbredir"]
