@@ -105,6 +105,7 @@ ebuilds:
   - x11-apps/xbacklight
   - x11-base/xorg-x11
   - x11-drivers/nvidia-drivers
+  - x11-misc/arandr
   - x11-misc/bumblebee
   - x11-misc/light-locker
   - x11-misc/pcmanfm
