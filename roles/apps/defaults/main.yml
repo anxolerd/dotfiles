@@ -92,6 +92,7 @@ ebuilds:
   - net-im/signal-desktop-bin
   - net-im/slack
   - net-im/telegram-desktop-bin
+  - net-libs/nodejs
   - net-misc/chrony
   - net-misc/openrdap
   - net-misc/putty
