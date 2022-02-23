@@ -24,8 +24,8 @@ package_use_flags:
   media-libs/freetype: ["harfbuzz"]
   media-libs/harfbuzz: ["truetype"]
   media-libs/libglvnd: ["abi_x86_32"]
-  media-video/ffmpeg: ["opus"]
-  media-video/obs-studio: ["lua", "nvenc", "pulseaudio", "speex", "v4l"]
+  media-video/ffmpeg: ["cuda", "libv4l", "opencl", "opus", "v4l"]
+  media-video/obs-studio: ["decklink", "fdk", "lua", "nvenc", "pulseaudio", "speex", "v4l"]
   net-dns/dnsmasq: ["script"]
   net-misc/networkmanager: ["bluetooth", "connection-sharing", "dhcpd", "iptables", "ncurses", "policykit", "wifi"]
   net-misc/spice-gtk: ["usbredir"]
@@ -78,6 +78,7 @@ ebuilds:
   - media-sound/spotify
   - media-video/mpv
   - media-video/obs-studio
+  - media-video/v4l2loopback
   - net-analyzer/mtr
   - net-analyzer/nmap
   - net-analyzer/openbsd-netcat
