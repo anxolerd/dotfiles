@@ -131,8 +131,8 @@ ebuilds_from_overlays:
   dev-util/lets: anxolerd
   media-fonts/overpass: guru
   sys-apps/dust: guru
-emerge_load_average: 4
-emerge_jobs_number: 8
+emerge_load_average: "{{ ansible_processor_cores }}"
+emerge_jobs_number: "{{ ansible_processor_vcpus }}"
 essential_ebuilds:
   - app-admin/eclean-kernel # clean up outdated kernels
   - app-admin/eselect  # alternatives management
