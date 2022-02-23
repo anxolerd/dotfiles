@@ -93,8 +93,10 @@ ebuilds:
   - net-im/slack
   - net-im/telegram-desktop-bin
   - net-misc/chrony
+  - net-misc/openrdap
   - net-misc/putty
   - net-misc/sshpass
+  - net-misc/whois
   - net-p2p/transmission
   - net-wireless/blueman
   - sys-apps/bat
