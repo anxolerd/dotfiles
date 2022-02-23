@@ -12,16 +12,19 @@ accept_licenses:
   x11-drivers/nvidia-drivers: NVIDIA-r2
 package_use_flags:
   app-containers/docker: ["-cli"]
+  app-crypt/libmd: ["abi_x86_32"]
   app-editors/vim: ["lua", "python", "terminal"]
   dev-java/openjdk-bin: ["gentoo-vm"]
   "dev-java/openjdk-bin:11": ["gentoo-vm"]
   "dev-java/openjdk-bin:17": ["gentoo-vm"]
   dev-lang/mono: ["minimal"]
   dev-lang/rust: ["clippy", "doc", "rls", "rustfmt", "rust-src"]
+  dev-libs/libbsd: ["abi_x86_32"]
   dev-libs/nss: ["cacert", "utils"]
   gnome-base/gvfs: ["fuse", "mtp"]
   media-gfx/imagemagick: ["perl"]
   media-libs/freetype: ["harfbuzz"]
+  media-libs/gd: ["fontconfig"]
   media-libs/harfbuzz: ["truetype"]
   media-libs/libglvnd: ["abi_x86_32"]
   media-video/ffmpeg: ["cuda", "libv4l", "opencl", "opus", "v4l"]
@@ -42,7 +45,6 @@ package_use_flags:
   x11-libs/xcb-proto: ["abi_x86_32"]
   x11-libs/libdrm: ["libkms"]
 ebuilds:
-  - app-admin/bitwarden-desktop-bin
   - app-admin/helm
   - app-admin/terraform
   - app-admin/vault
