@@ -11,8 +11,8 @@ accept_licenses:
   sys-kernel/linux-firmware: linux-fw-redistributable no-source-code
   x11-drivers/nvidia-drivers: NVIDIA-r2
 package_use_flags:
+  app-containers/docker: ["-cli"]
   app-editors/vim: ["lua", "python", "terminal"]
-  app-emulation/docker: ["-cli"]
   dev-java/openjdk-bin: ["gentoo-vm"]
   "dev-java/openjdk-bin:11": ["gentoo-vm"]
   "dev-java/openjdk-bin:17": ["gentoo-vm"]
@@ -46,6 +46,7 @@ ebuilds:
   - app-admin/helm
   - app-admin/terraform
   - app-admin/vault
+  - app-containers/docker
   - app-containers/docker-compose
   - app-containers/k3d
   - app-editors/vim
