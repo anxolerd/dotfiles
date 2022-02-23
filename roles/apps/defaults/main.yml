@@ -76,6 +76,7 @@ ebuilds:
   - media-fonts/roboto
   - media-fonts/powerline-symbols
   - media-gfx/darktable
+  - media-gfx/graphviz
   - media-gfx/gthumb
   - media-sound/spotify
   - media-video/mpv
