@@ -45,6 +45,7 @@ package_use_flags:
   x11-libs/xcb-proto: ["abi_x86_32"]
   x11-libs/libdrm: ["libkms"]
 ebuilds:
+  - app-admin/awscli
   - app-admin/helm
   - app-admin/terraform
   - app-admin/vault
