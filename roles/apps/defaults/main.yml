@@ -8,6 +8,8 @@ accept_licenses:
   media-fonts/font-bh-type1: bh-luxi
   media-sound/spotify: Spotify
   net-im/slack: all-rights-reserved
+  net-misc/anydesk: AnyDesk-TOS
+  net-misc/teamviewer: TeamViewer
   sys-kernel/linux-firmware: linux-fw-redistributable no-source-code
   x11-drivers/nvidia-drivers: NVIDIA-r2
 package_use_flags:
@@ -94,20 +96,25 @@ ebuilds:
   - net-im/slack
   - net-im/telegram-desktop-bin
   - net-libs/nodejs
+  - net-misc/anydesk
   - net-misc/chrony
   - net-misc/openrdap
   - net-misc/putty
   - net-misc/sshpass
+  - net-misc/teamviewer
   - net-misc/whois
   - net-p2p/transmission
   - net-wireless/blueman
   - sys-apps/bat
   - sys-apps/exa
   - sys-apps/ripgrep
+  - sys-apps/smartmontools
   - sys-boot/plymouth
   - sys-boot/plymouth-openrc-plugin
+  - sys-fs/ntfs3g
   - sys-power/acpid
   - sys-power/bbswitch
+  - sys-process/iotop
   - virtual/rust
   - www-client/firefox-bin
   - x11-apps/mesa-progs
