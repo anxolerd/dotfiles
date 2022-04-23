@@ -106,6 +106,8 @@ ebuilds:
   - net-misc/whois
   - net-p2p/transmission
   - net-wireless/blueman
+  - sci-geosciences/gpxlab
+  - sci-geosciences/gpxsee
   - sys-apps/bat
   - sys-apps/exa
   - sys-apps/ripgrep
