@@ -72,6 +72,7 @@ ebuilds:
   - dev-vcs/bfg
   - dev-vcs/git-crypt
   - dev-vcs/subversion
+  - games-strategy/freeciv
   - games-strategy/openra
   - lxde-base/lxmenu-data
   - media-fonts/noto-emoji
