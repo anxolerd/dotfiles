@@ -29,7 +29,7 @@ package_use_flags:
   media-libs/gd: ["fontconfig"]
   media-libs/harfbuzz: ["truetype"]
   media-libs/libglvnd: ["abi_x86_32"]
-  media-video/ffmpeg: ["cuda", "libv4l", "opencl", "opus", "v4l"]
+  media-video/ffmpeg: ["cuda", "libv4l", "nvenc", "opencl", "opus", "v4l"]
   media-video/obs-studio: ["decklink", "fdk", "lua", "nvenc", "pulseaudio", "speex", "v4l"]
   net-dns/dnsmasq: ["script"]
   net-misc/networkmanager: ["bluetooth", "connection-sharing", "dhcpd", "iptables", "ncurses", "policykit", "wifi"]
@@ -50,12 +50,14 @@ ebuilds:
   - app-admin/awscli
   - app-admin/helm
   - app-admin/terraform
+  - app-admin/testdisk
   - app-admin/vault
   - app-containers/docker
   - app-containers/docker-compose
   - app-containers/k3d
   - app-editors/vim
   - app-emulation/virt-manager
+  - app-forensics/foremost
   - app-misc/jq
   - app-misc/screen
   - app-portage/repoman
@@ -114,6 +116,7 @@ ebuilds:
   - sys-apps/smartmontools
   - sys-boot/plymouth
   - sys-boot/plymouth-openrc-plugin
+  - sys-fs/extundelete
   - sys-fs/ntfs3g
   - sys-power/acpid
   - sys-power/bbswitch
