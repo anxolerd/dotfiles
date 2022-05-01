@@ -1,5 +1,13 @@
 --- # vim:se ft=ansible:
 - name: Set up user's git config
+  ansible.builtin.copy:
+    src: "gitignore"
+    dest: "~/.gitignore"
+    owner: anxolerd
+    group: anxolerd
+    mode: "0640"
+
+- name: Set up user's git config
   git_config:
     name: "{{ item.key }}"
     scope: global

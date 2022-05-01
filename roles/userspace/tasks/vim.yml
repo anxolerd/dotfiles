@@ -21,4 +21,4 @@
   command: vim +PlugClean! +qall
 
 - name: Install and upgrade plugins in NeoVim  # noqa 301  # FIXME
-  command: vim +PlugInstall! +qall
+  command: vim +PlugInstall! +PlugUpdate! +qall

@@ -1,6 +1,11 @@
 alacritty:
   font_family: Overpass Mono
 git_options:
+  alias.ignore: >-
+    !gi() {
+      curl -sL https://www.toptal.com/developers/gitignore/api/$@ ;
+    }; gi
+  core.excludesFile: '~/.gitignore'
   fetch.parallel: 0  # auto, fetch from different remotes simultaneously
   gpg.program: gpg2
   init.defaultBranch: main
@@ -8,10 +13,6 @@ git_options:
   push.gpgsign: if-asked
   user.email: anxolerd@outlook.com
   user.name: Oleksandr Kovalchuk
-  alias.ignore: >-
-    !gi() {
-      curl -sL https://www.toptal.com/developers/gitignore/api/$@ ;
-    }; gi
 i3blocks:
   modules:
     - 'volume'
