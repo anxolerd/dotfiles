@@ -157,6 +157,7 @@ essential_ebuilds:
   - app-portage/eix  # fast portage tree search
   - app-portage/gentoolkit  # euse and co.
   - app-portage/layman  # needed to manage third-party Git overlays
+  - app-portage/portage-utils  # this one is required for qlist utility
   - dev-vcs/git  # needed to fetch third-party Git overlays
   - sys-apps/gptfdisk  # gdisk: https://wiki.gentoo.org/wiki/EFI_System_Partition
   - sys-apps/pciutils  # lspci
