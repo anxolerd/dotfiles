@@ -23,6 +23,7 @@ package_use_flags:
   dev-lang/rust: ["clippy", "doc", "rls", "rustfmt", "rust-src"]
   dev-libs/libbsd: ["abi_x86_32"]
   dev-libs/nss: ["cacert", "utils"]
+  dev-python/libvirt-python: ["python_targets_python3_9"]
   gnome-base/gvfs: ["fuse", "mtp"]
   media-gfx/imagemagick: ["perl"]
   media-libs/freetype: ["harfbuzz"]
@@ -209,7 +210,6 @@ look_and_feel:
   icon_theme: gnome
   cursor_theme: Adwaita
 python_targets:
-  - "3.9"
   - "3.10"
 ruby_targets: []
 unmask_ebuilds: {}

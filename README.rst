@@ -26,6 +26,9 @@ How To Run
    $ # Update all packages
    $ ansible-playbook -DvK rebuild-world.yml
 
+   $ # rebuild kernel
+   # genkernel --luks --lvm --no-zfs --menuconfig --kernel-config=/proc/config.gz all --bootloader=grub2
+
 
 Credits
 -------
