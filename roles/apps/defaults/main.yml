@@ -3,6 +3,7 @@ abi_x86_targets:
 - 64
 accept_licenses:
   app-admin/terraform: JSON
+  dev-util/android-studio: android
   dev-util/nvidia-cuda-toolkit: NVIDIA-CUDA
   media-fonts/font-bh-ttf: bh-luxi
   media-fonts/font-bh-type1: bh-luxi
