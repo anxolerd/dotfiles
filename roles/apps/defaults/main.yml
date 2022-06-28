@@ -80,6 +80,7 @@ ebuilds:
   - dev-vcs/subversion
   - games-strategy/freeciv
   - games-strategy/openra
+  - games-util/lutris
   - lxde-base/lxmenu-data
   - media-fonts/noto-emoji
   - media-fonts/iosevka
