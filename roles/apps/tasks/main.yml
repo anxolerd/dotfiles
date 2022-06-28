@@ -171,6 +171,32 @@
     state: present
   when: python_targets | length > 0
 
+- name: Set up Python targets
+  lineinfile:
+    create: no
+    path: /etc/portage/make.conf
+    regexp: ^PYTHON_TARGETS="[^"]*"$
+    state: absent
+  when: python_targets | length == 0
+
+- name: Set up Python single target
+  lineinfile:
+    create: no
+    line: >-
+      PYTHON_SINGLE_TARGET="python{{ python_single_target | replace('.', '_') }}"
+    path: /etc/portage/make.conf
+    regexp: ^PYTHON_SINGLE_TARGET="[^"]*"$
+    state: present
+  when: python_single_target is defined and (python_single_target | length != 0)
+
+- name: Set up Python single target
+  lineinfile:
+    create: no
+    path: /etc/portage/make.conf
+    regexp: ^PYTHON_SINGLE_TARGET="[^"]*"$
+    state: absent
+  when: python_single_target is not defined or (python_single_target | length == 0)
+
 - name: Set up Ruby targets
   lineinfile:
     create: no
