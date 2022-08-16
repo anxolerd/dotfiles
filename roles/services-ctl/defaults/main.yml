@@ -8,6 +8,8 @@ services_safe_restart:
     provided_by: bumblebee
   - service: NetworkManager
     provided_by: networkmanager
+  - service: iwd
+    provided_by: iwd
   - service: chronyd  # NTP client
     provided_by: chrony
   - service: cupsd  # CUPS

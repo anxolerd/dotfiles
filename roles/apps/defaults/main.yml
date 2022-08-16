@@ -22,6 +22,7 @@ package_use_flags:
   "dev-java/openjdk-bin:17": ["gentoo-vm"]
   dev-lang/mono: ["minimal"]
   dev-lang/rust: ["clippy", "doc", "rls", "rustfmt", "rust-src"]
+  dev-libs/libdbusmenu: ["gtk3"]
   dev-libs/nss: ["cacert", "utils"]
   gnome-base/gvfs: ["fuse", "mtp"]
   media-gfx/imagemagick: ["perl"]
@@ -34,9 +35,11 @@ package_use_flags:
   media-video/obs-studio: ["decklink", "fdk", "lua", "nvenc", "pulseaudio", "speex", "v4l"]
   net-dns/dnsmasq: ["script"]
   net-misc/networkmanager: ["bluetooth", "connection-sharing", "dhcpd", "iptables", "ncurses", "policykit", "wifi"]
+  net-misc/remmina: ["gvnc", "rdp", "spice", "ssh", "vnc", "zeroconf"]
   net-misc/spice-gtk: ["usbredir"]
   "sys-boot/grub:2": ["device-mapper"]
   sys-devel/gcc: ["graphite"]
+  sys-kernel/linux-firmware: ["savedconfig"]
   sys-libs/zlib: ["minizip"]
   virtual/imagemagick-tools: ["perl"]
   virtual/rust: ["rustfmt"]
@@ -82,6 +85,7 @@ ebuilds:
   - media-libs/vulkan-layers
   - media-libs/vulkan-loader
   - media-gfx/darktable
+  - media-gfx/gimp
   - media-gfx/graphviz
   - media-gfx/gthumb
   - media-sound/spotify
@@ -104,6 +108,7 @@ ebuilds:
   - net-misc/chrony
   - net-misc/openrdap
   - net-misc/putty
+  - net-misc/remmina
   - net-misc/sshpass
   - net-misc/teamviewer
   - net-misc/whois
