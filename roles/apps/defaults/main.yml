@@ -82,6 +82,7 @@ ebuilds:
   - media-fonts/powerline-symbols
   - media-libs/vulkan-layers
   - media-libs/vulkan-loader
+  - media-gfx/blender
   - media-gfx/darktable
   - media-gfx/gimp
   - media-gfx/graphviz
