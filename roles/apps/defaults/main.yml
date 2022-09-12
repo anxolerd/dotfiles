@@ -121,7 +121,6 @@ ebuilds:
   - sys-apps/ripgrep
   - sys-apps/smartmontools
   - sys-boot/plymouth
-  - sys-boot/plymouth-openrc-plugin
   - sys-fs/extundelete
   - sys-fs/ntfs3g
   - sys-power/acpid
@@ -180,10 +179,10 @@ global_use_flags:
   - X
   - cups
   - dbus
-  - elogind
   - gnome-keyring
   - networkmanager
   - pulseaudio
+  - systemd
   - vim-syntax
   - -wayland
 groups_memberships:

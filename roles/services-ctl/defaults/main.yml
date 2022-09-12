@@ -12,7 +12,7 @@ services_safe_restart:
     provided_by: iwd
   - service: chronyd  # NTP client
     provided_by: chrony
-  - service: cupsd  # CUPS
+  - service: cups  # CUPS
     provided_by: cups
   - service: cups-browsed  # CUPS network printers
     provided_by: cups
