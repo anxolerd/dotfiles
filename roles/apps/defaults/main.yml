@@ -30,7 +30,7 @@ package_use_flags:
   media-libs/gd: ["fontconfig"]
   media-libs/harfbuzz: ["truetype"]
   media-libs/mlt: ["ffmpeg", "frei0r", "jack"]
-  media-libs/opencv: ["contrib", "contribdnn"]
+  media-libs/opencv: ["contrib", "contribdnn", "-cuda"]
   media-video/ffmpeg: ["cuda", "libv4l", "nvenc", "opencl", "opus", "v4l"]
   media-video/obs-studio: ["decklink", "fdk", "lua", "nvenc", "pulseaudio", "speex", "v4l"]
   net-dns/dnsmasq: ["script"]
@@ -177,6 +177,7 @@ essential_ebuilds:
   - www-client/links  # needed to browse web docs from terminal
 global_use_flags:
   - X
+  - cuda
   - cups
   - dbus
   - gnome-keyring
