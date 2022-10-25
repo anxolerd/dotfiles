@@ -4,7 +4,7 @@ services_safe_restart:
     provided_by: acpid
   - service: bluetooth
     provided_by: bluez
-  - service: bumblebee
+  - service: bumblebeed
     provided_by: bumblebee
   - service: NetworkManager
     provided_by: networkmanager

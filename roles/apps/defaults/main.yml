@@ -16,27 +16,37 @@ accept_licenses:
   x11-drivers/nvidia-drivers: NVIDIA-r2
 package_use_flags:
   app-containers/docker: ["-cli"]
+  app-editors/gvim: ["lua", "python"]
   app-editors/vim: ["lua", "python", "terminal"]
+  dev-cpp/eigen: ["cuda"]
+  app-crypt/gpgme: ["python"]
   dev-java/openjdk-bin: ["gentoo-vm"]
   "dev-java/openjdk-bin:11": ["gentoo-vm"]
   "dev-java/openjdk-bin:17": ["gentoo-vm"]
   dev-lang/mono: ["minimal"]
   dev-lang/rust: ["clippy", "doc", "rls", "rustfmt", "rust-src"]
   dev-libs/libdbusmenu: ["gtk3"]
+  dev-libs/libpcre2: ["pcre32"]
   dev-libs/nss: ["cacert", "utils"]
+  dev-qt/qtmultimedia: ["widgets"]
   gnome-base/gvfs: ["fuse", "mtp"]
+  media-gfx/blender: ["cuda"]
   media-gfx/imagemagick: ["perl"]
-  media-libs/freetype: ["harfbuzz"]
+  media-libs/freetype: ["brotli", "harfbuzz"]
   media-libs/gd: ["fontconfig"]
   media-libs/harfbuzz: ["truetype"]
   media-libs/mlt: ["ffmpeg", "frei0r", "jack"]
-  media-libs/opencv: ["contrib", "contribdnn", "-cuda"]
-  media-video/ffmpeg: ["cuda", "libv4l", "nvenc", "opencl", "opus", "v4l"]
+  media-libs/opencolorio: ["-opengl"]
+  media-libs/opencv: ["contrib", "contribdnn"]
+  media-libs/opensubdiv: ["cuda"]
+  media-video/ffmpeg: ["cuda", "libv4l", "nvenc", "opencl", "opus", "theora", "v4l", "vpx"]
   media-video/obs-studio: ["decklink", "fdk", "lua", "nvenc", "pulseaudio", "speex", "v4l"]
   net-dns/dnsmasq: ["script"]
   net-misc/networkmanager: ["bluetooth", "connection-sharing", "dhcpd", "iptables", "ncurses", "policykit", "wifi"]
   net-misc/remmina: ["gvnc", "rdp", "spice", "ssh", "vnc", "zeroconf"]
   net-misc/spice-gtk: ["usbredir"]
+  sci-libs/openblas: ["openmp"]
+  sys-apps/hwloc: ["cuda"]
   "sys-boot/grub:2": ["device-mapper"]
   sys-devel/gcc: ["graphite"]
   sys-kernel/linux-firmware: ["savedconfig"]
@@ -56,9 +66,9 @@ ebuilds:
   - app-editors/vim
   - app-emulation/virt-manager
   - app-forensics/foremost
+  - app-misc/fdupes
   - app-misc/jq
   - app-misc/screen
-  - app-portage/repoman
   - app-shells/fzf
   - dev-java/openjdk-bin:8
   - dev-java/openjdk-bin:11
@@ -67,8 +77,8 @@ ebuilds:
   - dev-lang/rust
   - dev-python/awxkit
   - dev-python/python-openstackclient
-  - dev-util/android-studio
   - dev-util/pkgcheck
+  - dev-util/pkgdev
   - dev-util/vulkan-headers
   - dev-util/vulkan-tools
   - dev-vcs/bfg
@@ -87,6 +97,7 @@ ebuilds:
   - media-gfx/gimp
   - media-gfx/graphviz
   - media-gfx/gthumb
+  - media-sound/alsa-utils
   - media-sound/spotify
   - media-video/mpv
   - media-video/obs-studio
@@ -115,6 +126,7 @@ ebuilds:
   - net-wireless/blueman
   - sci-geosciences/gpxlab
   - sci-geosciences/gpxsee
+  - sci-libs/openblas
   - sys-apps/bat
   - sys-apps/exa
   - sys-apps/ripgrep
@@ -129,7 +141,9 @@ ebuilds:
   - www-client/firefox-bin
   - x11-apps/mesa-progs
   - x11-apps/xbacklight
-  - x11-base/xorg-x11
+  - x11-base/xorg-apps
+  - x11-base/xorg-fonts
+  - x11-base/xorg-x11  # todo: remove
   - x11-drivers/nvidia-drivers
   - x11-drivers/xf86-video-intel
   - x11-misc/arandr
@@ -146,11 +160,14 @@ ebuilds:
   - x11-wm/i3-gaps
 ebuilds_from_overlays:
   app-admin/kubeseal: anxolerd
+  app-containers/nvidia-container-toolkit: guru
   app-misc/tealdeer: guru
   app-shells/zoxide: guru
   dev-util/lets: anxolerd
   media-fonts/overpass: guru
   sys-apps/dust: guru
+  sys-libs/libnvidia-container: guru
+  www-client/torbrowser-launcher: guru
 emerge_load_average: "{{ ansible_processor_cores }}"
 emerge_jobs_number: "{{ ansible_processor_vcpus }}"
 essential_ebuilds:
@@ -176,7 +193,6 @@ essential_ebuilds:
   - www-client/links  # needed to browse web docs from terminal
 global_use_flags:
   - X
-  - cuda
   - cups
   - dbus
   - gnome-keyring
