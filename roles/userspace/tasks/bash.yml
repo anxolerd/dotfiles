@@ -7,3 +7,21 @@
     owner: anxolerd
     group: anxolerd
     mode: "0640"
+
+- name: Use exa instead of ls
+  lineinfile:
+    line: "alias {{ item.alias }}='{{ item.command }}'"
+    dest: ~/.bashrc
+    create: true
+    owner: anxolerd
+    group: anxolerd
+    mode: "0640"
+  with_items:
+    - alias: ls
+      command: "exa --group-directories-first"
+    - alias: ll
+      command: "exa --group-directories-first -alF"
+    - alias: la
+      command: "exa --group-directories-first -a"
+    - alias: tree
+      command: "exa --tree"
