@@ -2,6 +2,11 @@
 dotFiles
 ========
 
+.. image:: https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/banner2-direct.svg
+   :alt: StandWithUkraine
+   :align: center
+   :target: https://stand-with-ukraine.pp.ua
+
 This repository contains configuration files for my laptop. This one is heavily
 inspired by and a lot of solutions were borrowed from
 `webknjaz/ansible-gentoo-laptop
