@@ -39,8 +39,10 @@ package_use_flags:
   media-libs/opencolorio: ["-opengl"]
   media-libs/opencv: ["contrib", "contribdnn"]
   media-libs/opensubdiv: ["cuda"]
+  media-sound/pulseaudio: ["-daemon"]
   media-video/ffmpeg: ["cuda", "libv4l", "nvenc", "opencl", "opus", "theora", "v4l", "vpx"]
-  media-video/obs-studio: ["decklink", "fdk", "lua", "nvenc", "pulseaudio", "speex", "v4l"]
+  media-video/obs-studio: ["decklink", "fdk", "lua", "nvenc", "pipewire", "speex", "v4l"]
+  media-video/pipewire: ["echo-channel", "pipewire-alsa", "sound-server", "system-service"]
   net-dns/dnsmasq: ["script"]
   net-misc/networkmanager: ["bluetooth", "connection-sharing", "dhcpd", "iptables", "ncurses", "policykit", "wifi"]
   net-misc/remmina: ["gvnc", "rdp", "spice", "ssh", "vnc", "zeroconf"]
@@ -101,6 +103,7 @@ ebuilds:
   - media-sound/spotify
   - media-video/mpv
   - media-video/obs-studio
+  - media-video/pipewire
   - media-video/shotcut
   - media-video/v4l2loopback
   - net-analyzer/mtr
