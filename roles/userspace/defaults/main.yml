@@ -27,6 +27,7 @@ krew:
   version: v0.4.2
   plugins:
     - ctx
+    - lineage
     - oidc-login
 ssh_host_configs:
   - '*':
