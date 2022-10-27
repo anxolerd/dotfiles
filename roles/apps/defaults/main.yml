@@ -62,6 +62,7 @@ ebuilds:
   - app-admin/terraform
   - app-admin/testdisk
   - app-admin/vault
+  - app-containers/distrobox
   - app-containers/docker
   - app-containers/docker-compose
   - app-containers/k3d
@@ -79,6 +80,7 @@ ebuilds:
   - dev-lang/rust
   - dev-python/awxkit
   - dev-python/python-openstackclient
+  - dev-util/packer
   - dev-util/pkgcheck
   - dev-util/pkgdev
   - dev-util/vulkan-headers
