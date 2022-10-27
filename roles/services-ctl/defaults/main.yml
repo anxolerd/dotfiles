@@ -24,3 +24,6 @@ services_unsafe_restart:
     provided_by: display-manager-init
   - service: libvirtd
     provided_by: libvirt
+
+disabled_services:
+  - docker

@@ -8,7 +8,12 @@
     state: started
   register: start_srv_r
   failed_when: "start_srv_r.failed and 'Service is in unknown state' not in start_srv_r.msg"
-  when: "{{ item.provided_by in ansible_facts.packages or ansible_facts.packages is not defined }}"
+  when: >-
+    (
+      item.provided_by in ansible_facts.packages
+      and item.service not in disabled_services
+    )
+    or ansible_facts.packages is not defined
   loop: "{{ services_safe_restart + services_unsafe_restart }}"
   loop_control:
     label: "{{ item.service }}"
