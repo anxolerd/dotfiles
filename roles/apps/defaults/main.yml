@@ -142,6 +142,7 @@ ebuilds:
   - sys-fs/ntfs3g
   - sys-power/acpid
   - sys-power/bbswitch
+  - sys-power/powertop
   - sys-process/iotop
   - virtual/rust
   - www-client/firefox-bin
