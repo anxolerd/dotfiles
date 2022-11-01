@@ -8,6 +8,22 @@
     group: anxolerd
     mode: "0640"
 
+- name: Use fzf for completion and search
+  lineinfile:
+    line: "[ -f {{ item.file | quote }} ] && . {{ item.file }}"
+    dest: ~/.bashrc
+    create: true
+    owner: anxolerd
+    group: anxolerd
+    mode: "0640"
+  with_items:
+    - file: /usr/share/fzf/key-bindings.bash
+      label: key bindings
+    - file: /usr/share/bash-completion/completions/fzf
+      label: key bindings
+  loop_control:
+    label: "{{ item.label }}"
+
 - name: Use exa instead of ls
   lineinfile:
     line: "alias {{ item.alias }}='{{ item.command }}'"

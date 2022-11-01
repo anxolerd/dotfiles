@@ -198,6 +198,7 @@ essential_ebuilds:
   - www-client/links  # needed to browse web docs from terminal
 global_use_flags:
   - X
+  - bash-completion
   - cups
   - dbus
   - gnome-keyring
