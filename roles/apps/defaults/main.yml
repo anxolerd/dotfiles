@@ -83,6 +83,7 @@ ebuilds:
   - dev-util/packer
   - dev-util/pkgcheck
   - dev-util/pkgdev
+  - dev-util/strace
   - dev-util/vulkan-headers
   - dev-util/vulkan-tools
   - dev-vcs/bfg
