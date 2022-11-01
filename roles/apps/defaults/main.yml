@@ -29,6 +29,7 @@ package_use_flags:
   dev-libs/libpcre2: ["pcre32"]
   dev-libs/nss: ["cacert", "utils"]
   dev-qt/qtmultimedia: ["widgets"]
+  dev-qt/qtquickcontrols2: ["widgets"]
   gnome-base/gvfs: ["fuse", "mtp"]
   media-gfx/blender: ["cuda"]
   media-gfx/imagemagick: ["perl"]
@@ -66,6 +67,8 @@ ebuilds:
   - app-containers/docker
   - app-containers/docker-compose
   - app-containers/k3d
+  - app-crypt/yubikey-manager
+  - app-crypt/yubikey-manager-qt
   - app-editors/vim
   - app-emulation/virt-manager
   - app-forensics/foremost
