@@ -178,6 +178,7 @@ ebuilds_from_overlays:
   sys-apps/dust: guru
   sys-libs/libnvidia-container: guru
   www-client/torbrowser-launcher: guru
+  x11-misc/i3blocks-contrib: anxolerd
 emerge_load_average: "{{ ansible_processor_cores }}"
 emerge_jobs_number: "{{ ansible_processor_vcpus }}"
 essential_ebuilds:
