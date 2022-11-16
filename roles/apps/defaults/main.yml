@@ -115,6 +115,7 @@ ebuilds:
   - net-analyzer/mtr
   - net-analyzer/nmap
   - net-analyzer/openbsd-netcat
+  - net-analyzer/tcpdump
   - net-analyzer/wireshark
   - net-dialup/minicom
   - net-dns/bind-tools
