@@ -355,7 +355,9 @@
     name: "{{ membership.user }}"
     groups: ["{{ membership.group }}"]
     append: true
-  when: "membership.package in ansible_facts.packages"
+  when: >-
+    "package" not in membership
+    or membership.package in ansible_facts.packages
   loop: "{{ groups_memberships }}"
   loop_control:
     loop_var: membership

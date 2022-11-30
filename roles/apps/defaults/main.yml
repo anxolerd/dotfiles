@@ -231,6 +231,10 @@ groups_memberships:
   - user: anxolerd
     group: libvirt
     package: virt-manager
+  - user: anxolerd
+    group: netdev
+  - user: anxolerd
+    group: pcap
 layman_overlays:
   - name: guru
   - name: anxolerd
