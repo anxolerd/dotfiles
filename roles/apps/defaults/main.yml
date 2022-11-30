@@ -188,6 +188,7 @@ essential_ebuilds:
   - app-admin/eselect  # alternatives management
   - app-admin/sudo  # privilege escalation
   - app-admin/sysklogd  # loging daemon
+  - app-eselect/eselect-repository  # layman replacement
   - app-portage/eix  # fast portage tree search
   - app-portage/gentoolkit  # euse and co.
   - app-portage/layman  # needed to manage third-party Git overlays
