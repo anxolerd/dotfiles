@@ -45,7 +45,7 @@ package_use_flags:
   media-video/obs-studio: ["decklink", "fdk", "lua", "nvenc", "pipewire", "speex", "v4l"]
   media-video/pipewire: ["echo-channel", "pipewire-alsa", "sound-server", "system-service"]
   net-dns/dnsmasq: ["script"]
-  net-misc/networkmanager: ["bluetooth", "connection-sharing", "dhcpd", "iptables", "ncurses", "policykit", "wifi"]
+  net-misc/networkmanager: ["bluetooth", "concheck", "connection-sharing", "dhcpd", "iptables", "iwd", "ncurses", "policykit", "wifi"]
   net-misc/remmina: ["gvnc", "rdp", "spice", "ssh", "vnc", "zeroconf"]
   net-misc/spice-gtk: ["usbredir"]
   sci-libs/openblas: ["openmp"]
@@ -126,6 +126,7 @@ ebuilds:
   - net-libs/nodejs
   - net-misc/anydesk
   - net-misc/chrony
+  - net-misc/networkmanager
   - net-misc/openrdap
   - net-misc/putty
   - net-misc/remmina
