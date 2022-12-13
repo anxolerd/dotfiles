@@ -38,18 +38,14 @@
       for {{ license_entry.package }}
     loop_var: license_entry
 
-- name: Mask third-party overlays
-  lineinfile:
-    create: yes
-    line: >-
-      */*::{{ overlay.name }}
-    path: >-
-      /etc/portage/package.mask/third-party-overlay--{{ overlay.name }}
-    state: present
-  loop: >-
-    {{ layman_overlays }}
+- name: Layman
+  include_tasks: layman_overlays.yml
+
+- name: Configure portage overlays
+  include_tasks: portage_overlay.yml
+  loop: "{{ portage_overlays }}"
   loop_control:
-    loop_var: overlay
+    loop_var: "overlay"
 
 - name: Allow certain packages from third-party overlays
   lineinfile:
@@ -77,37 +73,6 @@
         | join('::')
       }}
     loop_var: overlay_package_entry
-
-- name: Add overlays sources
-  lineinfile:
-    path: /etc/layman/layman.cfg
-    line: '    {{ overlay.list }}'
-    insertafter: '    https://api.gentoo.org/overlays/repositories.xml'
-  when: overlay.list is defined
-  loop: >-
-    {{ layman_overlays }}
-  loop_control:
-    loop_var: overlay
-
-- name: Install layman overlays
-  shell: |
-    set -euxo pipefail
-    yes | layman -a {{ overlay.name }}
-  args:
-    creates: /var/lib/layman/{{ overlay.name }}
-  loop: >-
-    {{ layman_overlays }}
-  loop_control:
-    loop_var: overlay
-  register: layman_cmd
-  changed_when: layman_cmd.rc == 141
-  failed_when: >-
-    layman_cmd.rc not in [0, 141] and
-    ' was already installed' not in layman_cmd.stdout
-
-- name: Sync layman overlays
-  command: layman -S
-  when: true
 
 - name: Set up global use flags
   lineinfile:

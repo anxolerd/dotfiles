@@ -25,9 +25,12 @@ package_use_flags:
   "dev-java/openjdk-bin:17": ["gentoo-vm"]
   dev-lang/mono: ["minimal"]
   dev-lang/rust: ["clippy", "doc", "rls", "rustfmt", "rust-src"]
+  dev-libs/boost: ["python"]
   dev-libs/libdbusmenu: ["gtk3"]
   dev-libs/libpcre2: ["pcre32"]
   dev-libs/nss: ["cacert", "utils"]
+  dev-python/numpy: ["lapack"]
+  dev-python/pillow: ["webp"]
   dev-qt/qtmultimedia: ["widgets"]
   dev-qt/qtquickcontrols2: ["widgets"]
   gnome-base/gvfs: ["fuse", "mtp"]
@@ -57,6 +60,7 @@ package_use_flags:
   virtual/imagemagick-tools: ["perl"]
   virtual/rust: ["rustfmt"]
   x11-libs/libdrm: ["libkms"]
+  x11-libs/wxGTK: ["gstreamer"]
 ebuilds:
   - app-admin/awscli
   - app-admin/helm
@@ -119,7 +123,6 @@ ebuilds:
   - net-analyzer/wireshark
   - net-dialup/minicom
   - net-dns/bind-tools
-  - net-dns/dog
   - net-im/signal-desktop-bin
   - net-im/slack
   - net-im/telegram-desktop-bin
@@ -171,7 +174,6 @@ ebuilds:
   - x11-themes/adapta-gtk-theme
   - x11-wm/i3-gaps
 ebuilds_from_overlays:
-  app-admin/kubeseal: anxolerd
   app-containers/nvidia-container-toolkit: guru
   app-misc/tealdeer: guru
   app-shells/zoxide: guru
@@ -238,8 +240,11 @@ groups_memberships:
     group: pcap
 layman_overlays:
   - name: guru
+portage_overlays:
   - name: anxolerd
-    list: https://raw.githubusercontent.com/anxolerd/gentoo-overlay/main/repositories.xml
+    sync_type: git
+    sync_uri: https://github.com/anxolerd/gentoo-overlay.git
+    masters: gentoo
 look_and_feel:
   theme: Adapta-Nokto-Eta
   icon_theme: gnome

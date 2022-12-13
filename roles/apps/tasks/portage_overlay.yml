@@ -1,0 +1,33 @@
+---  # vim: set ft=ansible :
+- name: Mask third-party overlay
+  lineinfile:
+    create: yes
+    line: >-
+      */*::{{ overlay.name }}
+    path: >-
+      /etc/portage/package.mask/third-party-overlay--{{ overlay.name }}
+    state: present
+
+- name: Create portage repos config directory
+  ansible.builtin.file:
+    path: /etc/portage/repos.conf/
+    state: directory
+    owner: root
+    group: root
+    mode: "0755"
+
+- name: Create overlay data directory
+  ansible.builtin.file:
+    path: "/var/repo/{{ overlay.name }}-overlay"
+    state: directory
+    owner: root
+    group: root
+    mode: "0755"
+
+- name: Create overlay configuration file
+  ansible.builtin.template:
+    src: etc/portage/repos.conf/repo.conf.j2
+    dest: "/etc/portage/repos.conf/{{ overlay.name }}.conf"
+    owner: root
+    group: root
+    mode: "0644"
