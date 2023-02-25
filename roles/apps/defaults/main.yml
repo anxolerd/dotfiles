@@ -111,6 +111,7 @@ ebuilds:
   - media-gfx/gthumb
   - media-sound/alsa-utils
   - media-sound/spotify
+  - media-video/celluloid
   - media-video/mpv
   - media-video/obs-studio
   - media-video/pipewire
@@ -181,7 +182,6 @@ ebuilds_from_overlays:
   media-fonts/overpass: guru
   sys-apps/dust: guru
   sys-libs/libnvidia-container: guru
-  www-client/torbrowser-launcher: guru
   x11-misc/i3blocks-contrib: anxolerd
 emerge_load_average: "{{ ansible_processor_cores }}"
 emerge_jobs_number: "{{ ansible_processor_vcpus }}"
@@ -197,6 +197,7 @@ essential_ebuilds:
   - app-portage/portage-utils  # this one is required for qlist utility
   - dev-vcs/git  # needed to fetch third-party Git overlays
   - sys-apps/gptfdisk  # gdisk: https://wiki.gentoo.org/wiki/EFI_System_Partition
+  - sys-apps/merge-usr  # migrate systemd to merged-usr
   - sys-apps/pciutils  # lspci
   - sys-apps/usbutils  # lsusb
   - sys-fs/cryptsetup  # LUKS
