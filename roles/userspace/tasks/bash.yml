@@ -54,6 +54,23 @@
     - alias: docker
       command: "podman"
 
+- name: Configure bash_history options
+  lineinfile:
+    line: "export {{ option.name }}={{ option.value }}"
+    dest: ~/.bashrc
+    create: true
+    owner: anxolerd
+    group: anxolerd
+    mode: "0640"
+  with_items:
+    - name: HISTCONTROL
+      value: "ignoreboth:erasedups"
+    - name: HISTSIZE
+      value: "10000"
+  loop_control:
+    loop_var: option
+    label: "{{ option.name }}"
+
 - name: Use custom scripts in ~/.local/bin
   lineinfile:
     line: '[ -d "${HOME}/.local/bin" ] && export PATH="${PATH}:${HOME}/.local/bin"'
