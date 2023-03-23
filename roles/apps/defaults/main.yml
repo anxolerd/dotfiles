@@ -76,6 +76,7 @@ ebuilds:
   - app-editors/vim
   - app-emulation/virt-manager
   - app-forensics/foremost
+  - app-misc/asciinema
   - app-misc/fdupes
   - app-misc/jq
   - app-misc/screen
