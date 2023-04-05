@@ -8,6 +8,7 @@ accept_licenses:
   dev-util/nvidia-cuda-toolkit: NVIDIA-CUDA
   media-fonts/font-bh-ttf: bh-luxi
   media-fonts/font-bh-type1: bh-luxi
+  media-libs/faac: MPEG-4
   media-sound/spotify: Spotify
   net-im/slack: all-rights-reserved
   net-misc/anydesk: AnyDesk-TOS
@@ -51,7 +52,9 @@ package_use_flags:
   net-misc/networkmanager: ["bluetooth", "concheck", "connection-sharing", "dhcpd", "iptables", "iwd", "ncurses", "policykit", "wifi"]
   net-misc/remmina: ["gvnc", "rdp", "spice", "ssh", "vnc", "zeroconf"]
   net-misc/spice-gtk: ["usbredir"]
+  net-wireless/wpa_supplicant: ["p2p"]
   sci-libs/openblas: ["openmp"]
+  sys-apps/xdg-desktop-portal: ["screencast"]
   sys-apps/hwloc: ["cuda"]
   "sys-boot/grub:2": ["device-mapper"]
   sys-devel/gcc: ["graphite"]
@@ -71,6 +74,7 @@ ebuilds:
   - app-containers/docker
   - app-containers/docker-compose
   - app-containers/k3d
+  - app-containers/skopeo
   - app-crypt/yubikey-manager
   - app-crypt/yubikey-manager-qt
   - app-editors/vim
@@ -98,6 +102,7 @@ ebuilds:
   - dev-vcs/git-crypt
   - dev-vcs/subversion
   - games-util/lutris
+  - gnome-extra/gnome-network-displays
   - lxde-base/lxmenu-data
   - media-fonts/noto-emoji
   - media-fonts/iosevka
@@ -147,6 +152,7 @@ ebuilds:
   - sys-apps/exa
   - sys-apps/ripgrep
   - sys-apps/smartmontools
+  - sys-apps/xdg-desktop-portal-gtk
   - sys-boot/plymouth
   - sys-fs/extundelete
   - sys-fs/ntfs3g
