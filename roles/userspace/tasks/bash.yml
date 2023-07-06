@@ -42,18 +42,6 @@
     - alias: tree
       command: "exa --tree"
 
-- name: Use podman instead of docker
-  lineinfile:
-    line: "alias {{ item.alias }}='{{ item.command }}'"
-    dest: ~/.bashrc
-    create: true
-    owner: anxolerd
-    group: anxolerd
-    mode: "0640"
-  with_items:
-    - alias: docker
-      command: "podman"
-
 - name: Configure bash_history options
   lineinfile:
     line: "export {{ option.name }}={{ option.value }}"

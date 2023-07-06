@@ -35,7 +35,7 @@ package_use_flags:
   dev-qt/qtmultimedia: ["widgets"]
   dev-qt/qtquickcontrols2: ["widgets"]
   gnome-base/gvfs: ["fuse", "mtp"]
-  media-gfx/blender: ["cuda"]
+  media-gfx/blender: ["cuda", "-oidn"]
   media-gfx/imagemagick: ["perl"]
   media-libs/freetype: ["brotli", "harfbuzz"]
   media-libs/gd: ["fontconfig"]
@@ -49,6 +49,7 @@ package_use_flags:
   media-video/obs-studio: ["decklink", "fdk", "lua", "nvenc", "pipewire", "speex", "v4l"]
   media-video/pipewire: ["echo-channel", "pipewire-alsa", "sound-server", "system-service"]
   net-dns/dnsmasq: ["script"]
+  net-libs/gnutls: ["pcks11", "tools"]
   net-misc/networkmanager: ["bluetooth", "concheck", "connection-sharing", "dhcpd", "iptables", "iwd", "ncurses", "policykit", "wifi"]
   net-misc/remmina: ["gvnc", "rdp", "spice", "ssh", "vnc", "zeroconf"]
   net-misc/spice-gtk: ["usbredir"]
@@ -65,13 +66,16 @@ package_use_flags:
   x11-libs/libdrm: ["libkms"]
   x11-libs/wxGTK: ["gstreamer"]
 ebuilds:
+  - app-admin/apache-tools
   - app-admin/awscli
   - app-admin/helm
   - app-admin/terraform
   - app-admin/testdisk
   - app-admin/vault
+  - app-benchmarks/wrk
   - app-containers/distrobox
   - app-containers/docker
+  - app-containers/docker-buildx
   - app-containers/docker-compose
   - app-containers/k3d
   - app-containers/skopeo
@@ -90,7 +94,6 @@ ebuilds:
   - dev-java/openjdk-bin:17
   - dev-lang/go
   - dev-lang/rust
-  - dev-python/awxkit
   - dev-python/python-openstackclient
   - dev-util/packer
   - dev-util/pkgcheck
@@ -155,6 +158,7 @@ ebuilds:
   - sys-apps/xdg-desktop-portal-gtk
   - sys-boot/plymouth
   - sys-fs/extundelete
+  - sys-fs/google-drive-ocamlfuse
   - sys-fs/ntfs3g
   - sys-power/acpid
   - sys-power/bbswitch
@@ -257,9 +261,9 @@ look_and_feel:
   theme: Adapta-Nokto-Eta
   icon_theme: gnome
   cursor_theme: Adwaita
-python_targets: ["3.9", "3.10", "3.11"]
-python_single_target: ""
-ruby_targets: ["2.7", "3.1"]
+python_targets: ["3.11"]
+python_single_target:
+ruby_targets: ["3.1"]
 unmask_ebuilds: {}
 video_card_targets:
   - intel
