@@ -190,7 +190,9 @@ ebuilds_from_overlays:
   app-containers/nvidia-container-toolkit: guru
   app-shells/zoxide: guru
   dev-util/lets: anxolerd
+  media-fonts/iosevka-nerdfont: guru
   media-fonts/overpass: guru
+  media-fonts/robotomono-nerdfont: guru
   sys-block/dust: guru
   sys-libs/libnvidia-container: guru
   x11-misc/i3blocks-contrib: anxolerd
