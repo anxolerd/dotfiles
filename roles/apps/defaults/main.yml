@@ -188,7 +188,6 @@ ebuilds:
   - x11-wm/i3-gaps
 ebuilds_from_overlays:
   app-containers/nvidia-container-toolkit: guru
-  app-misc/tealdeer: guru
   app-shells/zoxide: guru
   dev-util/lets: anxolerd
   media-fonts/overpass: guru
