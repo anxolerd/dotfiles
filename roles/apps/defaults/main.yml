@@ -191,7 +191,7 @@ ebuilds_from_overlays:
   app-shells/zoxide: guru
   dev-util/lets: anxolerd
   media-fonts/overpass: guru
-  sys-apps/dust: guru
+  sys-block/dust: guru
   sys-libs/libnvidia-container: guru
   x11-misc/i3blocks-contrib: anxolerd
 emerge_load_average: "{{ ansible_processor_cores }}"
