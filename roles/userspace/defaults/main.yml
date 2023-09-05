@@ -1,5 +1,5 @@
 alacritty:
-  font_family: Overpass Mono
+  font_family: Iosevka Nerd Font
 git_options:
   alias.ignore: >-
     !gi() {

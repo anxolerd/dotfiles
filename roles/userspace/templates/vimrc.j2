@@ -8,17 +8,29 @@ endif
 
 
 call plug#begin('~/.vim/plugged')
+Plug 'airblade/vim-gitgutter', {'on':'GitGutterEnable'}         " git integration
 Plug 'dense-analysis/ale'                                       " completion and lints
 Plug 'editorconfig/editorconfig-vim'                            " respect editorconfig files
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }             " fuzzy search
 Plug 'junegunn/fzf.vim'                                         " fuzzy search
-Plug 'MicahElliott/Rocannon'                                    " ansible
-Plug 'preservim/nerdtree'                                       " cool tree view
+Plug 'preservim/nerdtree',
+     \ {'on':['NERDTree','NERDTreeToggle','NERDTreeFind','NERDTreeFocus']}
+                                                                " cool tree view
 Plug 'rust-lang/rust.vim'                                       " rust syntax support
 Plug 'ryanoasis/vim-devicons'                                   " cool icons
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight',
+     \ {'on':['NERDTree','NERDTreeToggle','NERDTreeFind','NERDTreeFocus']}
+                                                                " Icons for
+                                                                " file types
+                                                                " in NERD TREE
 Plug 'tpope/vim-fugitive'                                       " git operations commands
 Plug 'vim-airline/vim-airline'                                  " status line
 Plug 'vim-airline/vim-airline-themes'                           " themes for status line
+Plug 'xuyuanp/nerdtree-git-plugin',
+     \ {'on':['NERDTree','NERDTreeToggle','NERDTreeFind','NERDTreeFocus']}
+                                                                " highlight
+                                                                " git changes
+                                                                " in tree
 call plug#end()
 
 "
@@ -59,6 +71,34 @@ let g:ale_fixers = {
 \   'rust': ['rustfmt'],
 \}
 
+" ========== NERDTree-related Configuration ========== "
+let g:NERDTreeMinimalUI=1
+let g:NERDTreeDirArrows=0
+let g:NERDTreeShowHidden=0
+let g:NERDTreeAutoDeleteBuffer = 1
+let g:NERDTreeRespectWildIgnore=1
+let g:NERDTreeIgnore=['\.git$','\.svn$','\.hg$','\.DS_Store$','\.devcontainer$','\.vscode$','__pycache__$','\.terraform$','\.terraform.lock.hcl$','\.terragrunt-cache$','\.pyc$']
+let g:WebDevIconsOS='Darwin'
+let g:webdevicons_enable=1
+let g:webdevicons_enable_nerdtree=1
+let g:WebDevIconsUnicodeDecorateFileNodes=1
+let g:webdevicons_conceal_nerdtree_brackets=1
+let g:WebDevIconsUnicodeDecorateFolderNodes=1
 
-" ========== Rocannon Configuration ========== "
-set background=dark
+" Start NERDTree when Vim starts with a directory argument.
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in') |
+    \ execute 'NERDTree' argv()[0] | wincmd p | enew | execute 'cd '.argv()[0] | endif
+
+" If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
+autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
+    \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
+
+" Automatically source the Vimrc file on save.
+augroup autosourcing
+    autocmd!
+    autocmd BufWritePost .vimrc source %
+augroup END
+
+" Toggle IDE mode in VIM
+nmap <C-i> :GitGutterEnable<cr>:NERDTreeFind<cr>
