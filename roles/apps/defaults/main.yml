@@ -72,6 +72,7 @@ ebuilds:
   - app-admin/terraform
   - app-admin/testdisk
   - app-admin/vault
+  - app-arch/file-roller
   - app-benchmarks/wrk
   - app-containers/distrobox
   - app-containers/docker
@@ -262,7 +263,7 @@ look_and_feel:
   icon_theme: gnome
   cursor_theme: Adwaita
 python_targets: ["3.11"]
-python_single_target:
+python_single_target: ""
 ruby_targets: ["3.1"]
 unmask_ebuilds: {}
 video_card_targets:
