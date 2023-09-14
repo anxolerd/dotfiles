@@ -1,0 +1,11 @@
+[Unit]
+Description=Run "{{ task.description }}" on {{ task.calendar }}
+RefuseManualStart=no
+RefuseManualStop=no
+
+[Timer]
+OnCalendar={{ task.calendar }}
+Unit={{ task.slug }}.service
+
+[Install]
+WantedBy=timers.target

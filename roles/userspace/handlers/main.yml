@@ -1,0 +1,25 @@
+---  # vim: set ft=ansible :
+- name: Enable and start services
+  listen: ensure-tasks-enabled
+  ansible.builtin.systemd:
+    name: "{{ task.slug }}.service"
+    enabled: true
+    state: started
+    daemon_reload: true
+    scope: user
+  loop: "{{ tasks }}"
+  loop_control:
+    label: "{{ task.slug }}.service"
+    loop_var: task
+
+- name: Enable and start timers
+  listen: ensure-timers-enabled
+  service:
+    name: "{{ task.slug }}.timer"
+    enabled: true
+    state: started
+    scope: user
+  loop: "{{ tasks }}"
+  loop_control:
+    label: "{{ task.slug }}.service"
+    loop_var: task

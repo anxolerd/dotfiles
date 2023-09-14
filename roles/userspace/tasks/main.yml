@@ -34,3 +34,6 @@
 - name: Ensure that Kubectl is configured
   import_tasks: kubectl.yml
   when: "'kubectl' in ansible_facts.packages"
+
+- name: Configure user periodic tasks
+  import_tasks: systemd.yml

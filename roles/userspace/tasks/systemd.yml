@@ -1,0 +1,26 @@
+--- # vim:se ft=ansible:
+- name: Configure tasks
+  template:
+    src: systemd.service.j2
+    dest: ~/.config/systemd/user/{{ task.slug }}.service
+    owner: anxolerd
+    group: anxolerd
+    mode: "0644"
+  loop: "{{ tasks }}"
+  loop_control:
+    label: "{{ task.slug}} ({{ task.description }})"
+    loop_var: "task"
+  notify: ensure-tasks-enabled
+
+- name: Configure timers
+  template:
+    src: systemd.timer.j2
+    dest: ~/.config/systemd/user/{{ task.slug }}.timer
+    owner: anxolerd
+    group: anxolerd
+    mode: "0644"
+  loop: "{{ tasks }}"
+  loop_control:
+    label: "{{ task.slug}} ({{ task.description }})"
+    loop_var: "task"
+  notify: ensure-timers-enabled

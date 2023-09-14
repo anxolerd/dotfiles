@@ -1,3 +1,4 @@
+---
 alacritty:
   font_family: Iosevka Nerd Font
 git_options:
@@ -38,3 +39,9 @@ tpm:
 vimplug:
   bundle_path: ~/.vim/autoload/plug.vim
   self_plugin: junegunn/vim-plug
+
+tasks:
+  - slug: cleanup-kvm-launchers
+    description: Delete KVM launchers
+    calendar: "*:00:00"
+    execute: "find %h/Downloads -name 'launch*.jnlp' -delete"

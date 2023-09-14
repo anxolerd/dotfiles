@@ -1,0 +1,9 @@
+[Unit]
+Description={{ task.description }}
+
+[Service]
+Type=simple
+ExecStart={{ task.execute }}
+
+[Install]
+WantedBy=default.target
