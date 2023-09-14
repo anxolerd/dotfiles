@@ -1,4 +1,4 @@
---- # vim:se ft=ansible:
+---  # vim:se ft=ansible:
 - name: Set up user's git config
   ansible.builtin.copy:
     src: "gitignore"

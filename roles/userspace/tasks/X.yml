@@ -36,7 +36,11 @@
     create: true
     path: ~/.xprofile
     regex: "^setxkbmap"
-    line: "setxkbmap -layout us,ua -option grp:win_space_toggle -option terminate:ctrl_alt_bksp -option ctrl:nocaps"
+    line: >-
+      setxkbmap -layout us,ua
+      -option grp:win_space_toggle
+      -option terminate:ctrl_alt_bksp
+      -option ctrl:nocaps
     owner: anxolerd
     group: anxolerd
     mode: "0644"

@@ -1,4 +1,4 @@
---- # vim: se ft=ansible:
+---  # vim: se ft=ansible:
 - name: Download tmux plugin manager
   ansible.builtin.git:
     repo: 'https://github.com/tmux-plugins/tpm'

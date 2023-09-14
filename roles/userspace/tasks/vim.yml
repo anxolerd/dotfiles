@@ -1,4 +1,4 @@
---- # vim:se ft=ansible:
+---  # vim:se ft=ansible:
 - name: Ensure vim autoload directory exists
   file:
     path: ~/.vim/autoload

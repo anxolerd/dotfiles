@@ -1,4 +1,4 @@
---- # vim:se ft=ansible:
+---  # vim:se ft=ansible:
 - name: Ensure Alacritty config directory exists
   file:
     path: ~/.config/alacritty

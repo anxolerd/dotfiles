@@ -1,10 +1,10 @@
 ---  # vim: set ft=ansible :
 - name: Set fact linux_platform
   set_fact:
-    linux_platform: >- 
+    linux_platform: >-
       {{
-        (ansible_architecture == "x86_64") 
-        | ternary("amd64", ansible_architecture) 
+        (ansible_architecture == "x86_64")
+        | ternary("amd64", ansible_architecture)
       }}
 
 - name: Create krew directory

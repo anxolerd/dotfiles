@@ -1,4 +1,4 @@
---- # vim:se ft=ansible:
+---  # vim:se ft=ansible:
 - name: Configure tasks
   template:
     src: systemd.service.j2
