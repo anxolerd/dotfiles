@@ -50,6 +50,7 @@ package_use_flags:
   media-video/pipewire: ["echo-channel", "pipewire-alsa", "sound-server", "system-service"]
   net-dns/dnsmasq: ["script"]
   net-libs/gnutls: ["pcks11", "tools"]
+  net-libs/webkit-gtk: ["-gstreamer"]
   net-misc/networkmanager: ["bluetooth", "concheck", "connection-sharing", "dhcpd", "iptables", "iwd", "ncurses", "policykit", "wifi"]
   net-misc/remmina: ["gvnc", "rdp", "spice", "ssh", "vnc", "zeroconf"]
   net-misc/spice-gtk: ["usbredir"]
