@@ -1,7 +1,7 @@
 ---
 abi_x86_targets:
-- "32"
-- "64"
+  - "32"
+  - "64"
 accept_licenses:
   app-admin/terraform: JSON
   dev-util/android-studio: android
@@ -195,7 +195,7 @@ ebuilds_from_overlays:
 emerge_load_average: "{{ ansible_processor_cores }}"
 emerge_jobs_number: "{{ ansible_processor_vcpus }}"
 essential_ebuilds:
-  - app-admin/eclean-kernel # clean up outdated kernels
+  - app-admin/eclean-kernel  # clean up outdated kernels
   - app-admin/eselect  # alternatives management
   - app-admin/sudo  # privilege escalation
   - app-admin/sysklogd  # loging daemon

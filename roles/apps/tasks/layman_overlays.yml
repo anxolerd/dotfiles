@@ -1,7 +1,7 @@
 ---  # vim: set ft=ansible :
 - name: Mask third-party overlays
   lineinfile:
-    create: yes
+    create: true
     line: >-
       */*::{{ overlay.name }}
     path: >-
