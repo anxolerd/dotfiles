@@ -1,56 +1,55 @@
 ---
 - name: Do gentoo world rebuild
   hosts: laptop
-  become: yes
+  become: true
   tasks:
-  - import_role:
-      name: services-ctl
-  - name: Sync portage/layman trees and index ebuilds
-    command: /usr/bin/eix-sync
-  - name: Rebuild the @world
-    notify:
-    - ensure-services-started
-    - ensure-services-reloaded
-    portage:
-      name: "@world"
-      state: emerged
-      deep: yes
-      update: yes
-      verbose: yes
-      newuse: yes
-      loadavg: 4
-      jobs: 9
-  - name: Rebuild the @preserved-rebuild
-    notify:
-    - ensure-services-started
-    - ensure-services-reloaded
-    portage:
-      name: "@preserved-rebuild"
-      state: emerged
-      verbose: yes
-      loadavg: 4
-      jobs: 9
-  - name: Rebuild the @module-rebuild
-    notify:
-    - ensure-services-started
-    - ensure-services-reloaded
-    portage:
-      name: "@module-rebuild"
-      state: emerged
-      verbose: yes
-      loadavg: 4
-      jobs: 9
-  - name: Rebuild the @x11-module-rebuild
-    notify:
-    - ensure-services-started
-    - ensure-services-reloaded
-    portage:
-      name: "@x11-module-rebuild"
-      state: emerged
-      verbose: yes
-      loadavg: 4
-      jobs: 9
-  - name: Gather the package facts
-    ansible.builtin.package_facts:
-      manager: auto
-
+    - import_role:
+        name: services-ctl
+    - name: Sync portage/layman trees and index ebuilds
+      command: /usr/bin/eix-sync
+    - name: Rebuild the @world
+      notify:
+        - ensure-services-started
+        - ensure-services-reloaded
+      portage:
+        name: "@world"
+        state: emerged
+        deep: true
+        update: true
+        verbose: true
+        newuse: true
+        loadavg: 4
+        jobs: 9
+    - name: Rebuild the @preserved-rebuild
+      notify:
+        - ensure-services-started
+        - ensure-services-reloaded
+      portage:
+        name: "@preserved-rebuild"
+        state: emerged
+        verbose: true
+        loadavg: 4
+        jobs: 9
+    - name: Rebuild the @module-rebuild
+      notify:
+        - ensure-services-started
+        - ensure-services-reloaded
+      portage:
+        name: "@module-rebuild"
+        state: emerged
+        verbose: true
+        loadavg: 4
+        jobs: 9
+    - name: Rebuild the @x11-module-rebuild
+      notify:
+        - ensure-services-started
+        - ensure-services-reloaded
+      portage:
+        name: "@x11-module-rebuild"
+        state: emerged
+        verbose: true
+        loadavg: 4
+        jobs: 9
+    - name: Gather the package facts
+      ansible.builtin.package_facts:
+        manager: auto

@@ -1,4 +1,4 @@
---- # vim: se ft=ansible :
+---  # vim: se ft=ansible :
 - name: Set up gentoo laptop
   hosts: laptop
   gather_facts: true

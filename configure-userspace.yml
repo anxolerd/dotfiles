@@ -1,4 +1,4 @@
---- # vim:se ft=ansible:
+---  # vim:se ft=ansible:
 - name: Configure userspace
   hosts: laptop
   tasks:
