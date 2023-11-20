@@ -5,8 +5,24 @@
   tasks:
     - import_role:
         name: services-ctl
-    - name: Sync portage/layman trees and index ebuilds
+
+    - name: Sync portage trees and index ebuilds
       command: /usr/bin/eix-sync
+
+    - name: Rebuild the @system
+      notify:
+        - ensure-services-started
+        - ensure-services-reloaded
+      portage:
+        name: "@system"
+        state: emerged
+        deep: true
+        update: true
+        verbose: true
+        newuse: true
+        loadavg: 4
+        jobs: 9
+
     - name: Rebuild the @world
       notify:
         - ensure-services-started
@@ -20,6 +36,7 @@
         newuse: true
         loadavg: 4
         jobs: 9
+
     - name: Rebuild the @preserved-rebuild
       notify:
         - ensure-services-started
@@ -30,6 +47,7 @@
         verbose: true
         loadavg: 4
         jobs: 9
+
     - name: Rebuild the @module-rebuild
       notify:
         - ensure-services-started
@@ -40,6 +58,7 @@
         verbose: true
         loadavg: 4
         jobs: 9
+
     - name: Rebuild the @x11-module-rebuild
       notify:
         - ensure-services-started
