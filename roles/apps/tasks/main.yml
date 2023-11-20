@@ -38,8 +38,9 @@
       for {{ license_entry.package }}
     loop_var: license_entry
 
-- name: Layman
-  include_tasks: layman_overlays.yml
+# - name: Layman
+#   include_tasks: layman_overlays.yml
+#   when: layman_overlays is defined
 
 - name: Configure portage overlays
   include_tasks: portage_overlay.yml
@@ -276,23 +277,6 @@
         owner: root
         group: root
         mode: "0644"
-
-- name: Configure podman
-  block:
-    - name: Copy recommended example configuration files
-      copy:
-        src: /etc/containers/{{ configuration_file }}.example
-        dest: /etc/containers/{{ configuration_file }}
-        remote_src: true
-        owner: root
-        group: root
-        mode: "0644"
-      loop:
-        - policy.json
-        - registries.conf
-      loop_control:
-        loop_var: "configuration_file"
-  when: "'podman' in ansible_facts.packages"
 
 - name: Configure X
   block:

@@ -15,6 +15,7 @@ accept_licenses:
   net-misc/teamviewer: TeamViewer
   sys-kernel/linux-firmware: linux-fw-redistributable no-source-code
   x11-drivers/nvidia-drivers: NVIDIA-r2
+
 package_use_flags:
   app-containers/docker: ["-cli"]
   app-editors/gvim: ["lua", "python"]
@@ -26,6 +27,7 @@ package_use_flags:
   "dev-java/openjdk-bin:17": ["gentoo-vm"]
   dev-lang/mono: ["minimal"]
   dev-lang/rust: ["clippy", "doc", "rls", "rustfmt", "rust-src"]
+  dev-lang/rust-bin: ["rustfmt"]
   dev-libs/boost: ["python"]
   dev-libs/libdbusmenu: ["gtk3"]
   dev-libs/libpcre2: ["pcre32"]
@@ -40,6 +42,8 @@ package_use_flags:
   media-libs/freetype: ["brotli", "harfbuzz"]
   media-libs/gd: ["fontconfig"]
   media-libs/harfbuzz: ["truetype"]
+  media-libs/libsdl2: ["gles2"]
+  media-libs/mesa: ["wayland"]
   media-libs/mlt: ["ffmpeg", "frei0r", "jack"]
   media-libs/opencolorio: ["-opengl"]
   media-libs/opencv: ["contrib", "contribdnn"]
@@ -49,7 +53,8 @@ package_use_flags:
   media-video/obs-studio: ["decklink", "fdk", "lua", "nvenc", "pipewire", "speex", "v4l"]
   media-video/pipewire: ["echo-channel", "pipewire-alsa", "sound-server", "system-service"]
   net-dns/dnsmasq: ["script"]
-  net-libs/gnutls: ["pcks11", "tools"]
+  net-firewall/iptables: ["nftables"]
+  net-libs/gnutls: ["pkcs11", "tools"]
   net-libs/webkit-gtk: ["-gstreamer"]
   net-misc/networkmanager: ["bluetooth", "concheck", "connection-sharing", "dhcpd", "iptables", "iwd", "ncurses", "policykit", "wifi"]
   net-misc/remmina: ["gvnc", "rdp", "spice", "ssh", "vnc", "zeroconf"]
@@ -64,8 +69,10 @@ package_use_flags:
   sys-libs/zlib: ["minizip"]
   virtual/imagemagick-tools: ["perl"]
   virtual/rust: ["rustfmt"]
+  x11-libs/gtk+: ["wayland"]
   x11-libs/libdrm: ["libkms"]
   x11-libs/wxGTK: ["gstreamer"]
+
 ebuilds:
   - app-admin/apache-tools
   - app-admin/awscli
@@ -90,6 +97,7 @@ ebuilds:
   - app-misc/fdupes
   - app-misc/jq
   - app-misc/screen
+  - app-office/libreoffice
   - app-shells/fzf
   - dev-java/openjdk-bin:8
   - dev-java/openjdk-bin:17
@@ -105,7 +113,6 @@ ebuilds:
   - dev-vcs/bfg
   - dev-vcs/git-crypt
   - dev-vcs/subversion
-  - gnome-extra/gnome-network-displays
   - lxde-base/lxmenu-data
   - media-fonts/noto-emoji
   - media-fonts/iosevka
@@ -182,6 +189,7 @@ ebuilds:
   - x11-terms/alacritty
   - x11-themes/adapta-gtk-theme
   - x11-wm/i3-gaps
+
 ebuilds_from_overlays:
   app-containers/nvidia-container-toolkit: guru
   app-shells/zoxide: guru
@@ -191,9 +199,11 @@ ebuilds_from_overlays:
   media-fonts/robotomono-nerdfont: guru
   sys-block/dust: guru
   sys-libs/libnvidia-container: guru
-  x11-misc/i3blocks-contrib: anxolerd
+  x11-misc/i3blocks-contrib: open-craft-guild
+
 emerge_load_average: "{{ ansible_processor_cores }}"
 emerge_jobs_number: "{{ ansible_processor_vcpus }}"
+
 essential_ebuilds:
   - app-admin/eclean-kernel  # clean up outdated kernels
   - app-admin/eselect  # alternatives management
@@ -202,7 +212,6 @@ essential_ebuilds:
   - app-eselect/eselect-repository  # layman replacement
   - app-portage/eix  # fast portage tree search
   - app-portage/gentoolkit  # euse and co.
-  - app-portage/layman  # needed to manage third-party Git overlays
   - app-portage/portage-utils  # this one is required for qlist utility
   - dev-vcs/git  # needed to fetch third-party Git overlays
   - sys-apps/gptfdisk  # gdisk: https://wiki.gentoo.org/wiki/EFI_System_Partition
@@ -217,6 +226,7 @@ essential_ebuilds:
   - sys-process/htop  # processes overview
   - sys-process/lsof  # htop dep
   - www-client/links  # needed to browse web docs from terminal
+
 global_use_flags:
   - X
   - bash-completion
@@ -228,6 +238,7 @@ global_use_flags:
   - systemd
   - vim-syntax
   - -wayland
+
 groups_memberships:
   - user: anxolerd
     group: docker
@@ -248,17 +259,26 @@ groups_memberships:
     group: netdev
   - user: anxolerd
     group: pcap
-layman_overlays:
-  - name: guru
+
 portage_overlays:
   - name: anxolerd
     sync_type: git
     sync_uri: https://github.com/anxolerd/gentoo-overlay.git
     masters: gentoo
+  - name: open-craft-guild
+    sync_type: git
+    sync_uri: https://github.com/open-craft-guild/gentoo-overlay.git
+    masters: gentoo
+  - name: guru
+    sync_type: git
+    sync_uri: https://github.com/gentoo-mirror/guru.git
+    masters: gentoo
+
 look_and_feel:
   theme: Adapta-Nokto-Eta
   icon_theme: gnome
   cursor_theme: Adwaita
+
 python_targets: ["3.11"]
 python_single_target: ""
 ruby_targets: ["3.1"]
