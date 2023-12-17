@@ -9,6 +9,7 @@ endif
 
 call plug#begin('~/.vim/plugged')
 Plug 'airblade/vim-gitgutter', {'on':'GitGutterEnable'}         " git integration
+Plug 'catppuccin/vim', { 'as': 'catppuccin' }                   " theme
 Plug 'editorconfig/editorconfig-vim'                            " respect editorconfig files
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }             " fuzzy search
 Plug 'junegunn/fzf.vim'                                         " fuzzy search
@@ -226,3 +227,7 @@ augroup END
 
 " Toggle IDE mode in VIM
 nmap <C-i> :GitGutterEnable<cr>:NERDTreeFind<cr>
+
+
+" ========== Theme configuration ========== "
+let g:airline_theme = 'catppuccin_{{ catppuccin.theme }}'

@@ -1,4 +1,4 @@
----  # vim:se ft=ansible:
+---  # vim:se ft=yaml.ansible:
 - name: Ensure Alacritty config directory exists
   file:
     path: ~/.config/alacritty
@@ -6,6 +6,14 @@
     owner: anxolerd
     group: anxolerd
     mode: "0755"
+
+- name: Download catppuccin theme
+  ansible.builtin.git:
+    clone: true
+    dest: ~/.config/alacritty/catppuccin
+    repo: https://github.com/catppuccin/alacritty.git
+    update: true
+
 - name: Generate an Alacritty config from the template
   template:
     src: alacritty.yml.j2
