@@ -1,4 +1,4 @@
----  # vim:se ft=ansible:
+---  # vim:se ft=yaml.ansible:
 - name: Configure tasks
   template:
     src: systemd.service.j2
@@ -6,7 +6,7 @@
     owner: anxolerd
     group: anxolerd
     mode: "0644"
-  loop: "{{ tasks }}"
+  loop: "{{ cron_tasks }}"
   loop_control:
     label: "{{ task.slug}} ({{ task.description }})"
     loop_var: "task"
@@ -19,7 +19,7 @@
     owner: anxolerd
     group: anxolerd
     mode: "0644"
-  loop: "{{ tasks }}"
+  loop: "{{ cron_tasks }}"
   loop_control:
     label: "{{ task.slug}} ({{ task.description }})"
     loop_var: "task"
