@@ -1,4 +1,4 @@
----  # vim:se ft=ansible:
+---  # vim:set ft=yaml.ansible:
 - name: Ensure vim autoload directory exists
   file:
     path: ~/.vim/autoload
@@ -9,7 +9,7 @@
 
 - name: Get VimPlug into userspace  # noqa 401
   get_url:
-    dest: "{{ vimplug.bundle_path }}"
+    dest: "{{ vim.plug.bundle_path }}"
     url: https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 - name: Generate a Vim config from the template
@@ -17,8 +17,8 @@
     src: vimrc.j2
     dest: ~/.vimrc
 
-- name: Wipe all unused plugins from NeoVim  # noqa 301  # FIXME
+- name: Wipe all unused plugins from Vim  # noqa 301  # FIXME
   command: vim +PlugClean! +qall
 
-- name: Install and upgrade plugins in NeoVim  # noqa 301  # FIXME
+- name: Install and upgrade plugins in Vim  # noqa 301  # FIXME
   command: vim +PlugInstall! +PlugUpdate! +qall
