@@ -37,7 +37,6 @@ package_use_flags:
   dev-qt/qtmultimedia: ["widgets"]
   dev-qt/qtquickcontrols2: ["widgets"]
   gnome-base/gvfs: ["fuse", "mtp"]
-  media-gfx/blender: ["cuda", "-oidn"]
   media-gfx/imagemagick: ["perl"]
   media-libs/freetype: ["brotli", "harfbuzz"]
   media-libs/gd: ["fontconfig"]
@@ -50,7 +49,6 @@ package_use_flags:
   media-libs/opensubdiv: ["cuda"]
   media-sound/pulseaudio: ["-daemon"]
   media-video/ffmpeg: ["cuda", "libv4l", "nvenc", "opencl", "opus", "theora", "v4l", "vpx"]
-  media-video/obs-studio: ["decklink", "fdk", "lua", "nvenc", "pipewire", "speex", "v4l"]
   media-video/pipewire: ["echo-channel", "pipewire-alsa", "sound-server", "system-service"]
   net-dns/dnsmasq: ["script"]
   net-firewall/iptables: ["nftables"]
@@ -120,7 +118,6 @@ ebuilds:
   - media-fonts/powerline-symbols
   - media-libs/vulkan-layers
   - media-libs/vulkan-loader
-  - media-gfx/blender
   - media-gfx/darktable
   - media-gfx/gimp
   - media-gfx/graphviz
@@ -129,7 +126,6 @@ ebuilds:
   - media-sound/spotify
   - media-video/celluloid
   - media-video/mpv
-  - media-video/obs-studio
   - media-video/pipewire
   - media-video/shotcut
   - media-video/v4l2loopback
