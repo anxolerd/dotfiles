@@ -37,6 +37,7 @@ package_use_flags:
   dev-qt/qtmultimedia: ["widgets"]
   dev-qt/qtquickcontrols2: ["widgets"]
   gnome-base/gvfs: ["fuse", "mtp"]
+  media-gfx/gthumb: ["-cdr"]
   media-gfx/imagemagick: ["perl"]
   media-libs/freetype: ["brotli", "harfbuzz"]
   media-libs/gd: ["fontconfig"]
