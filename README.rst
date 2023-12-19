@@ -32,7 +32,10 @@ How To Run
    $ ansible-playbook -DvK rebuild-world.yml
 
    $ # rebuild kernel
-   # genkernel --luks --lvm --no-zfs --menuconfig --kernel-config=/proc/config.gz all --bootloader=grub2
+   # genkernel --menuconfig --kernel-config=/proc/config.gz all \
+           --luks --lvm --no-zfs \
+           --bootloader=grub2 \
+           --plymouth --plymouth-theme=catppuccin-frappe
 
 
 Credits
