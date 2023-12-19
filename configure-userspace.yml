@@ -3,4 +3,6 @@
   hosts: laptop
   tasks:
     - import_role:
+        name: catppuccin
+    - import_role:
         name: userspace

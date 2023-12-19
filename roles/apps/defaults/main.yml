@@ -275,7 +275,7 @@ portage_overlays:
     masters: gentoo
 
 look_and_feel:
-  theme: Adapta-Nokto-Eta
+  theme: Catppuccin-{{ catppuccin.theme | capitalize }}-Standard-Pink-Dark
   icon_theme: gnome
   cursor_theme: Adwaita
 

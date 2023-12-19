@@ -1,7 +1,4 @@
 ---
-catppuccin:
-  theme: mocha
-
 alacritty:
   font_family: Iosevka Nerd Font
 git_options:

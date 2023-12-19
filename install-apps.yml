@@ -5,6 +5,8 @@
   become: true
   tasks:
     - import_role:
+        name: catppuccin
+    - import_role:
         name: services-ctl
     - import_role:
         name: apps
