@@ -1,0 +1,6 @@
+{{ ansible_managed | comment }}
+{% if masked_packages is defined %}
+{% for package in masked_packages %}
+{{ package.atom }}  # {{ package.description }}
+{% endfor %}
+{% endif %}

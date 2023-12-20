@@ -1,4 +1,4 @@
----  # vim: se ft=ansible:
+---  # vim: se ft=yaml.ansible:
 - name: Ensure portage dirs structure exists
   file:
     dest: /etc/portage/package.{{ setting_type }}
@@ -74,6 +74,14 @@
         | join('::')
       }}
     loop_var: overlay_package_entry
+
+- name: Block packages
+  ansible.builtin.template:
+    src: etc/portage/package.mask.j2
+    dest: /etc/portage/package.mask/block
+    owner: root
+    group: root
+    mode: "0644"
 
 - name: Set up global use flags
   lineinfile:

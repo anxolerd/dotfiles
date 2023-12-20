@@ -149,6 +149,7 @@ ebuilds:
   - net-misc/sshpass
   - net-misc/teamviewer
   - net-misc/whois
+  - net-misc/ssh-askpass-fullscreen
   - net-p2p/transmission
   - net-wireless/blueman
   - sci-libs/openblas
@@ -277,6 +278,13 @@ look_and_feel:
   theme: Catppuccin-{{ catppuccin.theme | capitalize }}-Standard-Pink-Dark
   icon_theme: gnome
   cursor_theme: Adwaita
+masked_packages:
+  - atom: '=media-sound/mpg123-1.32.3-r1::gentoo'
+    description: Fix conflict with mpg123 and libmpg123
+  - atom: '=media-libs/libmpg-1.32.3-r1::gentoo'
+    description: Fix conflict with mpg123 and libmpg123
+  - atom: '=media-libs/libsndfile-1.2.2-r1::gentoo'
+    description: Fix conflict with mpg123 and libmpg123
 
 python_targets: ["3.11"]
 python_single_target: ""

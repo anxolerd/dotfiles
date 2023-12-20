@@ -1,3 +1,4 @@
+{{ ansible_managed | comment }}
 [Settings]
 gtk-theme-name = {{ look_and_feel.theme | default("Adwaita") }}
 gtk-icon-theme-name = {{ look_and_feel.icon_theme | default("gnome") }}

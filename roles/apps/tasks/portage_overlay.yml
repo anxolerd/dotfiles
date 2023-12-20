@@ -6,6 +6,7 @@
       */*::{{ overlay.name }}
     path: >-
       /etc/portage/package.mask/third-party-overlay--{{ overlay.name }}
+    mode: "0644"
     state: present
 
 - name: Create portage repos config directory

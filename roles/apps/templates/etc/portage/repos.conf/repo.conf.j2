@@ -1,3 +1,4 @@
+{{ ansible_managed | comment }}
 [{{ overlay.name }}]
 location = /var/repo/{{ overlay.name }}-overlay
 sync-type = {{ overlay.sync_type }}
