@@ -3,13 +3,13 @@ abi_x86_targets:
   - "32"
   - "64"
 accept_licenses:
-  app-admin/terraform: JSON
+  app-arch/unrar: unRAR
+  app-admin/terraform: JSON BUSL-1.1
   dev-util/android-studio: android
   dev-util/nvidia-cuda-toolkit: NVIDIA-CUDA
   media-fonts/font-bh-ttf: bh-luxi
   media-fonts/font-bh-type1: bh-luxi
   media-libs/faac: MPEG-4
-  media-sound/spotify: Spotify
   net-im/slack: all-rights-reserved
   net-misc/anydesk: AnyDesk-TOS
   net-misc/teamviewer: TeamViewer
@@ -76,10 +76,12 @@ ebuilds:
   - app-admin/apache-tools
   - app-admin/awscli
   - app-admin/helm
+  - app-admin/pass
   - app-admin/terraform
   - app-admin/testdisk
   - app-admin/vault
   - app-arch/file-roller
+  - app-arch/unrar
   - app-benchmarks/wrk
   - app-containers/distrobox
   - app-containers/docker
@@ -124,7 +126,6 @@ ebuilds:
   - media-gfx/graphviz
   - media-gfx/gthumb
   - media-sound/alsa-utils
-  - media-sound/spotify
   - media-video/celluloid
   - media-video/mpv
   - media-video/pipewire
@@ -191,6 +192,7 @@ ebuilds:
   - x11-wm/i3-gaps
 
 ebuilds_from_overlays:
+  app-arch/7zip: guru
   app-containers/nvidia-container-toolkit: guru
   app-shells/zoxide: guru
   dev-util/lets: anxolerd
