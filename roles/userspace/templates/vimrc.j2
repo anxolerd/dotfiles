@@ -73,6 +73,10 @@ let g:coc_global_extensions = [
 {% endfor -%}
   \ ]
 
+let g:coc_filetype_map = {
+  \ 'yaml.ansible': 'ansible',
+  \ }
+
 " Some servers have issues with backup files
 set nobackup
 set nowritebackup
@@ -228,6 +232,6 @@ augroup END
 " Toggle IDE mode in VIM
 nmap <C-i> :GitGutterEnable<cr>:NERDTreeFind<cr>
 
-
 " ========== Theme configuration ========== "
 let g:airline_theme = 'catppuccin_{{ catppuccin.theme }}'
+colorscheme catppuccin_{{ catppuccin.theme }}
