@@ -100,6 +100,7 @@ ebuilds:
   - app-misc/screen
   - app-office/libreoffice
   - app-shells/fzf
+  - dev-debug/strace
   - dev-java/openjdk-bin:8
   - dev-java/openjdk-bin:17
   - dev-lang/go
@@ -108,7 +109,6 @@ ebuilds:
   - dev-util/packer
   - dev-util/pkgcheck
   - dev-util/pkgdev
-  - dev-util/strace
   - dev-util/vulkan-headers
   - dev-util/vulkan-tools
   - dev-vcs/bfg
