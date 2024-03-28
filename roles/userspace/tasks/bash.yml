@@ -24,7 +24,7 @@
   loop_control:
     label: "{{ item.label }}"
 
-- name: Use exa instead of ls
+- name: Use eza instead of ls
   lineinfile:
     line: "alias {{ item.alias }}='{{ item.command }}'"
     dest: ~/.bashrc
@@ -34,13 +34,13 @@
     mode: "0640"
   with_items:
     - alias: ls
-      command: "exa --group-directories-first"
+      command: "eza --group-directories-first"
     - alias: ll
-      command: "exa --group-directories-first -alF"
+      command: "eza --group-directories-first -alF"
     - alias: la
-      command: "exa --group-directories-first -a"
+      command: "eza --group-directories-first -a"
     - alias: tree
-      command: "exa --tree"
+      command: "eza --tree"
 
 - name: Configure bash_history options
   lineinfile:

@@ -155,7 +155,7 @@ ebuilds:
   - net-wireless/blueman
   - sci-libs/openblas
   - sys-apps/bat
-  - sys-apps/exa
+  - sys-apps/eza
   - sys-apps/ripgrep
   - sys-apps/smartmontools
   - sys-apps/xdg-desktop-portal-gtk
