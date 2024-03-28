@@ -16,5 +16,5 @@
 
 - name: Generate an Alacritty config from the template
   template:
-    src: alacritty.yml.j2
-    dest: ~/.config/alacritty/alacritty.yml
+    src: alacritty.toml.j2
+    dest: ~/.config/alacritty/alacritty.toml
