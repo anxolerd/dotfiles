@@ -153,6 +153,9 @@ ebuilds:
   - net-misc/teamviewer
   - net-misc/whois
   - net-misc/ssh-askpass-fullscreen
+  - net-print/cups
+  - net-print/cups-browsed
+  - net-print/cups-meta
   - net-p2p/transmission
   - net-wireless/blueman
   - sci-libs/openblas
