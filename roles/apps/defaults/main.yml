@@ -64,6 +64,7 @@ package_use_flags:
   sys-apps/hwloc: ["cuda"]
   "sys-boot/grub:2": ["device-mapper"]
   sys-devel/gcc: ["graphite"]
+  sys-kernel/installkernel: ["dracut", "grub"]
   sys-kernel/linux-firmware: ["savedconfig"]
   sys-libs/zlib: ["minizip"]
   virtual/imagemagick-tools: ["perl"]
