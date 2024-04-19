@@ -101,6 +101,7 @@ ebuilds:
   - app-misc/screen
   - app-office/libreoffice
   - app-shells/fzf
+  - app-shells/zoxide
   - dev-debug/strace
   - dev-java/openjdk-bin:8
   - dev-java/openjdk-bin:17
@@ -160,6 +161,7 @@ ebuilds:
   - sys-apps/ripgrep
   - sys-apps/smartmontools
   - sys-apps/xdg-desktop-portal-gtk
+  - sys-block/dust
   - sys-boot/plymouth
   - sys-fs/extundelete
   - sys-fs/google-drive-ocamlfuse
@@ -190,17 +192,15 @@ ebuilds:
   - x11-misc/xsel
   - x11-terms/alacritty
   - x11-themes/adapta-gtk-theme
-  - x11-wm/i3-gaps
+  - x11-wm/i3
 
 ebuilds_from_overlays:
   app-arch/7zip: guru
   app-containers/nvidia-container-toolkit: guru
-  app-shells/zoxide: guru
   dev-util/lets: anxolerd
   media-fonts/iosevka-nerdfont: guru
   media-fonts/overpass: guru
   media-fonts/robotomono-nerdfont: guru
-  sys-block/dust: guru
   sys-libs/libnvidia-container: guru
   x11-misc/i3blocks-contrib: open-craft-guild
 
