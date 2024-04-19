@@ -19,6 +19,7 @@ Plug 'preservim/nerdtree',
                                                                 " cool tree view
 Plug 'rust-lang/rust.vim'                                       " rust syntax support
 Plug 'ryanoasis/vim-devicons'                                   " cool icons
+Plug 'sheerun/vim-polyglot'                                     " languages support
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight',
      \ {'on':['NERDTree','NERDTreeToggle','NERDTreeFind','NERDTreeFocus']}
                                                                 " Icons for
@@ -65,6 +66,9 @@ set scrolljump=5                                                " scroll 5 lines
 set lazyredraw
 set synmaxcol=180                                               " check and highlight syntax max to 180 column
 set re=1                                                        " use old but fast regex engine
+
+" Plugins requirements
+set termguicolors                                               " for catpuccin theme to work correctly
 
 " ========== CoC Configuration ========== "
 let g:coc_global_extensions = [
