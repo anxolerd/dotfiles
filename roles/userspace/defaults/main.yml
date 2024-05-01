@@ -44,9 +44,12 @@ vim:
     extensions:
       - '@yaegassy/coc-ansible'
       - 'coc-clangd'
+      - 'coc-conventional'
       - 'coc-docker'
+      - 'coc-go'
       - 'coc-java'
       - 'coc-json'
+      - 'coc-pyright'
       - 'coc-sh'
       - 'coc-yaml'
 
