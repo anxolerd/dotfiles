@@ -280,7 +280,7 @@
   block:
     - name: Download catppuccin theme for GTK3
       ansible.builtin.unarchive:
-        src: https://github.com/catppuccin/gtk/releases/download/{{ catppuccin.gtk_theme_version }}/Catppuccin-{{ catppuccin.theme | capitalize }}-Standard-Pink-Dark.zip
+        src: https://github.com/catppuccin/gtk/releases/download/{{ catppuccin.gtk_theme_version }}/{{ look_and_feel.theme }}.zip
         remote_src: true
         dest: /usr/share/themes/
 

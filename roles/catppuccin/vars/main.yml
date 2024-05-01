@@ -1,4 +1,5 @@
 ---  # vim: set ft=yaml.ansible
 catppuccin:
   theme: mocha
-  gtk_theme_version: "v0.7.1"
+  gtk_theme_version: "v0.7.4"
+  accent: pink

@@ -281,7 +281,7 @@ portage_overlays:
     masters: gentoo
 
 look_and_feel:
-  theme: Catppuccin-{{ catppuccin.theme | capitalize }}-Standard-Pink-Dark
+  theme: Catppuccin-{{ catppuccin.theme | capitalize }}-Standard-{{ catppuccin.accent | capitalize }}-Dark
   icon_theme: gnome
   cursor_theme: Adwaita
 masked_packages:
