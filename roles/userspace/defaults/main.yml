@@ -20,7 +20,7 @@ i3blocks:
     - 'battery'
     - 'calendar'
     - 'time'
-i3gaps:
+i3:
   gap: 16
   modkey: Mod4
   font: Overpass Regular 10

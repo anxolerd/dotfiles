@@ -39,7 +39,7 @@
 
     - name: Create i3 config file
       template:
-        src: i3gaps.config.j2
+        src: i3.config.j2
         dest: ~/.config/i3/config
         owner: anxolerd
         group: anxolerd
