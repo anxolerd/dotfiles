@@ -15,9 +15,11 @@
 - name: Ensure X is configured
   import_tasks: X.yml
 
-- name: Ensure i3-gaps is configured
-  import_tasks: i3-gaps.yml
-  when: "'i3-gaps' in ansible_facts.packages"
+- name: Ensure i3 is configured
+  import_tasks: i3.yml
+  when: >-
+    'i3-gaps' in ansible_facts.packages
+    or 'i3' in ansible_facts.packages
 
 - name: Ensure that Alacritty is configured
   import_tasks: alacritty.yml
