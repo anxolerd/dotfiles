@@ -29,6 +29,14 @@
         group: anxolerd
         mode: "0755"
 
+    - name: Download theme file
+      ansible.builtin.get_url:
+        url: "https://raw.githubusercontent.com/catppuccin/i3/main/themes/catppuccin-{{ catppuccin.theme }}"
+        dest: "~/.config/i3/catppuccin-{{ catppuccin.theme }}"
+        owner: anxolerd
+        group: anxolerd
+        mode: 0640
+
     - name: Create i3 config file
       template:
         src: i3gaps.config.j2
