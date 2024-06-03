@@ -62,7 +62,7 @@
 - name: Use custom scripts in ~/.local/bin
   lineinfile:
     line: >-
-      [ -d "${HOME}/.local/bin" ] && export PATH="${PATH}:${HOME}/.local/bin"
+      [ -d "${HOME}/.local/bin" ] && export PATH="${HOME}/.local/bin:${PATH}"
     dest: ~/.bashrc
     create: true
     owner: anxolerd
