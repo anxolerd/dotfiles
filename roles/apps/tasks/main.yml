@@ -184,6 +184,14 @@
     state: present
   when: ruby_targets | length > 0
 
+- name: Set up Ruby targets
+  lineinfile:
+    create: false
+    path: /etc/portage/make.conf
+    regexp: ^RUBY_TARGETS="[^"]*"$
+    state: absent
+  when: ruby_targets | length == 0
+
 - name: Set up graphics card targets
   lineinfile:
     create: false
