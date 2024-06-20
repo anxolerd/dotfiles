@@ -292,9 +292,9 @@ masked_packages:
   - atom: '=media-libs/libsndfile-1.2.2-r1::gentoo'
     description: Fix conflict with mpg123 and libmpg123
 
-python_targets: ["3.11"]
+python_targets: []
 python_single_target: ""
-ruby_targets: ["3.1"]
+ruby_targets: []
 unmask_ebuilds: {}
 video_card_targets:
   - intel
