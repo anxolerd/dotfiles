@@ -23,3 +23,9 @@
   loop_control:
     label: "{{ task.slug }}.service"
     loop_var: task
+
+- name: Rebuild bat cache
+  listen: ensure-bat-cache-fresh
+  ansible.builtin.command:
+    cmd: bat cache --build
+  changed_when: true

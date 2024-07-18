@@ -25,6 +25,10 @@
   import_tasks: alacritty.yml
   when: "'alacritty' in ansible_facts.packages"
 
+- name: Ensure that Bat is configured
+  import_tasks: bat.yml
+  when: "'bat' in ansible_facts.packages"
+
 - name: Ensure that Vim is configured
   import_tasks: vim.yml
   when: "'vim' in ansible_facts.packages"
