@@ -6,7 +6,7 @@
     owner: root
     group: root
     state: directory
-    recurse: true
+    recurse: false
   loop:
     - accept_keywords
     - license
@@ -27,6 +27,7 @@
           license_entry.package | replace('/', '--')
       }}
     state: present
+    mode: "0644"
   loop: >-
     {{
         accept_licenses |
@@ -61,6 +62,7 @@
         overlay_package_entry.overlay
       }}
     state: present
+    mode: "0644"
   loop: >-
     {{
         ebuilds_from_overlays
@@ -100,6 +102,7 @@
     line: "{{ flags_entry.package }} {{ flags_entry.use_flags | sort | join(' ') }}"
     state: present
     path: /etc/portage/package.use/{{ flags_entry.package.split('/', 1)[0] }}
+    mode: 0644
   loop: >-
     {{
       package_use_flags |

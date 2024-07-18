@@ -4,15 +4,14 @@ abi_x86_targets:
   - "64"
 accept_licenses:
   app-arch/unrar: unRAR
-  app-admin/terraform: JSON BUSL-1.1
+  app-admin/terraform: BUSL-1.1
   dev-util/android-studio: android
   dev-util/nvidia-cuda-toolkit: NVIDIA-CUDA
+  dev-util/packer: BUSL-1.1
   media-fonts/font-bh-ttf: bh-luxi
   media-fonts/font-bh-type1: bh-luxi
   media-libs/faac: MPEG-4
   net-im/slack: all-rights-reserved
-  net-misc/anydesk: AnyDesk-TOS
-  net-misc/teamviewer: TeamViewer
   sys-kernel/linux-firmware: linux-fw-redistributable no-source-code
   x11-drivers/nvidia-drivers: NVIDIA-r2
 
@@ -22,6 +21,7 @@ package_use_flags:
   app-editors/vim: ["lua", "python", "terminal"]
   dev-cpp/eigen: ["cuda"]
   app-crypt/gpgme: ["python"]
+  app-dicts/myspell: ["en-US"]
   dev-java/openjdk-bin: ["gentoo-vm"]
   "dev-java/openjdk-bin:11": ["gentoo-vm"]
   "dev-java/openjdk-bin:17": ["gentoo-vm"]
@@ -87,7 +87,6 @@ ebuilds:
   - app-containers/distrobox
   - app-containers/docker
   - app-containers/docker-buildx
-  - app-containers/docker-compose
   - app-containers/k3d
   - app-containers/skopeo
   - app-crypt/yubikey-manager
@@ -107,7 +106,6 @@ ebuilds:
   - dev-java/openjdk-bin:17
   - dev-lang/go
   - dev-lang/rust
-  - dev-python/python-openstackclient
   - dev-util/packer
   - dev-util/pkgcheck
   - dev-util/pkgdev
@@ -151,7 +149,6 @@ ebuilds:
   - net-misc/putty
   - net-misc/remmina
   - net-misc/sshpass
-  - net-misc/teamviewer
   - net-misc/whois
   - net-misc/ssh-askpass-fullscreen
   - net-print/cups
