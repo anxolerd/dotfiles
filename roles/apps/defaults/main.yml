@@ -214,6 +214,7 @@ essential_ebuilds:
   - app-admin/sudo  # privilege escalation
   - app-admin/sysklogd  # loging daemon
   - app-eselect/eselect-repository  # layman replacement
+  - app-editors/nano  # text editor which is part of system profile
   - app-portage/eix  # fast portage tree search
   - app-portage/gentoolkit  # euse and co.
   - app-portage/portage-utils  # this one is required for qlist utility
@@ -227,6 +228,7 @@ essential_ebuilds:
   - sys-fs/dosfstools  # mkfs.fat: https://wiki.gentoo.org/wiki/EFI_System_Partition
   - sys-fs/lvm2  # LVM management
   - sys-fs/xfsdump  # https://yallalabs.com/linux/how-to-reduce-shrink-the-size-of-a-lvm-partition-formatted-with-xfs-filesystem/
+  - sys-kernel/genkernel # Kernel building scripts
   - sys-process/htop  # processes overview
   - sys-process/lsof  # htop dep
   - www-client/links  # needed to browse web docs from terminal
