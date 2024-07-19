@@ -98,7 +98,7 @@ ebuilds:
   - app-misc/fastfetch
   - app-misc/fdupes
   - app-misc/jq
-  - app-misc/screen
+  - app-misc/tmux
   - app-office/libreoffice-bin
   - app-shells/fzf
   - app-shells/zoxide
