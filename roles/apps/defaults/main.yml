@@ -36,6 +36,7 @@ package_use_flags:
   dev-qt/qtmultimedia: ["widgets"]
   dev-qt/qtquickcontrols2: ["widgets"]
   gnome-base/gvfs: ["fuse", "mtp"]
+  media-fonts/nerdfonts: ["iosevka", "iosevkaterm", "iosevkatermslab", "robotomono"]
   media-gfx/gthumb: ["-cdr"]
   media-gfx/imagemagick: ["perl"]
   media-libs/freetype: ["brotli", "harfbuzz"]
@@ -199,9 +200,8 @@ ebuilds_from_overlays:
   app-arch/7zip: guru
   app-containers/nvidia-container-toolkit: guru
   dev-util/lets: anxolerd
-  media-fonts/iosevka-nerdfont: guru
+  media-fonts/nerdfonts: guru
   media-fonts/overpass: guru
-  media-fonts/robotomono-nerdfont: guru
   sys-libs/libnvidia-container: guru
   x11-misc/i3blocks-contrib: open-craft-guild
 
