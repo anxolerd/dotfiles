@@ -23,8 +23,7 @@ package_use_flags:
   app-crypt/gpgme: ["python"]
   app-dicts/myspell: ["en-US"]
   dev-java/openjdk-bin: ["gentoo-vm"]
-  "dev-java/openjdk-bin:11": ["gentoo-vm"]
-  "dev-java/openjdk-bin:17": ["gentoo-vm"]
+  "dev-java/openjdk-bin:21": ["gentoo-vm"]
   dev-lang/mono: ["minimal"]
   dev-lang/rust: ["clippy", "doc", "rls", "rustfmt", "rust-src"]
   dev-lang/rust-bin: ["rustfmt"]
@@ -103,8 +102,9 @@ ebuilds:
   - app-shells/fzf
   - app-shells/zoxide
   - dev-debug/strace
+  - dev-java/icedtea-web
   - dev-java/openjdk-bin:8
-  - dev-java/openjdk-bin:17
+  - dev-java/openjdk-bin:21
   - dev-lang/go
   - dev-lang/rust
   - dev-util/packer
