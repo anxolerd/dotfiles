@@ -1,4 +1,4 @@
----   # vim: set ft=ansible :
+---   # vim: set ft=yaml.ansible :
 - name: Add users to groups
   user:
     name: '{{ membership.user }}'

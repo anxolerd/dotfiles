@@ -1,4 +1,4 @@
----
+---  # vim: se ft=yaml.ansible :
 - name: Do gentoo world rebuild
   hosts: laptop
   become: true

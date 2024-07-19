@@ -1,4 +1,4 @@
----  # vim: set ft=ansible :
+---  # vim: set ft=yaml.ansible :
 - name: Ensure gnome keyring is running
   ansible.builtin.lineinfile:
     create: true

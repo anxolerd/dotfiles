@@ -1,4 +1,4 @@
----  # vim: set ft=ansible :
+---  # vim: set ft=yaml.ansible :
 - name: Set fact linux_platform
   set_fact:
     linux_platform: >-

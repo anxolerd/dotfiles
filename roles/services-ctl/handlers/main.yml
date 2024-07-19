@@ -1,4 +1,4 @@
----  # vim: set ft=ansible :
+---  # vim: set ft=yaml.ansible :
 - name: Enable and start services
   listen: ensure-services-started
   service:

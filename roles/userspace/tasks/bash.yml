@@ -1,4 +1,4 @@
----  # vim: set ft=ansible :
+---  # vim: set ft=yaml.ansible :
 - name: Ensure zoxide is added to the shell
   lineinfile:
     line: 'eval "$(zoxide init bash)"'

@@ -1,4 +1,4 @@
----  # vim: set ft=ansible :
+---  # vim: set ft=yaml.ansible :
 - name: Mask third-party overlay
   lineinfile:
     create: true
