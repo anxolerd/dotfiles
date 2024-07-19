@@ -19,7 +19,7 @@
 - name: Download catppuccin theme
   ansible.builtin.get_url:
     url: "https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20{{ catppuccin.theme | capitalize }}.tmTheme"
-    dest: "{{ bat_config_dir_r.stdout_lines[0] }}/themes"
+    dest: "{{ bat_config_dir_r.stdout_lines[0] }}/themes/Catppuccin {{ catppuccin.theme | capitalize }}.tmTheme"
     owner: anxolerd
     group: anxolerd
     mode: "0640"
