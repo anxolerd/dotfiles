@@ -1,6 +1,6 @@
 ---
 alacritty:
-  font_family: Iosevka Nerd Font
+  font_family: IosevkaTermSlab Nerd Font
 git_options:
   alias.ignore: >-
     !gi() {
