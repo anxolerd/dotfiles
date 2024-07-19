@@ -99,7 +99,7 @@ ebuilds:
   - app-misc/fdupes
   - app-misc/jq
   - app-misc/screen
-  - app-office/libreoffice
+  - app-office/libreoffice-bin
   - app-shells/fzf
   - app-shells/zoxide
   - dev-debug/strace
