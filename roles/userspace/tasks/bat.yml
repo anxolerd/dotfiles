@@ -1,0 +1,41 @@
+---  # vim: se ft=yaml.ansible:
+- name: Get bat config directory
+  ansible.builtin.command:
+    cmd: bat --config-dir
+  changed_when: false
+  register: bat_config_dir_r
+
+- name: Ensure config directories exist
+  ansible.builtin.file:
+    path: "{{ item }}"
+    owner: anxolerd
+    group: anxolerd
+    mode: "0755"
+    state: directory
+  loop:
+    - "{{ bat_config_dir_r.stdout_lines[0] }}"
+    - "{{ bat_config_dir_r.stdout_lines[0] }}/themes"
+
+- name: Download catppuccin theme
+  ansible.builtin.get_url:
+    url: "https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20{{ catppuccin.theme | capitalize }}.tmTheme"
+    dest: "{{ bat_config_dir_r.stdout_lines[0] }}/themes"
+    owner: anxolerd
+    group: anxolerd
+    mode: "0640"
+  notify: ensure-bat-cache-fresh
+
+- name: Configure bat theme in config
+  ansible.builtin.lineinfile:
+    path: "{{ bat_config_dir_r.stdout_lines[0] }}/config"
+    mode: "0640"
+    regexp: '^--theme='
+    create: true
+    line: '--theme="Catppuccin {{ catppuccin.theme | capitalize }}"'
+
+- name: Do not show line numbers by default
+  ansible.builtin.lineinfile:
+    path: "{{ bat_config_dir_r.stdout_lines[0] }}/config"
+    mode: "0640"
+    regexp: '^--style='
+    line: '--style=plain,header,rule'
