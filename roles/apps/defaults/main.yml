@@ -72,6 +72,8 @@ package_use_flags:
   x11-libs/gtk+: ["wayland"]
   x11-libs/libdrm: ["libkms"]
   x11-libs/wxGTK: ["gstreamer"]
+  x11-themes/catppuccin-cursors: ["{{ catppuccin.theme }}"]
+  x11-themes/catppuccin-gtk: ["{{ catppuccin.theme }}"]
 
 ebuilds:
   - app-admin/apache-tools
@@ -200,7 +202,7 @@ ebuilds:
   - x11-misc/xdg-utils
   - x11-misc/xsel
   - x11-terms/alacritty
-  - x11-themes/adapta-gtk-theme
+  - x11-themes/tela-icon-theme
   - x11-wm/i3
 
 ebuilds_from_overlays:
@@ -211,6 +213,8 @@ ebuilds_from_overlays:
   media-fonts/overpass: guru
   sys-libs/libnvidia-container: guru
   x11-misc/i3blocks-contrib: open-craft-guild
+  x11-themes/catppuccin-cursors: guru
+  x11-themes/catppuccin-gtk: guru
 
 emerge_load_average: "{{ ansible_processor_cores }}"
 emerge_jobs_number: "{{ ansible_processor_vcpus }}"
@@ -288,9 +292,9 @@ portage_overlays:
     masters: gentoo
 
 look_and_feel:
-  theme: Catppuccin-{{ catppuccin.theme | capitalize }}-Standard-{{ catppuccin.accent | capitalize }}-Dark
-  icon_theme: gnome
-  cursor_theme: Adwaita
+  theme: catppuccin-{{ catppuccin.theme }}-{{ catppuccin.accent }}-standard+default
+  icon_theme: Tela-pink
+  cursor_theme: catppuccin-{{ catppuccin.theme }}-{{ catppuccin.accent }}-cursors
 masked_packages:
   - atom: '=media-sound/mpg123-1.32.3-r1::gentoo'
     description: Fix conflict with mpg123 and libmpg123
