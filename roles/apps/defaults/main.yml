@@ -4,6 +4,7 @@ abi_x86_targets:
   - "64"
 accept_licenses:
   app-arch/unrar: unRAR
+  app-arch/7zip: unRAR
   app-admin/terraform: BUSL-1.1
   dev-util/android-studio: android
   dev-util/nvidia-cuda-toolkit: NVIDIA-CUDA
@@ -16,6 +17,7 @@ accept_licenses:
   x11-drivers/nvidia-drivers: NVIDIA-r2
 
 package_use_flags:
+  app-arch/7zip: ["rar"]
   app-containers/docker: ["-cli"]
   app-editors/gvim: ["lua", "python"]
   app-editors/vim: ["lua", "python", "terminal"]
@@ -85,6 +87,7 @@ ebuilds:
   - app-admin/vault
   - app-arch/file-roller
   - app-arch/unrar
+  - app-arch/7zip
   - app-benchmarks/wrk
   - app-containers/distrobox
   - app-containers/docker
@@ -206,7 +209,6 @@ ebuilds:
   - x11-wm/i3
 
 ebuilds_from_overlays:
-  app-arch/7zip: guru
   app-containers/nvidia-container-toolkit: guru
   dev-util/lets: anxolerd
   media-fonts/nerdfonts: guru
