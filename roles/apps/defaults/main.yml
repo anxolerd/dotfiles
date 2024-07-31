@@ -137,6 +137,7 @@ ebuilds:
   - media-gfx/gthumb
   - media-gfx/imagemagick
   - media-sound/alsa-utils
+  - media-sound/easyeffects
   - media-video/celluloid
   - media-video/mpv
   - media-video/pipewire
@@ -196,6 +197,7 @@ ebuilds:
   - x11-misc/bumblebee
   - x11-misc/light-locker
   - x11-misc/pcmanfm
+  - x11-misc/picom  # compositor
   - x11-misc/primus
   - x11-misc/rofi
   - x11-misc/shutter
