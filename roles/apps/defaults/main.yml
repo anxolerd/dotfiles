@@ -212,6 +212,7 @@ ebuilds:
 
 ebuilds_from_overlays:
   app-containers/nvidia-container-toolkit: guru
+  app-shells/direnv: guru
   dev-util/lets: anxolerd
   media-fonts/nerdfonts: guru
   media-fonts/overpass: guru

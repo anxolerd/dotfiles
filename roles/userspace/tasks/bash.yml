@@ -1,15 +1,16 @@
 ---  # vim: set ft=yaml.ansible :
 - name: Ensure zoxide is added to the shell
-  lineinfile:
+  ansible.builtin.lineinfile:
     line: 'eval "$(zoxide init bash)"'
     dest: ~/.bashrc
     create: true
     owner: anxolerd
     group: anxolerd
     mode: "0640"
+  when: "'zoxide' in ansible_facts.packages"
 
 - name: Use fzf for completion and search
-  lineinfile:
+  ansible.builtin.lineinfile:
     line: "[ -f {{ item.file | quote }} ] && . {{ item.file }}"
     dest: ~/.bashrc
     create: true
@@ -23,9 +24,10 @@
       label: key bindings
   loop_control:
     label: "{{ item.label }}"
+  when: "'fzf' in ansible_facts.packages"
 
 - name: Use eza instead of ls
-  lineinfile:
+  ansible.builtin.lineinfile:
     line: "alias {{ item.alias }}='{{ item.command }}'"
     dest: ~/.bashrc
     create: true
@@ -41,9 +43,10 @@
       command: "eza --group-directories-first -a"
     - alias: tree
       command: "eza --tree"
+  when: "'eza' in ansible_facts.packages"
 
 - name: Configure bash_history options
-  lineinfile:
+  ansible.builtin.lineinfile:
     line: "export {{ option.name }}={{ option.value }}"
     dest: ~/.bashrc
     create: true
@@ -59,8 +62,19 @@
     loop_var: option
     label: "{{ option.name }}"
 
+- name: Hook direnv into shell
+  ansible.builtin.lineinfile:
+    line: 'eval "$(direnv hook bash)"'
+    dest: ~/.bashrc
+    state: present
+    create: true
+    owner: anxolerd
+    group: anxolerd
+    mode: "0640"
+  when: "'direnv' in ansible_facts.packages"
+
 - name: Use custom scripts in ~/.local/bin
-  lineinfile:
+  ansible.builtin.lineinfile:
     line: >-
       [ -d "${HOME}/.local/bin" ] && export PATH="${HOME}/.local/bin:${PATH}"
     dest: ~/.bashrc
