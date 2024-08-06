@@ -244,6 +244,7 @@ essential_ebuilds:
   - sys-fs/lvm2  # LVM management
   - sys-fs/xfsdump  # https://yallalabs.com/linux/how-to-reduce-shrink-the-size-of-a-lvm-partition-formatted-with-xfs-filesystem/
   - sys-kernel/genkernel # Kernel building scripts
+  - sys-kernel/gentoo-kernel-bin  # use binary kernel
   - sys-process/htop  # processes overview
   - sys-process/lsof  # htop dep
   - www-client/links  # needed to browse web docs from terminal
@@ -253,6 +254,7 @@ global_use_flags:
   - bash-completion
   - cups
   - dbus
+  - dist-kernel
   - gnome-keyring
   - networkmanager
   - pulseaudio
