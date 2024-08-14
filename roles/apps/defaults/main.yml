@@ -13,6 +13,7 @@ accept_licenses:
   media-fonts/font-bh-type1: bh-luxi
   media-libs/faac: MPEG-4
   net-im/slack: all-rights-reserved
+  net-vpn/forticlient: Fortinet
   sys-kernel/linux-firmware: linux-fw-redistributable no-source-code
   x11-drivers/nvidia-drivers: NVIDIA-r2
 
@@ -60,6 +61,7 @@ package_use_flags:
   net-misc/networkmanager: ["bluetooth", "concheck", "connection-sharing", "dhcpd", "iptables", "iwd", "ncurses", "policykit", "wifi"]
   net-misc/remmina: ["gvnc", "rdp", "spice", "ssh", "vnc", "zeroconf"]
   net-misc/spice-gtk: ["usbredir"]
+  net-vpn/forticlient: ["appindicator"]
   net-wireless/wpa_supplicant: ["p2p"]
   sci-libs/openblas: ["openmp"]
   sys-apps/xdg-desktop-portal: ["screencast"]
@@ -216,6 +218,7 @@ ebuilds_from_overlays:
   dev-util/lets: anxolerd
   media-fonts/nerdfonts: guru
   media-fonts/overpass: guru
+  net-vpn/forticlient: open-craft-guild
   sys-libs/libnvidia-container: guru
   x11-misc/i3blocks-contrib: open-craft-guild
   x11-themes/catppuccin-cursors: guru
