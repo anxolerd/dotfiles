@@ -95,6 +95,7 @@ ebuilds:
   - app-containers/docker
   - app-containers/docker-buildx
   - app-containers/k3d
+  - app-containers/podman
   - app-containers/skopeo
   - app-crypt/yubikey-manager
   - app-crypt/yubikey-manager-qt
