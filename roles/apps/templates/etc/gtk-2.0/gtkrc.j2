@@ -1,5 +1,5 @@
 {{ ansible_managed | comment }}
 gtk-fallback-icon-theme = "gnome"
-gtk-theme-name = {{ look_and_feel.theme | default("Adwaita") }}
-gtk-icon-theme-name = {{ look_and_feel.icon_theme | default("gnome") }}
-gtk-cursor-theme-name = {{ look_and_feel.cursor_theme | default("Adwaita") }}
+gtk-theme-name = "{{ look_and_feel.theme | default("Adwaita") }}"
+gtk-icon-theme-name = "{{ look_and_feel.icon_theme | default("gnome") }}"
+gtk-cursor-theme-name = "{{ look_and_feel.cursor_theme | default("Adwaita") }}"
