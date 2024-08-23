@@ -13,12 +13,21 @@ font pango:{{ i3.font | default('monospace 8') }}
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 #font pango:DejaVu Sans Mono 8
 
+{% if 'nm-applet' in ansible_facts.packages %}
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
+{% endif %}
 
+{% if 'picom' in ansible_facts.packages %}
 # Gtk cannot work properly without compositor
 exec --no-startup-id picom -b
+{% endif %}
+
+{% if 'forticlient' in ansible_facts.packages %}
+# Fortigate
+exec --no-startup-id /opt/forticlient/fortitraylauncher
+{% endif %}
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3blocks_vol pkill -RTMIN+1 i3blocks
