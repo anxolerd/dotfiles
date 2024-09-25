@@ -19,7 +19,6 @@ accept_licenses:
 
 package_use_flags:
   app-arch/7zip: ["rar"]
-  app-containers/docker: ["-cli"]
   app-editors/gvim: ["lua", "python"]
   app-editors/vim: ["lua", "python", "terminal"]
   dev-cpp/eigen: ["cuda"]
@@ -58,6 +57,7 @@ package_use_flags:
   net-dns/dnsmasq: ["script"]
   net-firewall/iptables: ["nftables"]
   net-libs/gnutls: ["pkcs11", "tools"]
+  net-libs/nodejs: ["npm"]
   net-libs/webkit-gtk: ["-gstreamer"]
   net-misc/networkmanager: ["bluetooth", "concheck", "connection-sharing", "dhcpd", "iptables", "iwd", "ncurses", "policykit", "wifi"]
   net-misc/remmina: ["gvnc", "rdp", "spice", "ssh", "vnc", "zeroconf"]
@@ -88,15 +88,11 @@ ebuilds:
   - app-admin/helm
   - app-admin/pass
   - app-admin/terraform
-  - app-admin/testdisk
-  - app-admin/vault
   - app-arch/file-roller
   - app-arch/unrar
   - app-arch/7zip
   - app-benchmarks/wrk
   - app-containers/distrobox
-  - app-containers/docker
-  - app-containers/docker-buildx
   - app-containers/k3d
   - app-containers/podman
   - app-containers/skopeo
@@ -104,7 +100,6 @@ ebuilds:
   - app-crypt/yubikey-manager-qt
   - app-editors/vim
   - app-emulation/virt-manager
-  - app-forensics/foremost
   - app-misc/asciinema
   - app-misc/fastfetch
   - app-misc/fdupes
@@ -124,8 +119,6 @@ ebuilds:
   - dev-util/pkgcheck
   - dev-util/pkgdev
   - dev-util/shellcheck-bin
-  - dev-util/vulkan-headers
-  - dev-util/vulkan-tools
   - dev-vcs/bfg
   - dev-vcs/git-crypt
   - dev-vcs/subversion
@@ -135,8 +128,6 @@ ebuilds:
   - media-fonts/iosevka
   - media-fonts/roboto
   - media-fonts/powerline-symbols
-  - media-libs/vulkan-layers
-  - media-libs/vulkan-loader
   - media-gfx/darktable
   - media-gfx/gimp
   - media-gfx/graphviz
@@ -148,7 +139,6 @@ ebuilds:
   - media-video/mpv
   - media-video/pipewire
   - media-video/shotcut
-  - media-video/v4l2loopback
   - net-analyzer/mtr
   - net-analyzer/nmap
   - net-analyzer/openbsd-netcat
