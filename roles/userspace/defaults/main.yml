@@ -32,6 +32,12 @@ krew:
     - lineage
     - oidc-login
 ssh_host_configs:
+  - 'wr':
+      User: anxolerd
+      Hostname: wr.local
+  - 'africatwin':
+      User: anxolerd
+      Hostname: africatwin.local
   - '*':
       SetEnv: TERM=xterm-256color
       User: akovalchuk

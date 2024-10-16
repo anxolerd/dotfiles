@@ -6,6 +6,7 @@
     mode: u=rwx,g=,o=
     owner: anxolerd
     state: directory
+
 - name: Generate SSH config from template
   template:
     dest: ~/.ssh/config
