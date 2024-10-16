@@ -25,9 +25,10 @@ i3:
   modkey: Mod4
   font: Overpass Regular 10
 krew:
-  version: v0.4.2
+  version: v0.4.4
   plugins:
     - ctx
+    - krew
     - lineage
     - oidc-login
 ssh_host_configs:
