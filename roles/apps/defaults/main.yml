@@ -137,6 +137,7 @@ ebuilds:
   - media-gfx/imagemagick
   - media-sound/alsa-utils
   - media-sound/easyeffects
+  - media-sound/pavucontrol
   - media-video/celluloid
   - media-video/mpv
   - media-video/pipewire
