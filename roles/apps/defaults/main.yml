@@ -117,6 +117,7 @@ ebuilds:
   - dev-java/openjdk-bin:21
   - dev-lang/go
   - dev-lang/rust
+  - dev-python/uv
   - dev-util/packer
   - dev-util/pkgcheck
   - dev-util/pkgdev
@@ -184,7 +185,6 @@ ebuilds:
   - sys-power/bbswitch
   - sys-power/powertop
   - sys-process/iotop
-  - virtual/rust
   - www-client/firefox-bin
   - x11-apps/mesa-progs
   - x11-apps/xbacklight
@@ -213,6 +213,7 @@ ebuilds_from_overlays:
   app-containers/nvidia-container-toolkit: guru
   app-shells/direnv: guru
   dev-util/lets: anxolerd
+  dev-python/podman-compose: guru
   media-fonts/nerdfonts: guru
   media-fonts/overpass: guru
   net-vpn/forticlient: open-craft-guild
@@ -309,6 +310,8 @@ masked_packages:
     description: Fix conflict with mpg123 and libmpg123
   - atom: '=media-libs/libsndfile-1.2.2-r1::gentoo'
     description: Fix conflict with mpg123 and libmpg123
+  - atom: '=net-vpn/forticlient-7.4.1.1697::open-craft-guild'
+    description: VPN broken in this version
 
 python_targets: []
 python_single_target: ""
