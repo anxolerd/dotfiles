@@ -6,18 +6,17 @@ accept_licenses:
   app-arch/unrar: unRAR
   app-arch/7zip: unRAR
   app-admin/terraform: BUSL-1.1
-  dev-util/android-studio: android
-  dev-util/nvidia-cuda-toolkit: NVIDIA-CUDA
   dev-util/packer: BUSL-1.1
   media-fonts/font-bh-ttf: bh-luxi
   media-fonts/font-bh-type1: bh-luxi
   media-libs/faac: MPEG-4
+  net-im/discord: all-rights-reserved
   net-im/slack: all-rights-reserved
-  net-vpn/forticlient: Fortinet
   sys-kernel/linux-firmware: linux-fw-redistributable no-source-code
   x11-drivers/nvidia-drivers: NVIDIA-r2
 
 package_use_flags:
+  app-admin/eclean-kernel: ["zstd"]
   app-arch/7zip: ["rar"]
   app-editors/gvim: ["lua", "python"]
   app-editors/vim: ["lua", "python", "terminal"]
@@ -36,9 +35,10 @@ package_use_flags:
   dev-python/numpy: ["lapack"]
   dev-python/pillow: ["webp"]
   dev-python/pyside6:
-    - quick  # required by media-gfx/freecad
+    - quick       # required by media-gfx/freecad
+    - uitools     # required by media-gfx/freecad
     - webchannel  # required by media-gfx/freecad
-    - webengine  # required by media-gfx/freecad
+    - webengine   # required by media-gfx/freecad
   dev-qt/qtmultimedia: ["widgets"]
   dev-qt/qtquickcontrols2: ["widgets"]
   gnome-base/gvfs: ["fuse", "mtp"]
@@ -76,6 +76,7 @@ package_use_flags:
   sci-libs/cgnslib:
     - hdf5  # required by media-gfx/freecad
   sci-libs/hdf5:
+    - cxx      # required by media-gfx/freecad
     - fortran  # required by media-gfx/freecad
   sci-libs/openblas: ["openmp"]
   sci-libs/opencascade:
@@ -113,6 +114,7 @@ ebuilds:
   - app-containers/distrobox
   - app-containers/k3d
   - app-containers/podman
+  - app-containers/podman-compose
   - app-containers/skopeo
   - app-crypt/yubikey-manager
   - app-crypt/yubikey-manager-qt
@@ -156,7 +158,6 @@ ebuilds:
   - media-gfx/gthumb
   - media-gfx/imagemagick
   - media-sound/alsa-utils
-  - media-sound/easyeffects
   - media-sound/pavucontrol
   - media-video/celluloid
   - media-video/mpv
@@ -169,7 +170,7 @@ ebuilds:
   - net-analyzer/wireshark
   - net-dialup/minicom
   - net-dns/bind-tools
-  - net-im/signal-desktop-bin
+  - net-im/discord
   - net-im/slack
   - net-im/telegram-desktop-bin
   - net-libs/nodejs
@@ -191,6 +192,7 @@ ebuilds:
   - sci-libs/openblas
   - sys-apps/bat
   - sys-apps/eza
+  - sys-apps/fwupd
   - sys-apps/ripgrep
   - sys-apps/smartmontools
   - sys-apps/xdg-desktop-portal-gtk
@@ -229,14 +231,11 @@ ebuilds:
   - x11-wm/i3
 
 ebuilds_from_overlays:
-  app-containers/nvidia-container-toolkit: guru
   app-shells/direnv: guru
   dev-util/lets: anxolerd
-  dev-python/podman-compose: guru
   media-fonts/nerdfonts: guru
   media-fonts/overpass: guru
   net-vpn/forticlient: open-craft-guild
-  sys-libs/libnvidia-container: guru
   x11-misc/i3blocks-contrib: open-craft-guild
   x11-themes/catppuccin-cursors: guru
   x11-themes/catppuccin-gtk: guru
@@ -281,6 +280,7 @@ global_use_flags:
   - pulseaudio
   - systemd
   - vim-syntax
+  - -gtk-doc
   - -wayland
 
 groups_memberships:
