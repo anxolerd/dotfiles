@@ -20,6 +20,7 @@ package_use_flags:
   app-arch/7zip: ["rar"]
   app-editors/gvim: ["lua", "python"]
   app-editors/vim: ["lua", "python", "terminal"]
+  app-containers/podman: ["wrapper"]
   dev-cpp/eigen: ["cuda"]
   app-crypt/gpgme: ["python"]
   app-dicts/myspell: ["en-US"]
@@ -34,21 +35,16 @@ package_use_flags:
   dev-libs/nss: ["cacert", "utils"]
   dev-python/numpy: ["lapack"]
   dev-python/pillow: ["webp"]
-  dev-python/pyside6:
-    - quick       # required by media-gfx/freecad
-    - uitools     # required by media-gfx/freecad
-    - webchannel  # required by media-gfx/freecad
-    - webengine   # required by media-gfx/freecad
   dev-qt/qtmultimedia: ["widgets"]
   dev-qt/qtquickcontrols2: ["widgets"]
   gnome-base/gvfs: ["fuse", "mtp"]
   media-fonts/nerdfonts: ["iosevka", "iosevkaterm", "iosevkatermslab", "robotomono"]
   media-gfx/gthumb: ["-cdr"]
-  media-gfx/freecad:
-    - "-openscad"  # for some reason openscad fails to compile
   media-gfx/imagemagick: ["perl"]
   media-libs/freetype: ["brotli", "harfbuzz"]
+  media-libs/babl: ["introspection"]  # required by media-gfx/gimp
   media-libs/gd: ["fontconfig"]
+  media-libs/gegl: ["introspection"]  # required by media-gfx/gimp
   media-libs/harfbuzz: ["truetype"]
   media-libs/libcanberra: ["gtk2", "gtk3"]
   media-libs/libsdl2: ["gles2"]
@@ -57,9 +53,6 @@ package_use_flags:
   media-libs/opencolorio: ["-opengl"]
   media-libs/opencv: ["contrib", "contribdnn"]
   media-libs/opensubdiv: ["cuda"]
-  media-libs/tiff:
-    - lzma  # required by media-gfx/freecad
-    - zstd  # required by media-gfx/freecad
   media-sound/pulseaudio: ["-daemon"]
   media-video/ffmpeg: ["cuda", "libv4l", "nvenc", "opencl", "opus", "theora", "v4l", "vpx"]
   media-video/pipewire: ["echo-channel", "pipewire-alsa", "sound-server", "system-service"]
@@ -73,17 +66,7 @@ package_use_flags:
   net-misc/spice-gtk: ["usbredir"]
   net-vpn/forticlient: ["appindicator"]
   net-wireless/wpa_supplicant: ["p2p"]
-  sci-libs/cgnslib:
-    - hdf5  # required by media-gfx/freecad
-  sci-libs/hdf5:
-    - cxx      # required by media-gfx/freecad
-    - fortran  # required by media-gfx/freecad
   sci-libs/openblas: ["openmp"]
-  sci-libs/opencascade:
-    - vtk  # required by media-gfx/freecad
-    - json  # required by media-gfx/freecad
-  sci-libs/vtk:
-    - "-qt5"  # required by media-gfx/freecad
   sys-apps/hwloc: ["cuda"]
   sys-apps/xdg-desktop-portal: ["screencast"]
   sys-apps/systemd: ["cryptsetup"]
@@ -117,6 +100,8 @@ ebuilds:
   - app-containers/podman-compose
   - app-containers/skopeo
   - app-crypt/yubikey-manager
+  - app-crypt/tpm2-tools
+  - app-crypt/tpm2-tss
   - app-crypt/yubikey-manager-qt
   - app-editors/neovim
   - app-editors/vim
@@ -152,7 +137,6 @@ ebuilds:
   - media-fonts/roboto
   - media-fonts/powerline-symbols
   - media-gfx/darktable
-  - media-gfx/freecad
   - media-gfx/gimp
   - media-gfx/graphviz
   - media-gfx/gthumb
@@ -174,6 +158,7 @@ ebuilds:
   - net-im/slack
   - net-im/telegram-desktop-bin
   - net-libs/nodejs
+  - net-libs/webkit-gtk  # for orcaslicer
   - net-misc/chrony
   - net-misc/networkmanager
   - net-misc/openrdap
@@ -232,7 +217,7 @@ ebuilds:
 
 ebuilds_from_overlays:
   app-shells/direnv: guru
-  dev-util/lets: anxolerd
+  dev-util/lets: open-craft-guild
   media-fonts/nerdfonts: guru
   media-fonts/overpass: guru
   net-vpn/forticlient: open-craft-guild
@@ -305,10 +290,6 @@ groups_memberships:
     group: pcap
 
 portage_overlays:
-  - name: anxolerd
-    sync_type: git
-    sync_uri: https://github.com/anxolerd/gentoo-overlay.git
-    masters: gentoo
   - name: open-craft-guild
     sync_type: git
     sync_uri: https://github.com/open-craft-guild/gentoo-overlay.git
@@ -322,6 +303,7 @@ look_and_feel:
   theme: catppuccin-{{ catppuccin.theme }}-{{ catppuccin.accent }}-standard+default
   icon_theme: Tela-pink
   cursor_theme: catppuccin-{{ catppuccin.theme }}-{{ catppuccin.accent }}-cursors
+
 masked_packages:
   - atom: '=media-sound/mpg123-1.32.3-r1::gentoo'
     description: Fix conflict with mpg123 and libmpg123
