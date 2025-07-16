@@ -13,7 +13,7 @@ accept_licenses:
   net-im/discord: all-rights-reserved
   net-im/slack: all-rights-reserved
   sys-kernel/linux-firmware: linux-fw-redistributable no-source-code
-  x11-drivers/nvidia-drivers: NVIDIA-r2
+  x11-drivers/nvidia-drivers: NVIDIA-r2 NVIDIA-2025
 
 package_use_flags:
   app-admin/eclean-kernel: ["zstd"]
