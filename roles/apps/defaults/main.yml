@@ -129,6 +129,7 @@ ebuilds:
   - dev-util/shellcheck-bin
   - dev-vcs/bfg
   - dev-vcs/git-crypt
+  - dev-vcs/git-filter-repo
   - dev-vcs/subversion
   - gnome-extra/nm-applet
   - lxde-base/lxmenu-data
