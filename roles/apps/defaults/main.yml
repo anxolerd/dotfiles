@@ -51,7 +51,10 @@ package_use_flags:
   media-libs/mesa: ["wayland"]
   media-libs/mlt: ["ffmpeg", "frei0r", "jack"]
   media-libs/opencolorio: ["-opengl"]
-  media-libs/opencv: ["contrib", "contribdnn"]
+  media-libs/opencv:
+    - "contrib"
+    - "contribdnn"
+    - "features2d"  # required by media-video/shotcut
   media-libs/opensubdiv: ["cuda"]
   media-sound/pulseaudio: ["-daemon"]
   media-video/ffmpeg: ["cuda", "libv4l", "nvenc", "opencl", "opus", "theora", "v4l", "vpx"]
