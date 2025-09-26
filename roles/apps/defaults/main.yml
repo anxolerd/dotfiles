@@ -48,7 +48,6 @@ package_use_flags:
   media-libs/harfbuzz: ["truetype"]
   media-libs/libcanberra: ["gtk2", "gtk3"]
   media-libs/libsdl2: ["gles2"]
-  media-libs/mesa: ["wayland"]
   media-libs/mlt: ["ffmpeg", "frei0r", "jack"]
   media-libs/opencolorio: ["-opengl"]
   media-libs/opencv:
@@ -81,7 +80,6 @@ package_use_flags:
   sys-libs/zlib: ["minizip"]
   virtual/imagemagick-tools: ["perl"]
   virtual/rust: ["rustfmt"]
-  x11-libs/gtk+: ["wayland"]
   x11-libs/libdrm: ["libkms"]
   x11-libs/wxGTK: ["gstreamer"]
   x11-themes/catppuccin-cursors: ["{{ catppuccin.theme }}"]
@@ -160,7 +158,7 @@ ebuilds:
   - net-dns/bind-tools
   - net-im/discord
   - net-im/slack
-  - net-im/telegram-desktop-bin
+  - net-im/telegram-desktop
   - net-libs/nodejs
   - net-libs/webkit-gtk  # for orcaslicer
   - net-misc/chrony
