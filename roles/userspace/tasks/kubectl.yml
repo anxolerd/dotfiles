@@ -1,6 +1,6 @@
 ---  # vim: set ft=yaml.ansible :
 - name: Set fact linux_platform
-  set_fact:
+  ansible.builtin.set_fact:
     linux_platform: >-
       {{
         (ansible_architecture == "x86_64")
@@ -8,7 +8,7 @@
       }}
 
 - name: Create krew directory
-  file:
+  ansible.builtin.file:
     path: ~/.krew/bin
     state: directory
     owner: anxolerd
@@ -16,7 +16,7 @@
     mode: "0755"
 
 - name: Download krew package manager for kubectl
-  unarchive:
+  ansible.builtin.unarchive:
     remote_src: true
     src: "https://github.com/kubernetes-sigs/krew/releases/download/{{ krew.version }}/krew-{{ ansible_system | lower }}_{{ linux_platform }}.tar.gz"
     dest: ~/.krew/bin
@@ -29,20 +29,20 @@
     group: anxolerd
 
 - name: Update krew plugins list
-  command: /usr/bin/kubectl krew update
+  ansible.builtin.command: /usr/bin/kubectl krew update
   args:
     creates: /home/anxolerd/.krew/index/plugins/krew_plugins.yaml
   environment:
     PATH: "{{ ansible_env.PATH }}:{{ ansible_env.HOME }}/.krew/bin"
 
 - name: Make sure krew is in PATH
-  lineinfile:
+  ansible.builtin.lineinfile:
     line: export PATH="${PATH}:${HOME}/.krew/bin"
     path: ~/.bashrc
     state: present
 
 - name: Install krew plugins
-  command: kubectl krew install {{ item }}
+  ansible.builtin.command: kubectl krew install {{ item }}
   with_items: "{{ krew.plugins }}"
   environment:
     PATH: "{{ ansible_env.PATH }}:{{ ansible_env.HOME }}/.krew/bin"

@@ -14,7 +14,7 @@
 
 - name: Enable and start timers
   listen: ensure-timers-enabled
-  service:
+  ansible.builtin.service:
     name: "{{ task.slug }}.timer"
     enabled: true
     state: started

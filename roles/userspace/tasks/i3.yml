@@ -3,7 +3,7 @@
   block:
 
     - name: Ensure configuration directory exists
-      file:
+      ansible.builtin.file:
         path: ~/.config/i3blocks
         state: directory
         owner: anxolerd
@@ -11,7 +11,7 @@
         mode: "0755"
 
     - name: Create i3blocks config file
-      template:
+      ansible.builtin.template:
         src: i3blocks.config.j2
         dest: ~/.config/i3blocks/config
         owner: anxolerd
@@ -22,7 +22,7 @@
   block:
 
     - name: Ensure configuration directory exists
-      file:
+      ansible.builtin.file:
         path: ~/.config/i3
         state: directory
         owner: anxolerd
@@ -35,10 +35,10 @@
         dest: "~/.config/i3/catppuccin-{{ catppuccin.theme }}"
         owner: anxolerd
         group: anxolerd
-        mode: 0640
+        mode: "0640"
 
     - name: Create i3 config file
-      template:
+      ansible.builtin.template:
         src: i3.config.j2
         dest: ~/.config/i3/config
         owner: anxolerd
@@ -65,11 +65,11 @@
 
     - name: Download theme file
       ansible.builtin.get_url:
-        url: https://raw.githubusercontent.com/catppuccin/rofi/main/basic/.local/share/rofi/themes/catppuccin-{{ catppuccin.theme }}.rasi
+        url: https://raw.githubusercontent.com/catppuccin/rofi/b636a00/basic/.local/share/rofi/themes/catppuccin-{{ catppuccin.theme }}.rasi
         dest: ~/.local/share/rofi/themes/catppuccin-{{ catppuccin.theme }}.rasi
         owner: anxolerd
         group: anxolerd
-        mode: 0640
+        mode: "0640"
 
     - name: Configure rofi launcher
       ansible.builtin.template:

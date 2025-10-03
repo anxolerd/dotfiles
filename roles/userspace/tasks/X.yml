@@ -10,15 +10,15 @@
     state: present
   when: "'gnome-keyring' in ansible_facts.packages"
 
-- name: Ensure SSH socket is exposed for SSH Agent
-  ansible.builtin.lineinfile:
-    create: true
-    path: ~/.xprofile
-    line: "export SSH_AUTH_SOCK"
-    owner: anxolerd
-    group: anxolerd
-    mode: "0644"
-    state: present
+# - name: Ensure SSH socket is exposed for SSH Agent
+#   ansible.builtin.lineinfile:
+#     create: true
+#     path: ~/.xprofile
+#     line: "export SSH_AUTH_SOCK"
+#     owner: anxolerd
+#     group: anxolerd
+#     mode: "0644"
+#     state: present
 
 - name: Run light-locker process
   ansible.builtin.lineinfile:

@@ -7,37 +7,30 @@ set -g renumber-windows on       # renumber all windows when any window is close
 set -g set-clipboard on          # use system clipboard
 set -g status-position top       # macOS / darwin style
 setw -g mode-keys vi
+set -g mouse on
 set -g pane-active-border-style 'fg=magenta,bg=default'
 set -g pane-border-style 'fg=brightblack,bg=default'
-
-# Tmux-fzf config
-set -g @fzf-url-fzf-options '-p 60%,30% --prompt="   " --border-label=" Open URL "'
-set -g @fzf-url-history-limit '2000'
+set -g default-terminal "tmux-256color"
 
 # Catppuccin theme
 set -g @catppuccin_flavor '{{ catppuccin.theme }}'
-set -g @catppuccin_window_left_separator ""
-set -g @catppuccin_window_right_separator " "
-set -g @catppuccin_window_middle_separator " █"
+set -g @catppuccin_status_background "default"
+set -f @catppuccin_window_status_style "rounded"
 set -g @catppuccin_window_number_position "right"
-set -g @catppuccin_window_default_fill "number"
-set -g @catppuccin_window_default_text "#W"
-set -g @catppuccin_window_current_fill "number"
-set -g @catppuccin_window_current_text "#W#{?window_zoomed_flag,(),}"
-set -g @catppuccin_directory_text "#{pane_current_path}"
-
-# Tmux-thumbs config
-set -g @thumbs-osc52 1  # copy to clipboard as well
+set -g @catppuccin_window_text " #W"
+set -g @catppuccin_window_current_text " #W"
+set -g @catppiccin_window_flafs "icon"
+run ~/.tmux/plugins/tmux/catppuccin.tmux
+set -g status-right-length 100
+set -g status-right "#{E:@catppuccin_status_application}#{E:@catppuccin_status_session}"
+set -g status-left ""
 
 # List of plugins
 set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'tmux-plugins/tmux-sensible'
 set -g @plugin 'tmux-plugins/tmux-yank'
-set -g @plugin 'catppuccin/tmux#v0.3.0'
+set -g @plugin 'catppuccin/tmux'
 set -g @plugin 'christoomey/vim-tmux-navigator'
-set -g @plugin 'fcsonline/tmux-thumbs'
-set -g @plugin 'sainnhe/tmux-fzf'
-set -g @plugin 'wfxr/tmux-fzf-url'
 
 # Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
 run '{{ tpm.bundle_path }}/tpm'

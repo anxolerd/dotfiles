@@ -12,8 +12,10 @@
     group: anxolerd
     mode: "0640"
 
-- name: Cleanup unused tmux plugins
-  command: ~/.tmux/plugins/tpm/bindings/clean_plugins
+- name: Cleanup unused tmux plugins  # noqa no-changed-when
+  ansible.builtin.command:
+    cmd: ~/.tmux/plugins/tpm/bindings/clean_plugins
 
-- name: Install tmux plugins
-  command: ~/.tmux/plugins/tpm/bindings/install_plugins
+- name: Install tmux plugins  # noqa no-changed-when
+  ansible.builtin.command:
+    cmd: ~/.tmux/plugins/tpm/bindings/install_plugins

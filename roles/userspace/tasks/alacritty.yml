@@ -1,6 +1,6 @@
 ---  # vim:se ft=yaml.ansible:
 - name: Ensure Alacritty config directory exists
-  file:
+  ansible.builtin.file:
     path: ~/.config/alacritty
     state: directory
     owner: anxolerd
@@ -15,6 +15,9 @@
     update: true
 
 - name: Generate an Alacritty config from the template
-  template:
+  ansible.builtin.template:
     src: alacritty.toml.j2
     dest: ~/.config/alacritty/alacritty.toml
+    mode: "0640"
+    owner: "anxolerd"
+    group: "anxolerd"

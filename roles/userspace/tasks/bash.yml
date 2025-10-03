@@ -1,13 +1,38 @@
 ---  # vim: set ft=yaml.ansible :
-- name: Ensure zoxide is added to the shell
-  ansible.builtin.lineinfile:
-    line: 'eval "$(zoxide init bash)"'
-    dest: ~/.bashrc
-    create: true
-    owner: anxolerd
-    group: anxolerd
-    mode: "0640"
+- name: Configure helper aliases for zoxide
   when: "'zoxide' in ansible_facts.packages"
+  block:
+
+    - name: Ensure zoxide is added to the shell
+      ansible.builtin.lineinfile:
+        line: 'eval "$(zoxide init bash)"'
+        dest: ~/.bashrc
+        create: true
+        owner: anxolerd
+        group: anxolerd
+        mode: "0640"
+
+    - name: Create bash function for zoxide
+      ansible.builtin.blockinfile:
+        append_newline: true
+        prepend_newline: true
+        block: |
+          alias cd="zd"
+          zd() {
+            if [ $# -eq 0 ]; then
+              builtin cd ~ && return
+            elif [ -d "$1" ]; then
+              builtin cd "$1"
+            else
+              z "$@" && printf "\U000F17A9 " && pwd || echo "Error: Directory not found"
+            fi
+          }
+        dest: ~/.bashrc
+        create: true
+        owner: anxolerd
+        group: anxolerd
+        mode: "0640"
+
 
 - name: Use fzf for completion and search
   ansible.builtin.lineinfile:
@@ -43,6 +68,8 @@
       command: "eza --group-directories-first -a"
     - alias: tree
       command: "eza --tree"
+    - alias: lt
+      command: "eza --tree --level=2 --long --icons --git"
   when: "'eza' in ansible_facts.packages"
 
 - name: Configure bash_history options

@@ -1,11 +1,14 @@
 [general]
 import = ["/home/anxolerd/.config/alacritty/catppuccin/catppuccin-{{ catppuccin.theme }}.toml"]
 
+[env]
+TERM = "xterm-256color"
+
 [colors]
 draw_bold_text_with_bright_colors = true
 
 [font]
-size = 6.0
+size = 6
 
 [font.normal]
 family = "{{ alacritty.font_family | default('iosevka') }}"

@@ -4,42 +4,42 @@
     manager: auto
 
 - name: Ensure that Bash is configured
-  import_tasks: bash.yml
+  ansible.builtin.import_tasks: bash.yml
 
 - name: Ensure that SSH is configured
-  import_tasks: ssh.yml
+  ansible.builtin.import_tasks: ssh.yml
 
 - name: Ensure that Git is configured
-  import_tasks: git.yml
+  ansible.builtin.import_tasks: git.yml
 
 - name: Ensure X is configured
-  import_tasks: X.yml
+  ansible.builtin.import_tasks: X.yml
 
 - name: Ensure i3 is configured
-  import_tasks: i3.yml
+  ansible.builtin.import_tasks: i3.yml
   when: >-
     'i3-gaps' in ansible_facts.packages
     or 'i3' in ansible_facts.packages
 
 - name: Ensure that Alacritty is configured
-  import_tasks: alacritty.yml
+  ansible.builtin.import_tasks: alacritty.yml
   when: "'alacritty' in ansible_facts.packages"
 
 - name: Ensure that Bat is configured
-  import_tasks: bat.yml
+  ansible.builtin.import_tasks: bat.yml
   when: "'bat' in ansible_facts.packages"
 
 - name: Ensure that Vim is configured
-  import_tasks: vim.yml
+  ansible.builtin.import_tasks: vim.yml
   when: "'vim' in ansible_facts.packages"
 
 - name: Ensure that Tmux is configured
-  import_tasks: tmux.yml
+  ansible.builtin.import_tasks: tmux.yml
   when: "'tmux' in ansible_facts.packages"
 
 - name: Ensure that Kubectl is configured
-  import_tasks: kubectl.yml
+  ansible.builtin.import_tasks: kubectl.yml
   when: "'kubectl' in ansible_facts.packages"
 
 - name: Configure user periodic tasks
-  import_tasks: systemd.yml
+  ansible.builtin.import_tasks: systemd.yml

@@ -1,6 +1,6 @@
 ---  # vim:se ft=yaml.ansible:
 - name: Create SSH config dir within userspace
-  file:
+  ansible.builtin.file:
     dest: ~/.ssh
     group: anxolerd
     mode: u=rwx,g=,o=
@@ -8,7 +8,7 @@
     state: directory
 
 - name: Generate SSH config from template
-  template:
+  ansible.builtin.template:
     dest: ~/.ssh/config
     group: anxolerd
     mode: u=rw,g=r,o=
