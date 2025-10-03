@@ -24,8 +24,6 @@ package_use_flags:
   dev-cpp/eigen: ["cuda"]
   app-crypt/gpgme: ["python"]
   app-dicts/myspell: ["en-US"]
-  dev-java/openjdk-bin: ["gentoo-vm"]
-  "dev-java/openjdk-bin:21": ["gentoo-vm"]
   dev-lang/mono: ["minimal"]
   dev-lang/rust: ["clippy", "doc", "rls", "rustfmt", "rust-src"]
   dev-lang/rust-bin: ["rustfmt"]
@@ -38,7 +36,7 @@ package_use_flags:
   dev-qt/qtmultimedia: ["widgets"]
   dev-qt/qtquickcontrols2: ["widgets"]
   gnome-base/gvfs: ["fuse", "mtp"]
-  media-fonts/nerdfonts: ["iosevka", "iosevkaterm", "iosevkatermslab", "robotomono"]
+  media-fonts/nerdfonts: ["cascadiacode", "cascadiamono", "iosevka", "iosevkaterm", "iosevkatermslab", "robotomono"]
   media-gfx/gthumb: ["-cdr"]
   media-gfx/imagemagick: ["perl"]
   media-libs/freetype: ["brotli", "harfbuzz"]
@@ -112,19 +110,19 @@ ebuilds:
   - app-misc/fdupes
   - app-misc/jq
   - app-misc/tmux
-  - app-misc/zellij
   - app-office/libreoffice-bin
   - app-shells/fzf
   - app-shells/zoxide
   - app-text/evince
+  - app-text/xournalpp
   - dev-debug/strace
   - dev-java/icedtea-web
   - dev-java/openjdk-bin:8
   - dev-java/openjdk-bin:21
+  - dev-java/openjdk-bin:25
   - dev-lang/go
   - dev-lang/rust
   - dev-python/uv
-  - dev-util/packer
   - dev-util/pkgcheck
   - dev-util/pkgdev
   - dev-util/shellcheck-bin
@@ -139,13 +137,13 @@ ebuilds:
   - media-fonts/roboto
   - media-fonts/powerline-symbols
   - media-gfx/darktable
-  - media-gfx/gimp
+  - media-gfx/gimp  # TODO: maybe replace completely with pinta ?
   - media-gfx/graphviz
   - media-gfx/gthumb
   - media-gfx/imagemagick
+  - media-gfx/pinta
   - media-sound/alsa-utils
   - media-sound/pavucontrol
-  - media-video/celluloid
   - media-video/mpv
   - media-video/pipewire
   - media-video/shotcut
@@ -160,7 +158,7 @@ ebuilds:
   - net-im/slack
   - net-im/telegram-desktop
   - net-libs/nodejs
-  - net-libs/webkit-gtk  # for orcaslicer
+  - net-libs/webkit-gtk:4.1  # for orcaslicer
   - net-misc/chrony
   - net-misc/networkmanager
   - net-misc/openrdap
