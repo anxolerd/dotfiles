@@ -212,6 +212,7 @@ ebuilds:
   - x11-misc/xdg-utils
   - x11-misc/xsel
   - x11-terms/alacritty
+  - x11-terms/ghostty
   - x11-themes/tela-icon-theme
   - x11-wm/i3
 
