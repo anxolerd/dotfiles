@@ -15,11 +15,11 @@ set -g default-terminal "tmux-256color"
 # Catppuccin theme
 set -g @catppuccin_flavor '{{ catppuccin.theme }}'
 set -g @catppuccin_status_background "default"
-set -f @catppuccin_window_status_style "rounded"
+set -g @catppuccin_window_status_style "rounded"
 set -g @catppuccin_window_number_position "right"
-set -g @catppuccin_window_text " #W"
-set -g @catppuccin_window_current_text " #W"
-set -g @catppiccin_window_flafs "icon"
+set -g @catppuccin_window_text "#W"
+set -g @catppuccin_window_current_text "#W"
+set -g @catppiccin_window_flags "icon"
 run ~/.tmux/plugins/tmux/catppuccin.tmux
 set -g status-right-length 100
 set -g status-right "#{E:@catppuccin_status_application}#{E:@catppuccin_status_session}"
