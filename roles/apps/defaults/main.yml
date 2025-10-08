@@ -126,7 +126,6 @@ ebuilds:
   - dev-util/pkgcheck
   - dev-util/pkgdev
   - dev-util/shellcheck-bin
-  - dev-vcs/bfg
   - dev-vcs/git-crypt
   - dev-vcs/git-filter-repo
   - dev-vcs/subversion
@@ -152,7 +151,6 @@ ebuilds:
   - net-analyzer/openbsd-netcat
   - net-analyzer/tcpdump
   - net-analyzer/wireshark
-  - net-dialup/minicom
   - net-dns/bind-tools
   - net-im/discord
   - net-im/slack
@@ -161,10 +159,7 @@ ebuilds:
   - net-libs/webkit-gtk:4.1  # for orcaslicer
   - net-misc/chrony
   - net-misc/networkmanager
-  - net-misc/openrdap
-  - net-misc/putty
   - net-misc/remmina
-  - net-misc/sshpass
   - net-misc/whois
   - net-misc/ssh-askpass-fullscreen
   - net-print/cups
@@ -220,7 +215,6 @@ ebuilds_from_overlays:
   app-shells/direnv: guru
   dev-util/lets: open-craft-guild
   media-fonts/nerdfonts: guru
-  media-fonts/overpass: guru
   net-vpn/forticlient: open-craft-guild
   x11-misc/i3blocks-contrib: open-craft-guild
   x11-themes/catppuccin-cursors: guru
