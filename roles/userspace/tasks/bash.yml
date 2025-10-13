@@ -1,38 +1,38 @@
 ---  # vim: set ft=yaml.ansible :
 - name: Configure helper aliases for zoxide
   when: "'zoxide' in ansible_facts.packages"
-  block:
+  ansible.builtin.blockinfile:
+    append_newline: true
+    prepend_newline: true
+    block: |
+      line: 'eval "$(zoxide init bash)"'
+      alias cd="zd"
+      zd() {
+        if [ $# -eq 0 ]; then
+          builtin cd ~ && return
+        elif [ -d "$1" ]; then
+          builtin cd "$1"
+        else
+          z "$@" && printf "\U000F17A9 " && pwd || echo "Error: Directory not found"
+        fi
+      }
+    dest: ~/.bashrc
+    create: true
+    owner: anxolerd
+    group: anxolerd
+    mode: "0640"
 
-    - name: Ensure zoxide is added to the shell
-      ansible.builtin.lineinfile:
-        line: 'eval "$(zoxide init bash)"'
-        dest: ~/.bashrc
-        create: true
-        owner: anxolerd
-        group: anxolerd
-        mode: "0640"
-
-    - name: Create bash function for zoxide
-      ansible.builtin.blockinfile:
-        append_newline: true
-        prepend_newline: true
-        block: |
-          alias cd="zd"
-          zd() {
-            if [ $# -eq 0 ]; then
-              builtin cd ~ && return
-            elif [ -d "$1" ]; then
-              builtin cd "$1"
-            else
-              z "$@" && printf "\U000F17A9 " && pwd || echo "Error: Directory not found"
-            fi
-          }
-        dest: ~/.bashrc
-        create: true
-        owner: anxolerd
-        group: anxolerd
-        mode: "0640"
-
+- name: Use grc to colorize output
+  ansible.builtin.blockinfile:
+    block: |
+      export GRC_ALIASES=true
+      [ -f "/usr/share/grc/grc.sh" ] && . /usr/share/grc/grc.sh
+    dest: ~/.bashrc
+    create: true
+    owner: anxolerd
+    group: anxolerd
+    mode: "0640"
+  when: "'grc' in ansible_facts.packages"
 
 - name: Use fzf for completion and search
   ansible.builtin.lineinfile:
@@ -52,24 +52,18 @@
   when: "'fzf' in ansible_facts.packages"
 
 - name: Use eza instead of ls
-  ansible.builtin.lineinfile:
-    line: "alias {{ item.alias }}='{{ item.command }}'"
+  ansible.builtin.blockinfile:
+    block: |
+      alias ls='eza --group-directories-first'
+      alias ll='eza --group-directories-first -alF'
+      alias la='eza --group-directories-first -a'
+      alias lt='eza --tree --level=2 --long --icons --git'
+      alias tree='eza --tree'
     dest: ~/.bashrc
     create: true
     owner: anxolerd
     group: anxolerd
     mode: "0640"
-  with_items:
-    - alias: ls
-      command: "eza --group-directories-first"
-    - alias: ll
-      command: "eza --group-directories-first -alF"
-    - alias: la
-      command: "eza --group-directories-first -a"
-    - alias: tree
-      command: "eza --tree"
-    - alias: lt
-      command: "eza --tree --level=2 --long --icons --git"
   when: "'eza' in ansible_facts.packages"
 
 - name: Configure bash_history options

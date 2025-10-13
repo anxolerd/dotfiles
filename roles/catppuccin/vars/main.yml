@@ -1,5 +1,5 @@
 ---  # vim: set ft=yaml.ansible
 catppuccin:
   theme: frappe
-  gtk_theme_version: "v0.7.4"
+  gtk_theme_version: "v1.0.3"
   accent: pink

@@ -101,13 +101,13 @@ ebuilds:
   - app-crypt/yubikey-manager
   - app-crypt/tpm2-tools
   - app-crypt/tpm2-tss
-  - app-crypt/yubikey-manager-qt
   - app-editors/neovim
   - app-editors/vim
   - app-emulation/virt-manager
   - app-misc/asciinema
   - app-misc/fastfetch
   - app-misc/fdupes
+  - app-misc/grc
   - app-misc/jq
   - app-misc/tmux
   - app-office/libreoffice-bin
