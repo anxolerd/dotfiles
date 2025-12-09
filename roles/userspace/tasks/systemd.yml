@@ -3,8 +3,8 @@
   ansible.builtin.template:
     src: systemd.service.j2
     dest: ~/.config/systemd/user/{{ task.slug }}.service
-    owner: anxolerd
-    group: anxolerd
+    owner: "{{ user }}"
+    group: "{{ user }}"
     mode: "0644"
   loop: "{{ cron_tasks }}"
   loop_control:
@@ -16,8 +16,8 @@
   ansible.builtin.template:
     src: systemd.timer.j2
     dest: ~/.config/systemd/user/{{ task.slug }}.timer
-    owner: anxolerd
-    group: anxolerd
+    owner: "{{ user }}"
+    group: "{{ user }}"
     mode: "0644"
   loop: "{{ cron_tasks }}"
   loop_control:

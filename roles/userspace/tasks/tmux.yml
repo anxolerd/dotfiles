@@ -8,8 +8,8 @@
   ansible.builtin.template:
     src: tmux.conf.j2
     dest: ~/.tmux.conf
-    owner: anxolerd
-    group: anxolerd
+    owner: "{{ user }}"
+    group: "{{ user }}"
     mode: "0640"
 
 - name: Cleanup unused tmux plugins  # noqa no-changed-when

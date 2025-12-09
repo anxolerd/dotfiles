@@ -4,8 +4,8 @@
     create: true
     path: ~/.xprofile
     line: "eval $(gnome-keyring-daemon --start)"
-    owner: anxolerd
-    group: anxolerd
+    owner: "{{ user }}"
+    group: "{{ user }}"
     mode: "0644"
     state: present
   when: "'gnome-keyring' in ansible_facts.packages"
@@ -15,8 +15,8 @@
 #     create: true
 #     path: ~/.xprofile
 #     line: "export SSH_AUTH_SOCK"
-#     owner: anxolerd
-#     group: anxolerd
+#     owner: "{{ user }}"
+#     group: "{{ user }}"
 #     mode: "0644"
 #     state: present
 
@@ -25,8 +25,8 @@
     create: true
     path: ~/.xprofile
     line: "light-locker &"
-    owner: anxolerd
-    group: anxolerd
+    owner: "{{ user }}"
+    group: "{{ user }}"
     mode: "0644"
     state: present
   when: "'light-locker' in ansible_facts.packages"
@@ -41,7 +41,7 @@
       -option grp:win_space_toggle
       -option terminate:ctrl_alt_bksp
       -option ctrl:nocaps
-    owner: anxolerd
-    group: anxolerd
+    owner: "{{ user }}"
+    group: "{{ user }}"
     mode: "0644"
     state: present

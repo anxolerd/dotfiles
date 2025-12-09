@@ -3,24 +3,24 @@
   ansible.builtin.file:
     path: ~/.vim/autoload
     state: directory
-    owner: anxolerd
-    group: anxolerd
+    owner: "{{ user }}"
+    group: "{{ user }}"
     mode: "0755"
 
 - name: Get VimPlug into userspace
   ansible.builtin.get_url:
     dest: "{{ vim.plug.bundle_path }}"
     url: https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    owner: anxolerd
-    group: anxolerd
+    owner: "{{ user }}"
+    group: "{{ user }}"
     mode: "0644"
 
 - name: Generate a Vim config from the template
   ansible.builtin.template:
     src: vimrc.j2
     dest: ~/.vimrc
-    owner: anxolerd
-    group: anxolerd
+    owner: "{{ user }}"
+    group: "{{ user }}"
     mode: "0644"
 
 - name: Wipe all unused plugins from Vim  # noqa no-changed-when

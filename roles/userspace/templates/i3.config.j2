@@ -21,7 +21,7 @@ exec --no-startup-id nm-applet
 
 {% if 'picom' in ansible_facts.packages %}
 # Gtk cannot work properly without compositor
-exec --no-startup-id picom -b
+exec --no-startup-id picom --backend glx -b
 {% endif %}
 
 {% if 'forticlient' in ansible_facts.packages %}
@@ -44,7 +44,11 @@ bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10
 floating_modifier $mod
 
 # start a terminal
+{% if 'ghostty' in ansible_facts.packages %}
+bindsym $mod+Return exec ghostty
+{% else %}
 bindsym $mod+Return exec i3-sensible-terminal
+{% endif %}
 
 # kill focused window
 bindsym $mod+Shift+q kill

@@ -107,7 +107,6 @@ ebuilds:
   - app-misc/asciinema
   - app-misc/fastfetch
   - app-misc/fdupes
-  - app-misc/grc
   - app-misc/jq
   - app-misc/tmux
   - app-office/libreoffice-bin

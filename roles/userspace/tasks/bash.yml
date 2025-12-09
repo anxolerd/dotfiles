@@ -5,7 +5,7 @@
     append_newline: true
     prepend_newline: true
     block: |
-      line: 'eval "$(zoxide init bash)"'
+      eval "$(zoxide init bash)"
       alias cd="zd"
       zd() {
         if [ $# -eq 0 ]; then
@@ -16,72 +16,59 @@
           z "$@" && printf "\U000F17A9 " && pwd || echo "Error: Directory not found"
         fi
       }
+    marker: '# {mark} Zoxide Integration'
     dest: ~/.bashrc
     create: true
-    owner: anxolerd
-    group: anxolerd
+    owner: "{{ user }}"
+    group: "{{ user }}"
     mode: "0640"
-
-- name: Use grc to colorize output
-  ansible.builtin.blockinfile:
-    block: |
-      export GRC_ALIASES=true
-      [ -f "/usr/share/grc/grc.sh" ] && . /usr/share/grc/grc.sh
-    dest: ~/.bashrc
-    create: true
-    owner: anxolerd
-    group: anxolerd
-    mode: "0640"
-  when: "'grc' in ansible_facts.packages"
 
 - name: Use fzf for completion and search
-  ansible.builtin.lineinfile:
-    line: "[ -f {{ item.file | quote }} ] && . {{ item.file }}"
+  ansible.builtin.blockinfile:
+    append_newline: true
+    prepend_newline: true
+    block: |
+      [ -f "/usr/share/fzf/key-bindings.bash" ] && . /usr/share/fzf/key-bindings.bash
+      [ -f "/usr/share/bash-completion/completions/fzf" ] && . /usr/share/bash-completion/completions/fzf
     dest: ~/.bashrc
+    marker: '# {mark} FZF Search and completion'
     create: true
-    owner: anxolerd
-    group: anxolerd
+    owner: "{{ user }}"
+    group: "{{ user }}"
     mode: "0640"
-  with_items:
-    - file: /usr/share/fzf/key-bindings.bash
-      label: key bindings
-    - file: /usr/share/bash-completion/completions/fzf
-      label: key bindings
-  loop_control:
-    label: "{{ item.label }}"
   when: "'fzf' in ansible_facts.packages"
 
 - name: Use eza instead of ls
   ansible.builtin.blockinfile:
+    append_newline: true
+    prepend_newline: true
     block: |
       alias ls='eza --group-directories-first'
       alias ll='eza --group-directories-first -alF'
       alias la='eza --group-directories-first -a'
       alias lt='eza --tree --level=2 --long --icons --git'
       alias tree='eza --tree'
+    marker: '# {mark} Eza instead of ls and tree'
     dest: ~/.bashrc
     create: true
-    owner: anxolerd
-    group: anxolerd
+    owner: "{{ user }}"
+    group: "{{ user }}"
     mode: "0640"
   when: "'eza' in ansible_facts.packages"
 
 - name: Configure bash_history options
-  ansible.builtin.lineinfile:
-    line: "export {{ option.name }}={{ option.value }}"
+  ansible.builtin.blockinfile:
+    append_newline: true
+    prepend_newline: true
+    block: |
+      export HISTCONTROL=ignoreboth:erasedups
+      export HISTSIZE=10000
     dest: ~/.bashrc
+    marker: '# {mark} Bash history options'
     create: true
-    owner: anxolerd
-    group: anxolerd
+    owner: "{{ user }}"
+    group: "{{ user }}"
     mode: "0640"
-  with_items:
-    - name: HISTCONTROL
-      value: "ignoreboth:erasedups"
-    - name: HISTSIZE
-      value: "10000"
-  loop_control:
-    loop_var: option
-    label: "{{ option.name }}"
 
 - name: Hook direnv into shell
   ansible.builtin.lineinfile:
@@ -89,8 +76,8 @@
     dest: ~/.bashrc
     state: present
     create: true
-    owner: anxolerd
-    group: anxolerd
+    owner: "{{ user }}"
+    group: "{{ user }}"
     mode: "0640"
   when: "'direnv' in ansible_facts.packages"
 
@@ -100,6 +87,22 @@
       [ -d "${HOME}/.local/bin" ] && export PATH="${HOME}/.local/bin:${PATH}"
     dest: ~/.bashrc
     create: true
-    owner: anxolerd
-    group: anxolerd
+    owner: "{{ user }}"
+    group: "{{ user }}"
+    mode: "0640"
+
+- name: Optionally init SDKMan
+  ansible.builtin.blockinfile:
+    append_newline: true
+    prepend_newline: true
+    block: |
+      # THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!
+      export SDKMAN_DIR="$HOME/.sdkman"
+      [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+    dest: ~/.bashrc
+    marker: '# {mark} SDKMAN! Configuration'
+    insertafter: EOF
+    create: true
+    owner: "{{ user }}"
+    group: "{{ user }}"
     mode: "0640"

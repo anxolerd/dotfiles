@@ -3,8 +3,8 @@
   ansible.builtin.copy:
     src: "gitignore"
     dest: "~/.gitignore"
-    owner: anxolerd
-    group: anxolerd
+    owner: "{{ user }}"
+    group: "{{ user }}"
     mode: "0640"
 
 - name: Set up user's git config

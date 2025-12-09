@@ -6,16 +6,16 @@
       ansible.builtin.file:
         path: ~/.config/i3blocks
         state: directory
-        owner: anxolerd
-        group: anxolerd
+        owner: "{{ user }}"
+        group: "{{ user }}"
         mode: "0755"
 
     - name: Create i3blocks config file
       ansible.builtin.template:
         src: i3blocks.config.j2
         dest: ~/.config/i3blocks/config
-        owner: anxolerd
-        group: anxolerd
+        owner: "{{ user }}"
+        group: "{{ user }}"
         mode: "0640"
 
 - name: Configure i3
@@ -25,24 +25,24 @@
       ansible.builtin.file:
         path: ~/.config/i3
         state: directory
-        owner: anxolerd
-        group: anxolerd
+        owner: "{{ user }}"
+        group: "{{ user }}"
         mode: "0755"
 
     - name: Download theme file
       ansible.builtin.get_url:
         url: "https://raw.githubusercontent.com/catppuccin/i3/main/themes/catppuccin-{{ catppuccin.theme }}"
         dest: "~/.config/i3/catppuccin-{{ catppuccin.theme }}"
-        owner: anxolerd
-        group: anxolerd
+        owner: "{{ user }}"
+        group: "{{ user }}"
         mode: "0640"
 
     - name: Create i3 config file
       ansible.builtin.template:
         src: i3.config.j2
         dest: ~/.config/i3/config
-        owner: anxolerd
-        group: anxolerd
+        owner: "{{ user }}"
+        group: "{{ user }}"
         mode: "0640"
 
 - name: Configure rofi launcher
@@ -51,8 +51,8 @@
       ansible.builtin.file:
         path: "{{ dir.path }}"
         state: directory
-        owner: anxolerd
-        group: anxolerd
+        owner: "{{ user }}"
+        group: "{{ user }}"
         mode: "0755"
       loop:
         - path: ~/.config/rofi
@@ -67,14 +67,14 @@
       ansible.builtin.get_url:
         url: https://raw.githubusercontent.com/catppuccin/rofi/b636a00/basic/.local/share/rofi/themes/catppuccin-{{ catppuccin.theme }}.rasi
         dest: ~/.local/share/rofi/themes/catppuccin-{{ catppuccin.theme }}.rasi
-        owner: anxolerd
-        group: anxolerd
+        owner: "{{ user }}"
+        group: "{{ user }}"
         mode: "0640"
 
     - name: Configure rofi launcher
       ansible.builtin.template:
         src: config.rasi.j2
         dest: ~/.config/rofi/config.rasi
-        owner: anxolerd
-        group: anxolerd
+        owner: "{{ user }}"
+        group: "{{ user }}"
         mode: "0640"

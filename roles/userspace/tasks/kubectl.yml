@@ -11,8 +11,8 @@
   ansible.builtin.file:
     path: ~/.krew/bin
     state: directory
-    owner: anxolerd
-    group: anxolerd
+    owner: "{{ user }}"
+    group: "{{ user }}"
     mode: "0755"
 
 - name: Download krew package manager for kubectl
@@ -25,13 +25,13 @@
     extra_opts:
       - --transform
       - 'flags=r;s/krew-{{ ansible_system | lower }}_{{ linux_platform }}/kubectl-krew/'
-    owner: anxolerd
-    group: anxolerd
+    owner: "{{ user }}"
+    group: "{{ user }}"
 
 - name: Update krew plugins list
   ansible.builtin.command: /usr/bin/kubectl krew update
   args:
-    creates: /home/anxolerd/.krew/index/plugins/krew_plugins.yaml
+    creates: /home/"{{ user }}"/.krew/index/plugins/krew_plugins.yaml
   environment:
     PATH: "{{ ansible_env.PATH }}:{{ ansible_env.HOME }}/.krew/bin"
 

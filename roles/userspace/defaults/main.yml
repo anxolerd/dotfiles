@@ -30,9 +30,6 @@ krew:
     - lineage
     - oidc-login
 ssh_host_configs:
-  - 'wr':
-      User: anxolerd
-      Hostname: wr.local
   - 'africatwin':
       User: anxolerd
       Hostname: africatwin.local
@@ -41,6 +38,7 @@ ssh_host_configs:
       User: akovalchuk
 tpm:
   bundle_path: ~/.tmux/plugins/tpm
+user: anxolerd
 vim:
   plug:
     bundle_path: ~/.vim/autoload/plug.vim

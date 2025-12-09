@@ -3,8 +3,8 @@
   ansible.builtin.file:
     path: ~/.config/alacritty
     state: directory
-    owner: anxolerd
-    group: anxolerd
+    owner: "{{ user }}"
+    group: "{{ user }}"
     mode: "0755"
 
 - name: Download catppuccin theme
@@ -19,5 +19,5 @@
     src: alacritty.toml.j2
     dest: ~/.config/alacritty/alacritty.toml
     mode: "0640"
-    owner: "anxolerd"
-    group: "anxolerd"
+    owner: "{{ user }}"
+    group: "{{ user }}"

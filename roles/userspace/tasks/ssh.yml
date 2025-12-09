@@ -2,15 +2,15 @@
 - name: Create SSH config dir within userspace
   ansible.builtin.file:
     dest: ~/.ssh
-    group: anxolerd
+    group: "{{ user }}"
     mode: u=rwx,g=,o=
-    owner: anxolerd
+    owner: "{{ user }}"
     state: directory
 
 - name: Generate SSH config from template
   ansible.builtin.template:
     dest: ~/.ssh/config
-    group: anxolerd
+    group: "{{ user }}"
     mode: u=rw,g=r,o=
-    owner: anxolerd
+    owner: "{{ user }}"
     src: ssh-config.j2
